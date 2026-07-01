@@ -30,7 +30,7 @@ print("本系统适用于资源与环境专业型硕士考生。")
 name = input("请输入考生姓名：")
 politics_score = int(input("请输入您的思想政治理论分数："))   # 吸取Day03避坑经验：必须显式转换类型后才能进行数值大小比较
 english2_score = int(input("请输入您的英语（二）分数："))
-math2_score = int(input("请输入您数学（二）分数："))
+math2_score = int(input("请输入您的数学（二）分数："))
 rs_score = int(input("请输入您的遥感原理及应用分数："))
 total_score = politics_score + english2_score + math2_score + rs_score
 
