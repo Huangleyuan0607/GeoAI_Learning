@@ -230,10 +230,10 @@ git commit -m "feat: operator and if"
 
 ### 视频学习
 
-- - [ ] 24 if...else
-- - [ ] 25 if...elif...else
-- - [ ] 26 综合案例
-- - [ ] 27 match模式匹配
+- - [x] 24 if...else
+- - [x] 25 if...elif...else
+- - [x] 26 综合案例
+- - [x] 27 match模式匹配
 
 预计时长：2.5小时
 
