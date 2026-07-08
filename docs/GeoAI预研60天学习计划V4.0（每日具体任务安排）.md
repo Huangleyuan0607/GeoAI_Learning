@@ -265,8 +265,8 @@ git commit -m "feat: conditional logic"
 
 ### 视频学习
 
-- - [ ]  28 while循环
-- - [ ] 29 while案例
+- - [x]  28 while循环
+- - [x] 29 while案例
 
 预计时长：2.5小时
 
