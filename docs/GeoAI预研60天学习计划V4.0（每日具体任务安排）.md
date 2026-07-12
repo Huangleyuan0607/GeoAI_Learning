@@ -298,12 +298,12 @@ git commit -m "feat: while loop"
 
 ### 视频学习
 
-- - [ ] 30 for循环
-- - [ ] 31 range案例
-- - [ ] 32 嵌套循环
-- - [ ] 33 嵌套循环案例
-- - [ ] 34 break continue
-- - [ ] 35 猜数字综合案例
+- - [x] 30 for循环
+- - [x] 31 range案例
+- - [x] 32 嵌套循环
+- - [x] 33 嵌套循环案例
+- - [x] 34 break continue
+- - [x] 35 猜数字综合案例
 
 预计时长：2.5小时
 
@@ -688,7 +688,7 @@ GeoAI-Learning
 >
 > 正式进入深度学习领域
 
-# Day16（2026.07.08）
+# Day16（2026.07.13）
 
 ## 今日目标
 
@@ -733,7 +733,7 @@ git commit -m "feat: numpy basic"
 
 ------
 
-# Day17（2026.07.09）
+# Day17（2026.07.14）
 
 ## 今日目标
 
@@ -778,7 +778,7 @@ git commit -m "feat: linear algebra"
 
 ------
 
-# Day18（2026.07.10）
+# Day18（2026.07.15）
 
 ## 今日目标
 
@@ -819,7 +819,7 @@ git commit -m "feat: matrix computation"
 
 ------
 
-# Day19（2026.07.11）
+# Day19（2026.07.16）
 
 ## 今日目标
 
@@ -860,7 +860,7 @@ git commit -m "feat: autograd"
 
 ------
 
-# Day20（2026.07.12）
+# Day20（2026.07.17）
 
 ## 今日目标
 
@@ -896,7 +896,7 @@ git commit -m "feat: pytorch tensor"
 
 ------
 
-# Day21（2026.07.13）
+# Day21（2026.07.18）
 
 ## 今日目标
 
@@ -934,7 +934,7 @@ git commit -m "feat: dataset"
 
 ------
 
-# Day22（2026.07.14）
+# Day22（2026.07.19）
 
 ## 今日目标
 
@@ -968,7 +968,7 @@ git commit -m "feat: dataloader"
 
 ------
 
-# Day23（2026.07.15）
+# Day23（2026.07.20）
 
 ## 今日目标
 
