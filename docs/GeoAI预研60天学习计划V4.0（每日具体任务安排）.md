@@ -335,25 +335,26 @@ git commit -m "feat: for loop"
 
 ### 视频学习
 
-- - [ ] 36 数据容器概述
-- - [ ] 37 列表介绍
-- - [ ] 38 列表切片
-- - [ ] 39 列表方法
-- - [ ] 40 列表案例1
-- - [ ] 41 列表案例2
+- - [x] 36 数据容器概述
+- - [x] 37 列表介绍
+- - [x] 38 列表切片
+- - [x] 39 列表方法
+- - [x] 40 列表案例1
+- - [x] 41 列表案例2
+- - [x] 42 列表案例3
 
 预计时长：3小时
 
 ### 代码实验
 
 ```python
-student_score.py
+geo_sample_manager.py
 ```
 
 实现：
 
--  成绩录入
--  平均分统计
+-  优秀样点的提取筛选
+-  比例计算输出
 
 ### GitHub提交
 
@@ -373,12 +374,13 @@ git commit -m "feat: list basic"
 
 ### 视频学习
 
-- - [ ] 42 推导式
 - - [ ] 43 字符串操作
 - - [ ] 44 字符串方法
 - - [ ] 45 字符串案例
 - - [ ] 46 元组基础
 - - [ ] 47 组包与解包
+- - [ ] 48 元组案例
+- - [ ] 49 元组案例优化
 
 预计时长：2.5小时
 
@@ -410,8 +412,6 @@ git commit -m "feat: tuple and string"
 
 ### 视频学习
 
-- - [ ] 48 元组案例
-- - [ ] 49 元组案例优化
 - - [ ] 50 集合基础
 - - [ ] 51 集合案例
 - - [ ] 52 字典介绍
@@ -637,14 +637,37 @@ git commit -m "summary: python foundation stage"
 ```text
 GeoAI-Learning
 ├── Python_Basic
-│   ├── variable_demo.py
-│   ├── loop_demo.py
-│   ├── function_demo.py
-│   ├── oop_demo.py
-│   └── pandas_demo.py
+│   ├── Day01
+│   ├── Day02
+│   ├── Day03
+│   ├── Day04
+│   ├── Day05
+│   ├── Day06
+│   ├── Day07
+│   ├── Day08
+│   ├── Day09
+│   ├── Day10
+│   ├── Day11
+│   ├── Day12
+│   ├── Day13
+│   ├── Day14
+│   └── Day15
 ├── Notes
-│   ├── Week1.md
-│   └── Week2.md
+│   ├── Day01（2026.06.28）Note.md
+│   ├── Day02（2026.06.29）Note.md
+│   ├── Day03（2026.06.30）Note.md
+│   ├── Day04（2026.07.01）Note.md
+│   ├── Day05（2026.07.02）Note.md
+│   ├── Day06（2026.07.03）Note.md
+│   ├── Day07（2026.07.04）Note.md
+│   ├── Day08（2026.07.05）Note.md
+│   ├── Day09（2026.07.06）Note.md
+│   ├── Day10（2026.07.07）Note.md
+│   ├── Day11（2026.07.08）Note.md
+│   ├── Day12（2026.07.09）Note.md
+│   ├── Day13（2026.07.10）Note.md
+│   ├── Day14（2026.07.11）Note.md
+│   └── Day15（2026.07.12）Note.md
 └── README.md
 ```
 
@@ -665,15 +688,11 @@ GeoAI-Learning
 
 ### 阶段目标
 
-> 当前处于暑期助教兼职阶段
-> 工作时间：08:00-12:00，14:00-18:00
-> 学习时间统一安排：20:00-22:30（约2.5小时）
->
 > 本阶段主要目标如下：
 > 完成NumPy基础
->
-> 掌握张量(Tensor)运算
->
+> 
+>掌握张量(Tensor)运算
+> 
 > 理解自动求导机制
 >
 > 掌握Dataset与DataLoader
@@ -1003,7 +1022,7 @@ git commit -m "feat: linear regression"
 
 ------
 
-# Day24（2026.07.16）
+# Day24（2026.07.21）
 
 ## 今日目标
 
@@ -1037,7 +1056,7 @@ git commit -m "feat: torch linear regression"
 
 ------
 
-# Day25（2026.07.17）
+# Day25（2026.07.22）
 
 ## 今日目标
 
@@ -1069,7 +1088,7 @@ git commit -m "feat: softmax"
 
 ------
 
-# Day26（2026.07.18）
+# Day26（2026.07.23）
 
 ## 今日目标
 
@@ -1098,7 +1117,7 @@ git commit -m "feat: softmax classifier"
 
 ------
 
-# Day27（2026.07.19）
+# Day27（2026.07.24）
 
 ## 今日目标
 
@@ -1133,7 +1152,7 @@ git commit -m "feat: mlp"
 
 ------
 
-# Day28（2026.07.20）
+# Day28（2026.07.25）
 
 ## 今日目标
 
@@ -1161,7 +1180,7 @@ git commit -m "study: model selection"
 
 ------
 
-# Day29（2026.07.21）
+# Day29（2026.07.26）
 
 ## 今日目标
 
@@ -1197,7 +1216,7 @@ git commit -m "feat: mnist classifier"
 
 ------
 
-# Day30（2026.07.22）
+# Day30（2026.07.27）
 
 ## 今日目标
 
@@ -1236,7 +1255,7 @@ Stage2_DeepLearning_Summary.md
 git commit -m "summary: deep learning foundation"
 ```
 
-# Day16-Day30阶段验收（7月22日晚）
+# Day16-Day30阶段验收（7月27日晚）
 
 你应该达到：
 
@@ -1308,7 +1327,7 @@ GeoAI             ☆☆☆☆☆
 > - 理解U-Net网络结构
 > - 为建筑物提取项目做好准备
 
-# Day31（2026.07.23）
+# Day31（2026.07.28）
 
 ## 今日目标
 
@@ -1347,7 +1366,7 @@ git commit -m "Day31 CNN introduction"
 
 ------
 
-# Day32（2026.07.24）
+# Day32（2026.07.29）
 
 ## 今日目标
 
@@ -1387,7 +1406,7 @@ git commit -m "Day32 padding stride"
 
 ------
 
-# Day33（2026.07.25）
+# Day33（2026.07.30）
 
 ## 今日目标
 
@@ -1425,7 +1444,7 @@ git commit -m "Day33 convolution channels"
 
 ------
 
-# Day34（2026.07.26）
+# Day34（2026.07.31）
 
 ## 今日目标
 
@@ -1463,7 +1482,7 @@ git commit -m "Day34 pooling"
 
 ------
 
-# Day35（2026.07.27）
+# Day35（2026.08.01）
 
 ## 今日目标
 
@@ -1500,7 +1519,7 @@ git commit -m "Day35 lenet"
 
 ------
 
-# Day36（2026.07.28）
+# Day36（2026.08.02）
 
 ## 今日目标
 
@@ -1535,7 +1554,7 @@ git commit -m "Day36 alexnet"
 
 ------
 
-# Day37（2026.07.29）
+# Day37（2026.08.03）
 
 ## 今日目标
 
@@ -1565,7 +1584,7 @@ git commit -m "Day37 vgg"
 
 ------
 
-# Day38（2026.07.30）
+# Day38（2026.08.04）
 
 ## 今日目标
 
@@ -1591,7 +1610,7 @@ git commit -m "Day38 googlenet"
 
 ------
 
-# Day39（2026.07.31）
+# Day39（2026.08.05）
 
 ## 今日目标
 
@@ -1626,7 +1645,7 @@ git commit -m "Day39 resnet"
 
 ------
 
-# Day40（2026.08.01）
+# Day40（2026.08.06）
 
 ## 今日目标
 
@@ -1665,7 +1684,7 @@ git commit -m "Day40 augmentation"
 
 ------
 
-# Day41（2026.08.02）
+# Day41（2026.08.07）
 
 ## 今日目标
 
@@ -1699,7 +1718,7 @@ git commit -m "Day41 opencv basic"
 
 ------
 
-# Day42（2026.08.03）
+# Day42（2026.08.08）
 
 ## 今日目标
 
@@ -1731,7 +1750,7 @@ git commit -m "Day42 image processing"
 
 ------
 
-# Day43（2026.08.04）
+# Day43（2026.08.09）
 
 ## 今日目标
 
@@ -1770,7 +1789,7 @@ git commit -m "Day43 semantic segmentation"
 
 ------
 
-# Day44（2026.08.05）
+# Day44（2026.08.10）
 
 ## 今日目标
 
@@ -1802,7 +1821,7 @@ git commit -m "Day44 fcn"
 
 ------
 
-# Day45（2026.08.06）
+# Day45（2026.08.11）
 
 ## 今日目标
 
@@ -1861,7 +1880,7 @@ git commit -m "Day45 unet introduction"
 -  理解U-Net
 -  GitHub累计提交≥45次
 
-# Day31-Day45阶段验收（8月6日晚）
+# Day31-Day45阶段验收（8月11日晚）
 
 你应该达到：
 
@@ -1961,7 +1980,7 @@ GeoAI-Learning
 
 ------
 
-# Day46（2026.08.07）
+# Day46（2026.08.12）
 
 ## 今日目标
 
@@ -2003,7 +2022,7 @@ git commit -m "Day46 deeplab v1 v2"
 
 ------
 
-# Day47（2026.08.08）
+# Day47（2026.08.13）
 
 ## 今日目标
 
@@ -2035,7 +2054,7 @@ git commit -m "Day47 deeplab v3"
 
 ------
 
-# Day48（2026.08.09）
+# Day48（2026.08.14）
 
 ## 今日目标
 
@@ -2066,7 +2085,7 @@ git commit -m "Day48 segmentation inference"
 
 ------
 
-# Day49（2026.08.10）
+# Day49（2026.08.15）
 
 ## 今日目标
 
@@ -2101,7 +2120,7 @@ git commit -m "Day49 dataset preparation"
 
 ------
 
-# Day50（2026.08.11）
+# Day50（2026.08.16）
 
 ## 今日目标
 
@@ -2133,7 +2152,7 @@ git commit -m "Day50 unet dataloader"
 
 ------
 
-# Day51（2026.08.12）
+# Day51（2026.08.17）
 
 ## 今日目标
 
@@ -2165,7 +2184,7 @@ git commit -m "Day51 unet model"
 
 ------
 
-# Day52（2026.08.13）
+# Day52（2026.08.18）
 
 ## 今日目标
 
@@ -2199,7 +2218,7 @@ git commit -m "Day52 unet training"
 
 ------
 
-# Day53（2026.08.14）
+# Day53（2026.08.19）
 
 ## 今日目标
 
@@ -2226,7 +2245,7 @@ git commit -m "Day53 continue training"
 
 ------
 
-# Day54（2026.08.15）
+# Day54（2026.08.20）
 
 ## 今日目标
 
@@ -2261,7 +2280,7 @@ git commit -m "Day54 prediction visualization"
 
 ------
 
-# Day55（2026.08.16）
+# Day55（2026.08.21）
 
 ## 今日目标
 
@@ -2290,7 +2309,7 @@ git commit -m "Day55 building extraction report"
 
 ------
 
-# Day56（2026.08.17）
+# Day56（2026.08.22）
 
 ## 今日目标
 
@@ -2327,7 +2346,7 @@ git commit -m "Day56 attention"
 
 ------
 
-# Day57（2026.08.18）
+# Day57（2026.08.23）
 
 ## 今日目标
 
@@ -2355,7 +2374,7 @@ git commit -m "Day57 self attention"
 
 ------
 
-# Day58（2026.08.19）
+# Day58（2026.08.24）
 
 ## 今日目标
 
@@ -2393,7 +2412,7 @@ git commit -m "Day58 transformer"
 
 ------
 
-# Day59（2026.08.20）
+# Day59（2026.08.25）
 
 ## 今日目标
 
@@ -2433,7 +2452,7 @@ git commit -m "Day59 paper reading"
 
 ------
 
-# Day60（2026.08.21）
+# Day60（2026.08.26）
 
 ## 今日目标
 
