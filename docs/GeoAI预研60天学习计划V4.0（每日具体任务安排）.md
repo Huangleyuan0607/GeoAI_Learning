@@ -374,13 +374,13 @@ git commit -m "feat: list basic"
 
 ### 视频学习
 
-- - [ ] 43 字符串操作
-- - [ ] 44 字符串方法
-- - [ ] 45 字符串案例
-- - [ ] 46 元组基础
-- - [ ] 47 组包与解包
-- - [ ] 48 元组案例
-- - [ ] 49 元组案例优化
+- - [x] 43 字符串操作
+- - [x] 44 字符串方法
+- - [x] 45 字符串案例
+- - [x] 46 元组基础
+- - [x] 47 组包与解包
+- - [x] 48 元组案例
+- - [x] 49 元组案例优化
 
 预计时长：2.5小时
 
@@ -399,8 +399,6 @@ word_count.py
 ```bash
 git commit -m "feat: tuple and string"
 ```
-
-------
 
 # Day10（2026.07.07）
 
@@ -711,43 +709,54 @@ GeoAI-Learning
 
 ## 今日目标
 
-进入NumPy世界，建立矩阵思维。
+掌握NumPy数组创建与基本操作，理解Tensor与NumPy数组之间的联系。
 
 ## 今日任务
 
-### 视频学习（李沐）
+### 视频学习
 
-- - [ ] 第6讲 数据操作
-- - [ ] 第7讲 数据操作实现
-- - [ ] 第8讲 数据预处理实现
+#### 黑马Python
 
-预计时长：1小时
+- NumPy数组创建
+- ndarray基本属性
+- 数组索引与切片
+
+#### 李沐《动手学深度学习》
+
+- 第6讲 数据操作
+- 第7讲 数据操作实现
+- 第8讲 数据预处理实现
+
+预计时长：3小时
 
 ### 理论学习
 
--  ndarray
--  shape
--  reshape
--  broadcast机制
+- NumPy数组
+- ndarray对象
+- Tensor与NumPy转换
+- 数据预处理
 
 ### 代码实验
 
 创建：
 
-```python
-numpy_basic.py
+```
+numpy_array_demo.py
 ```
 
 实现：
 
--  创建矩阵
--  矩阵加减乘
--  reshape操作
+- 创建NumPy数组
+- 数组索引与切片
+- Tensor与NumPy相互转换
+- 数据预处理练习
 
 ### GitHub提交
 
-```bash
-git commit -m "feat: numpy basic"
+```
+git add .
+git commit -m "Day16：完成NumPy数组基础学习"
+git push
 ```
 
 ------
@@ -756,43 +765,56 @@ git commit -m "feat: numpy basic"
 
 ## 今日目标
 
-掌握线性代数基础。
+掌握NumPy矩阵计算与线性代数基础。
 
 ## 今日任务
 
-### 视频学习（李沐）
+### 视频学习
 
--  第10讲 线性代数
--  第11讲 线性代数实现
--  第12讲 按特定轴求和
+#### 黑马Python
 
-预计时长：1小时
+- NumPy数学运算
+- 广播机制
+- 矩阵运算
+
+#### 李沐《动手学深度学习》
+
+- 第10讲 线性代数
+- 第11讲 线性代数实现
+- 第12讲 按特定轴求和
+- 第14讲 矩阵计算
+
+预计时长：3小时
 
 ### 理论学习
 
--  向量
--  矩阵
--  点积
--  范数
+- 向量
+- 矩阵
+- 广播机制
+- 矩阵乘法
+- 范数
 
 ### 代码实验
 
 创建：
 
-```python
-linear_algebra.py
+```
+numpy_linear_algebra.py
 ```
 
 实现：
 
--  向量乘法
--  矩阵乘法
--  求均值
+- NumPy矩阵运算
+- 广播计算
+- 向量点积
+- 矩阵乘法
 
 ### GitHub提交
 
-```bash
-git commit -m "feat: linear algebra"
+```
+git add .
+git commit -m "Day17：完成NumPy矩阵计算学习"
+git push
 ```
 
 ------
@@ -801,39 +823,50 @@ git commit -m "feat: linear algebra"
 
 ## 今日目标
 
-掌握矩阵计算。
+正式进入PyTorch，掌握Tensor与自动求导。
 
 ## 今日任务
 
-### 视频学习（李沐）
+### 视频学习
 
--  第14讲 矩阵计算
--  第15讲 QA
+#### 李沐《动手学深度学习》
+
+- 第16讲 自动求导
+- 第17讲 自动求导实现
+- 第19讲 线性回归
+- 第20讲 基础优化算法
+
+预计时长：3小时
 
 ### 理论学习
 
--  矩阵乘法
--  转置
--  维度变化
+- Tensor
+- 自动求导
+- 梯度
+- 链式法则
+- 梯度下降
 
 ### 代码实验
 
 创建：
 
-```python
-matrix_compute.py
+```
+tensor_autograd_demo.py
 ```
 
 实现：
 
--  转置
--  矩阵相乘
--  批量运算
+- Tensor创建
+- requires_grad
+- backward()
+- 梯度计算示例
 
 ### GitHub提交
 
-```bash
-git commit -m "feat: matrix computation"
+```
+git add .
+git commit -m "Day18：完成Tensor与自动求导学习"
+git push
 ```
 
 ------
@@ -842,39 +875,47 @@ git commit -m "feat: matrix computation"
 
 ## 今日目标
 
-理解自动求导机制。
+完成线性回归的完整实现。
 
 ## 今日任务
 
-### 视频学习（李沐）
+### 视频学习
 
--  第16讲 自动求导
--  第17讲 自动求导实现
+#### 李沐《动手学深度学习》
+
+- 第21讲 线性回归从零实现
+- 第22讲 线性回归简洁实现
+
+预计时长：2小时
 
 ### 理论学习
 
--  梯度
--  链式法则
--  Backpropagation
+- 线性回归
+- 损失函数
+- 学习率
+- 模型训练流程
 
 ### 代码实验
 
 创建：
 
-```python
-autograd_demo.py
+```
+linear_regression.py
 ```
 
 实现：
 
--  requires_grad
--  backward
--  gradient查看
+- 数据生成
+- 模型训练
+- Loss可视化
+- 模型预测
 
 ### GitHub提交
 
-```bash
-git commit -m "feat: autograd"
+```
+git add .
+git commit -m "Day19：完成线性回归模型学习"
+git push
 ```
 
 ------
@@ -883,34 +924,47 @@ git commit -m "feat: autograd"
 
 ## 今日目标
 
-正式进入PyTorch。
+掌握Softmax分类模型。
 
 ## 今日任务
 
-### 视频学习（小土堆）
+### 视频学习
 
--  P1 PyTorch环境安装
--  P2 编辑器配置
--  P3 Python学习法宝
--  P4 PyCharm与Jupyter
+#### 李沐《动手学深度学习》
+
+- 第24讲 Softmax回归
+- 第25讲 损失函数
+- 第26讲 图片分类数据集
+
+预计时长：2小时
+
+### 理论学习
+
+- 分类问题
+- Softmax函数
+- CrossEntropyLoss
+- Fashion-MNIST数据集
 
 ### 代码实验
 
 创建：
 
-```python
-torch_tensor.py
+```
+softmax_demo.py
 ```
 
 实现：
 
--  Tensor创建
--  Tensor运算
+- 加载Fashion-MNIST
+- Softmax计算
+- 数据可视化
 
 ### GitHub提交
 
-```bash
-git commit -m "feat: pytorch tensor"
+```
+git add .
+git commit -m "Day20：完成Softmax分类学习"
+git push
 ```
 
 ------
@@ -919,36 +973,47 @@ git commit -m "feat: pytorch tensor"
 
 ## 今日目标
 
-掌握Dataset。
+完成Softmax回归代码实现。
 
 ## 今日任务
 
-### 视频学习（小土堆）
+### 视频学习
 
--  P5 数据加载初认识
--  P6 Dataset代码实战
+#### 李沐《动手学深度学习》
+
+- 第27讲 Softmax回归从零实现
+- 第28讲 Softmax回归简洁实现
+
+预计时长：2小时
 
 ### 理论学习
 
--  Dataset类
--  数据读取流程
+- Dataset
+- DataLoader
+- 模型训练流程
+- 模型评估
 
 ### 代码实验
 
 创建：
 
-```python
-dataset_demo.py
+```
+softmax_train.py
 ```
 
 实现：
 
--  自定义Dataset
+- Dataset加载
+- DataLoader迭代
+- Softmax模型训练
+- 模型测试
 
 ### GitHub提交
 
-```bash
-git commit -m "feat: dataset"
+```
+git add .
+git commit -m "Day21：完成Softmax模型实现"
+git push
 ```
 
 ------
@@ -957,32 +1022,47 @@ git commit -m "feat: dataset"
 
 ## 今日目标
 
-掌握DataLoader。
+完成PyTorch环境配置，学习多层感知机。
 
 ## 今日任务
 
-### 视频学习（小土堆）
+### 视频学习
 
--  torchvision中的数据集使用
--  DataLoader使用
+#### 李沐《动手学深度学习》
+
+- 第30讲 Windows安装CUDA与PyTorch
+- 第32讲 感知机
+- 第33讲 多层感知机
+
+预计时长：2.5小时
+
+### 理论学习
+
+- 感知机
+- 全连接层
+- 激活函数
+- 神经网络结构
 
 ### 代码实验
 
 创建：
 
-```python
-dataloader_demo.py
+```
+mlp_demo.py
 ```
 
 实现：
 
--  batch读取
--  shuffle
+- 构建MLP
+- ReLU激活函数
+- 前向传播
 
 ### GitHub提交
 
-```bash
-git commit -m "feat: dataloader"
+```
+git add .
+git commit -m "Day22：完成多层感知机学习"
+git push
 ```
 
 ------
@@ -991,67 +1071,96 @@ git commit -m "feat: dataloader"
 
 ## 今日目标
 
-理解线性回归。
+完成MLP代码实现，理解神经网络训练流程。
 
 ## 今日任务
 
-### 视频学习（李沐）
+### 视频学习
 
--  第19讲 线性回归
--  第20讲 基础优化算法
--  第21讲 从零实现线性回归
+#### 李沐《动手学深度学习》
+
+- 第34讲 MLP代码实现
+- 第37讲 模型选择
+- 第38讲 过拟合与欠拟合
+
+预计时长：3小时
 
 ### 理论学习
 
--  损失函数
--  梯度下降
+- 模型选择
+- 偏差与方差
+- 过拟合
+- 欠拟合
+- 泛化能力
 
 ### 代码实验
 
 创建：
 
-```python
-linear_regression.py
 ```
+mlp_train.py
+```
+
+实现：
+
+- 构建MLP模型
+- 模型训练
+- 模型评估
+- 调整超参数
 
 ### GitHub提交
 
-```bash
-git commit -m "feat: linear regression"
 ```
-
-------
+git add .
+git commit -m "Day23：完成MLP模型训练学习"
+git push
+```
 
 # Day24（2026.07.21）
 
 ## 今日目标
 
-掌握PyTorch版线性回归。
+掌握模型正则化方法，提高模型泛化能力。
 
 ## 今日任务
 
-### 视频学习（李沐）
+### 视频学习
 
--  第22讲 线性回归简洁实现
+#### 李沐《动手学深度学习》
+
+- 第41讲 权重衰退
+- 第42讲 权重衰退代码实现
+- 第44讲 Dropout
+
+预计时长：2.5小时
+
+### 理论学习
+
+- 权重衰退（Weight Decay）
+- L2正则化
+- Dropout
+- 泛化能力
 
 ### 代码实验
 
 创建：
 
-```python
-linear_regression_torch.py
+```
+regularization_demo.py
 ```
 
 实现：
 
--  nn.Linear
--  MSELoss
--  SGD
+- 添加L2正则化
+- 使用Dropout
+- 对比模型训练效果
 
 ### GitHub提交
 
-```bash
-git commit -m "feat: torch linear regression"
+```
+git add .
+git commit -m "Day24：完成模型正则化学习"
+git push
 ```
 
 ------
@@ -1060,30 +1169,48 @@ git commit -m "feat: torch linear regression"
 
 ## 今日目标
 
-理解Softmax分类。
+掌握Dropout、激活函数与模型初始化。
 
 ## 今日任务
 
-### 视频学习（李沐）
+### 视频学习
 
--  第24讲 Softmax回归
--  第25讲 损失函数
--  第26讲 图片分类数据集
+#### 李沐《动手学深度学习》
+
+- 第45讲 Dropout代码实现
+- 第47讲 数值稳定性
+- 第48讲 激活函数与模型初始化
+
+预计时长：2.5小时
 
 ### 理论学习
+
+- 数值稳定性
+- ReLU
+- Sigmoid
+- Tanh
+- Xavier初始化
 
 ### 代码实验
 
 创建：
 
-```python
-softmax_demo.py
 ```
+activation_demo.py
+```
+
+实现：
+
+- 不同激活函数对比
+- 模型初始化实验
+- Loss变化观察
 
 ### GitHub提交
 
-```bash
-git commit -m "feat: softmax"
+```
+git add .
+git commit -m "Day25：完成激活函数学习"
+git push
 ```
 
 ------
@@ -1092,27 +1219,47 @@ git commit -m "feat: softmax"
 
 ## 今日目标
 
-完成Softmax实现。
+完成第一个真实机器学习项目，体验完整训练流程。
 
 ## 今日任务
 
-### 视频学习（李沐）
+### 视频学习
 
--  第27讲 Softmax从零实现
--  第28讲 Softmax简洁实现
+#### 李沐《动手学深度学习》
+
+- 第50讲 房价预测
+- 第51讲 Kaggle房价预测
+
+预计时长：2.5小时
+
+### 理论学习
+
+- Kaggle竞赛
+- 特征工程
+- 数据预处理
+- 模型评估
 
 ### 代码实验
 
 创建：
 
-```python
-fashion_mnist_softmax.py
 ```
+house_price.py
+```
+
+实现：
+
+- 数据读取
+- 特征处理
+- 模型训练
+- 预测结果输出
 
 ### GitHub提交
 
-```bash
-git commit -m "feat: softmax classifier"
+```
+git add .
+git commit -m "Day26：完成Kaggle房价预测学习"
+git push
 ```
 
 ------
@@ -1121,33 +1268,49 @@ git commit -m "feat: softmax classifier"
 
 ## 今日目标
 
-理解MLP多层感知机。
+理解PyTorch模型组织方式，提高代码规范性。
 
 ## 今日任务
 
-### 视频学习（李沐）
+### 视频学习
 
--  第32讲 感知机
--  第33讲 多层感知机
--  第34讲 代码实现
+#### 李沐《动手学深度学习》
+
+- 第53讲 模型构造
+- 第54讲 参数管理
+- 第55讲 自定义层
+- 第56讲 模型读写
+
+预计时长：3小时
 
 ### 理论学习
 
--  激活函数
--  非线性映射
+- nn.Module
+- 参数管理
+- 自定义Layer
+- 模型保存与加载
 
 ### 代码实验
 
 创建：
 
-```python
-mlp_demo.py
 ```
+module_demo.py
+```
+
+实现：
+
+- 自定义网络
+- 自定义Layer
+- 保存模型
+- 加载模型
 
 ### GitHub提交
 
-```bash
-git commit -m "feat: mlp"
+```
+git add .
+git commit -m "Day27：完成PyTorch模型构建学习"
+git push
 ```
 
 ------
@@ -1156,26 +1319,46 @@ git commit -m "feat: mlp"
 
 ## 今日目标
 
-理解过拟合与模型选择。
+掌握GPU训练环境，为后续CNN训练做好准备。
 
 ## 今日任务
 
-### 视频学习（李沐）
+### 视频学习
 
--  第37讲 模型选择
--  第38讲 过拟合与欠拟合
--  第39讲 代码
+#### 李沐《动手学深度学习》
+
+- 第58讲 使用GPU
+- 第61讲 第二部分竞赛总结
+
+预计时长：2小时
 
 ### 理论学习
 
--  Train
--  Validation
--  Test
+- GPU训练
+- CUDA
+- CPU与GPU区别
+- 深度学习训练流程
+
+### 代码实验
+
+创建：
+
+```
+gpu_train.py
+```
+
+实现：
+
+- GPU环境检测
+- Tensor迁移GPU
+- GPU训练模型
 
 ### GitHub提交
 
-```bash
-git commit -m "study: model selection"
+```
+git add .
+git commit -m "Day28：完成GPU训练学习"
+git push
 ```
 
 ------
@@ -1184,34 +1367,41 @@ git commit -m "study: model selection"
 
 ## 今日目标
 
-训练第一个MNIST分类模型。
+完成第二阶段Mini Project，综合运用PyTorch基础知识。
 
 ## 今日任务
 
-### 视频学习（小土堆）
+### 理论学习
 
--  神经网络基本骨架
--  神经网络卷积层
--  最大池化
+- Tensor操作回顾
+- 自动求导
+- 神经网络训练流程
+- 模型组织方式
+
+预计时长：3小时
 
 ### 代码实验
 
 创建：
 
-```python
-mnist_classifier.py
+```
+mnist_mlp_project.py
 ```
 
 实现：
 
--  数据读取
--  模型训练
--  输出准确率
+- 加载MNIST/Fashion-MNIST数据集
+- 构建MLP模型
+- 完成模型训练
+- 模型测试
+- 保存训练结果
 
 ### GitHub提交
 
-```bash
-git commit -m "feat: mnist classifier"
+```
+git add .
+git commit -m "Day29：完成PyTorch综合项目实践"
+git push
 ```
 
 ------
@@ -1220,54 +1410,94 @@ git commit -m "feat: mnist classifier"
 
 ## 今日目标
 
-完成阶段项目总结。
+完成第二阶段总结，为CNN学习做好准备。
 
 ## 今日任务
 
-### 项目整理
+### 学习总结
 
-整理：
+- 第二阶段知识总结
+- NumPy知识梳理
+- PyTorch知识梳理
+- 神经网络训练流程总结
+- 更新README学习进度
+- 撰写Week02总结
+- 整理学习笔记
 
--  NumPy实验
--  Tensor实验
--  Dataset实验
--  Softmax实验
--  MLP实验
--  MNIST实验
+预计时长：2小时
 
-### 输出成果
+### 代码实验
 
-创建：
+整理第二阶段全部代码：
 
-```text
-Stage2_DeepLearning_Summary.md
-```
-
-内容包括：
-
-- 学习内容总结
-- 遇到的问题
-- 下一阶段目标
+- 优化代码结构
+- 添加注释
+- 删除冗余代码
+- 完善项目目录
 
 ### GitHub提交
 
-```bash
-git commit -m "summary: deep learning foundation"
+```
+git add .
+git commit -m "Day30：完成第二阶段总结"
+git push
 ```
 
-# Day16-Day30阶段验收（7月27日晚）
+# Day16-Day30阶段验收（2026.07.27 晚）
 
 你应该达到：
 
--  理解Tensor本质
--  理解梯度与反向传播
--  能独立使用Dataset与DataLoader
--  掌握线性回归
--  掌握Softmax分类
--  理解MLP结构
--  掌握nn.Module开发方式
--  完成MNIST项目
--  GitHub累计提交 ≥ 30次
+- ✅ 熟练掌握NumPy数组与矩阵运算
+- ✅ 理解Tensor本质及其与NumPy数组之间的关系
+- ✅ 理解自动求导（Autograd）与反向传播机制
+- ✅ 能独立使用Dataset与DataLoader加载数据
+- ✅ 掌握线性回归模型的构建与训练
+- ✅ 掌握Softmax分类模型及其训练流程
+- ✅ 理解多层感知机（MLP）的网络结构
+- ✅ 掌握PyTorch `nn.Module` 的基本开发方式
+- ✅ 能完成一个基于Fashion-MNIST（或MNIST）的完整分类项目
+- ✅ 熟悉GPU训练环境的基本使用
+- ✅ GitHub累计提交 ≥ 30 次
+
+------
+
+## 第二阶段成果
+
+完成Day30后，你的GitHub仓库应至少包含：
+
+```
+pytorch/
+├── Day16/
+├── Day17/
+├── Day18/
+├── Day19/
+├── Day20/
+├── Day21/
+├── Day22/
+├── Day23/
+├── Day24/
+├── Day25/
+├── Day26/
+├── Day27/
+├── Day28/
+├── Day29/
+└── Day30/
+```
+
+并完成：
+
+- Tensor基础实验
+- NumPy矩阵运算实验
+- 自动求导实验
+- 线性回归实验
+- Softmax分类实验
+- MLP训练实验
+- 模型正则化实验
+- 激活函数实验
+- Kaggle房价预测案例
+- PyTorch模型组织实验
+- GPU训练实验
+- Fashion-MNIST（或MNIST）综合项目
 
 ------
 
@@ -1275,35 +1505,17 @@ git commit -m "summary: deep learning foundation"
 
 完成Day30后，你的水平大致相当于：
 
-```text
-Python开发        ★★★☆☆
-Git/GitHub        ★★★☆☆
-Pandas            ★★★☆☆
-PyTorch           ★★☆☆☆
-深度学习理论      ★★☆☆☆
+```
+Python开发        ★★★★☆
+Git/GitHub        ★★★★☆
+NumPy             ★★★★☆
+PyTorch           ★★★☆☆
+深度学习理论      ★★★☆☆
+计算机视觉基础    ★☆☆☆☆
 CNN               ☆☆☆☆☆
-语义分割          ☆☆☆☆☆
 Transformer       ☆☆☆☆☆
 GeoAI             ☆☆☆☆☆
 ```
-
-此时已经正式跨过“会写Python”和“会训练第一个神经网络”的门槛。
-
-下一阶段 Day31-Day45 将进入真正与你未来研究最相关的内容：
-
-- CNN原理
-- 卷积层
-- 池化层
-- LeNet
-- AlexNet
-- VGG
-- ResNet
-- 数据增强
-- OpenCV
-- FCN
-- U-Net入门
-
-开始从“深度学习学习者”转向“GeoAI研究者”。
 
 ## 第三阶段：GeoAI核心基础（Day31-Day45）
 
