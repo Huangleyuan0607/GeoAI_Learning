@@ -19,3 +19,13 @@ Thumbs.db
 # Datasets
 datasets/*
 !datasets/README.md
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Python cache
+__pycache__/
+
+# Data
+*.csv
+*.xlsx
