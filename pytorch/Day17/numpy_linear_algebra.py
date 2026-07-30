@@ -9,8 +9,6 @@
 import numpy as np
 import torch
 
-import pytorch
-
 print("================= 任务 1：数据类型转换与等差/等比数列创建 =================")
 
 # 1. 类型转换 astype
