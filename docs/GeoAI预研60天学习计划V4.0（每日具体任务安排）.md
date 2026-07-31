@@ -681,30 +681,35 @@ GeoAI-Learning
 - MNIST实战
 - 第一个真正的深度学习项目。
 
+------
+
 ## 第二阶段：深度学习基础入门（Day16-Day30）
 
 ### 时间：2026.07.13—2026.07.27
 
 ### 阶段目标
 
+> 本阶段主要完成从Python科学计算到深度学习框架的过渡，掌握PyTorch基础使用方法，并理解深度学习模型训练的核心原理。
+>
 > 本阶段主要目标如下：
-> 完成NumPy基础
-> 
->掌握张量(Tensor)运算
-> 
-> 理解自动求导机制
 >
-> 掌握Dataset与DataLoader
+> 完成NumPy基础操作，掌握矩阵运算与科学计算基础；
 >
-> 理解线性回归原理
+> 掌握PyTorch张量(Tensor)创建、运算及GPU加速方法；
 >
-> 理解Softmax分类
+> 理解自动求导机制，掌握梯度下降与反向传播基本原理；
 >
-> 理解MLP多层感知机
+> 掌握Dataset与DataLoader数据加载流程；
 >
-> 完成MNIST手写数字识别项目
+> 理解线性回归模型建立、损失函数与优化过程；
 >
-> 正式进入深度学习领域
+> 理解Softmax分类模型及交叉熵损失函数；
+>
+> 掌握MLP多层感知机结构，理解神经网络前向传播与参数更新过程；
+>
+> 完成MNIST手写数字识别项目，熟悉完整深度学习训练流程；
+>
+> 为后续CNN图像处理与遥感影像深度学习任务学习奠定基础。
 
 # Day16（2026.07.13）
 
@@ -824,49 +829,71 @@ git push
 
 ## 今日目标
 
-正式进入PyTorch，掌握Tensor与自动求导。
+建立深度学习整体认知，了解深度学习发展历程与常见模型，掌握PyTorch框架基础以及Tensor基本创建方法。
 
 ## 今日任务
 
 ### 视频学习
 
-#### 李沐《动手学深度学习》
+#### 黑马AI大模型《神经网络与深度学习》
 
-- - [ ] 第16讲 自动求导
-- - [ ] 第17讲 自动求导实现
-- - [ ] 第19讲 线性回归
-- - [ ] 第20讲 基础优化算法
+- - [x] 深度学习与神经网络课程导学
+- - [x] Day01-01 深度学习_知识框架介绍
+- - [x] Day01-02 深度学习_简介
+- - [x] Day01-03 深度学习_特点
+- - [x] Day01-04 深度学习_常用模型介绍
+- - [x] Day01-05 深度学习_应用场景介绍
+- - [x] Day01-06 深度学习_发展史介绍
+- - [x] Day01-07 PyTorch_框架简介
+- - [x] Day01-08 PyTorch_张量基本创建方式
 
 预计时长：3小时
 
 ### 理论学习
 
-- Tensor
-- 自动求导
-- 梯度
-- 链式法则
-- 梯度下降
+- 深度学习基本概念
+- 深度学习发展历程
+- 常见深度学习模型：
+  - ANN
+  - CNN
+  - RNN
+  - Transformer
+- PyTorch框架组成
+- Tensor基本概念
+- Tensor与NumPy数组区别
 
 ### 代码实验
 
 创建：
 
 ```
-tensor_autograd_demo.py
+tensor_create.py
 ```
 
 实现：
 
-- Tensor创建
-- requires_grad
-- backward()
-- 梯度计算示例
+- 创建Tensor对象
+- 创建随机Tensor
+- 创建全0、全1Tensor
+- 查看Tensor属性
+
+示例：
+
+```
+import torch
+
+x = torch.tensor([1,2,3])
+
+print(x)
+print(x.shape)
+print(x.dtype)
+```
 
 ### GitHub提交
 
 ```
 git add .
-git commit -m "Day18：完成Tensor与自动求导学习"
+git commit -m "Day18：完成PyTorch框架与Tensor创建学习"
 git push
 ```
 
@@ -876,25 +903,235 @@ git push
 
 ## 今日目标
 
-完成线性回归的完整实现。
+掌握PyTorch Tensor常用创建方式、数据类型转换以及Tensor与NumPy之间的数据转换。
 
 ## 今日任务
 
 ### 视频学习
 
-#### 李沐《动手学深度学习》
+#### 黑马AI大模型《神经网络与深度学习》
 
-- - [ ] 第21讲 线性回归从零实现
-- - [ ] 第22讲 线性回归简洁实现
+- - [ ] Day01-09 PyTorch_创建全0 / 1指定值张量
+- - [ ] Day01-09 PyTorch_创建线性和随机张量
+- - [ ] Day01-10 PyTorch_元素类型转换
+- - [ ] Day01-11 PyTorch_创建张量方式总结
+- - [ ] Day02-02 张量和Numpy之间相互转换
 
-预计时长：2小时
+预计时长：3小时
 
 ### 理论学习
 
-- 线性回归
-- 损失函数
-- 学习率
-- 模型训练流程
+- Tensor数据类型
+- Tensor与NumPy关系
+- CPU Tensor与GPU Tensor区别
+- dtype转换
+- 数据存储方式
+
+### 代码实验
+
+创建：
+
+```
+tensor_numpy.py
+```
+
+实现：
+
+- Tensor创建方式练习
+- Tensor与NumPy相互转换
+- 数据类型转换
+
+练习：
+
+```
+import numpy as np
+import torch
+
+arr = np.array([1,2,3])
+
+tensor = torch.tensor(arr)
+
+print(tensor)
+```
+
+### GitHub提交
+
+```
+git add .
+git commit -m "Day19：完成Tensor创建与NumPy转换学习"
+git push
+```
+
+------
+
+# Day20（2026.07.17）
+
+## 今日目标
+
+掌握PyTorch Tensor基础运算和维度变换操作，为后续神经网络模型输入输出处理打基础。
+
+## 今日任务
+
+### 视频学习
+
+#### 黑马AI大模型《神经网络与深度学习》
+
+- - [ ] Day02-03 张量基本运算
+- - [ ] Day02-04 张量点乘和矩阵乘法
+- - [ ] Day02-05 张量的常用运算函数
+- - [ ] Day02-06 张量的索引操作(上)
+- - [ ] Day02-07 张量的索引操作(下)
+- - [ ] Day02-09 张量的形状操作_reshape函数
+- - [ ] Day02-10 张量的形状操作_unsqueeze和squeeze函数
+- - [ ] Day02-11 张量的形状操作_transpose和permute函数
+- - [ ] Day02-12 张量的形状操作_view和contiguous函数
+
+预计时长：4小时
+
+### 理论学习
+
+- Tensor索引
+- Tensor切片
+- 矩阵乘法
+- reshape
+- squeeze
+- unsqueeze
+- transpose
+- permute
+
+重点理解：
+
+遥感影像：
+
+```
+H × W × C
+```
+
+转换为：
+
+```
+C × H × W
+```
+
+的原因。
+
+### 代码实验
+
+创建：
+
+```
+tensor_shape.py
+```
+
+实现：
+
+- Tensor索引操作
+- reshape操作
+- 维度增加与减少
+- permute维度转换
+
+### GitHub提交
+
+```
+git add .
+git commit -m "Day20：完成Tensor运算与维度变换学习"
+git push
+```
+
+------
+
+# Day21（2026.07.18）
+
+## 今日目标
+
+理解深度学习自动求导机制，掌握梯度计算与参数更新基本流程。
+
+## 今日任务
+
+### 视频学习
+
+#### 黑马AI大模型《神经网络与深度学习》
+
+- - [ ] Day02-13 张量的拼接操作
+- - [ ] Day02-14 自动微分模块_介绍
+- - [ ] Day02-15 自动微分模块案例_更新一次参数
+- - [ ] Day02-16 自动微分模块案例_循环更新参数
+- - [ ] Day03-01 自动微分小问题_detach函数
+- - [ ] Day03-02 自动微分真实应用场景
+
+预计时长：3小时
+
+### 理论学习
+
+- 自动微分机制
+- 梯度
+- 反向传播基本思想
+- 参数更新流程
+
+理解：
+
+```
+Forward
+ ↓
+Loss
+ ↓
+Backward
+ ↓
+Gradient
+ ↓
+Update
+```
+
+### 代码实验
+
+创建：
+
+```
+autograd.py
+```
+
+实现：
+
+- requires_grad使用
+- backward计算梯度
+- detach操作
+
+### GitHub提交
+
+```
+git add .
+git commit -m "Day21：完成PyTorch自动求导学习"
+git push
+```
+
+------
+
+# Day22（2026.07.19）
+
+## 今日目标
+
+掌握PyTorch完整模型训练流程，通过线性回归理解深度学习训练基本框架。
+
+## 今日任务
+
+### 视频学习
+
+#### 黑马AI大模型《神经网络与深度学习》
+
+-  Day03-03 PyTorch模拟线性回归_准备数据集
+-  Day03-04 PyTorch模拟线性回归_模型训练
+-  Day03-05 PyTorch模拟线性回归_可视化操作
+
+预计时长：3小时
+
+### 理论学习
+
+- Dataset数据准备
+- 模型定义
+- Forward计算
+- Loss计算
+- Backward反向传播
+- Optimizer参数更新
 
 ### 代码实验
 
@@ -906,163 +1143,27 @@ linear_regression.py
 
 实现：
 
-- 数据生成
-- 模型训练
-- Loss可视化
-- 模型预测
+- 创建训练数据
+- 构建线性模型
+- 使用MSELoss
+- 使用Adam优化器
+- 绘制Loss变化曲线
+
+### 输出成果
+
+完成：
+
+```
+Linear Regression with PyTorch
+```
+
+项目。
 
 ### GitHub提交
 
 ```
 git add .
-git commit -m "Day19：完成线性回归模型学习"
-git push
-```
-
-------
-
-# Day20（2026.07.17）
-
-## 今日目标
-
-掌握Softmax分类模型。
-
-## 今日任务
-
-### 视频学习
-
-#### 李沐《动手学深度学习》
-
-- - [ ] 第24讲 Softmax回归
-- - [ ] 第25讲 损失函数
-- - [ ] 第26讲 图片分类数据集
-
-预计时长：2小时
-
-### 理论学习
-
-- 分类问题
-- Softmax函数
-- CrossEntropyLoss
-- Fashion-MNIST数据集
-
-### 代码实验
-
-创建：
-
-```
-softmax_demo.py
-```
-
-实现：
-
-- 加载Fashion-MNIST
-- Softmax计算
-- 数据可视化
-
-### GitHub提交
-
-```
-git add .
-git commit -m "Day20：完成Softmax分类学习"
-git push
-```
-
-------
-
-# Day21（2026.07.18）
-
-## 今日目标
-
-完成Softmax回归代码实现。
-
-## 今日任务
-
-### 视频学习
-
-#### 李沐《动手学深度学习》
-
-- - [ ] 第27讲 Softmax回归从零实现
-- - [ ] 第28讲 Softmax回归简洁实现
-
-预计时长：2小时
-
-### 理论学习
-
-- Dataset
-- DataLoader
-- 模型训练流程
-- 模型评估
-
-### 代码实验
-
-创建：
-
-```
-softmax_train.py
-```
-
-实现：
-
-- Dataset加载
-- DataLoader迭代
-- Softmax模型训练
-- 模型测试
-
-### GitHub提交
-
-```
-git add .
-git commit -m "Day21：完成Softmax模型实现"
-git push
-```
-
-------
-
-# Day22（2026.07.19）
-
-## 今日目标
-
-完成PyTorch环境配置，学习多层感知机。
-
-## 今日任务
-
-### 视频学习
-
-#### 李沐《动手学深度学习》
-
-- - [ ] 第30讲 Windows安装CUDA与PyTorch
-- - [ ] 第32讲 感知机
-- - [ ] 第33讲 多层感知机
-
-预计时长：2.5小时
-
-### 理论学习
-
-- 感知机
-- 全连接层
-- 激活函数
-- 神经网络结构
-
-### 代码实验
-
-创建：
-
-```
-mlp_demo.py
-```
-
-实现：
-
-- 构建MLP
-- ReLU激活函数
-- 前向传播
-
-### GitHub提交
-
-```
-git add .
-git commit -m "Day22：完成多层感知机学习"
+git commit -m "Day22：完成PyTorch线性回归模型训练"
 git push
 ```
 
@@ -1072,95 +1173,138 @@ git push
 
 ## 今日目标
 
-完成MLP代码实现，理解神经网络训练流程。
+理解神经网络基本结构，掌握PyTorch搭建简单神经网络的方法。
 
 ## 今日任务
 
 ### 视频学习
 
-#### 李沐《动手学深度学习》
+#### 黑马AI大模型《神经网络与深度学习》
 
-- - [ ] 第34讲 MLP代码实现
-- - [ ] 第37讲 模型选择
-- - [ ] 第38讲 过拟合与欠拟合
+-  Day03-06 如何构建神经网络(neural network)
+-  Day03-07 神经网络_文字介绍
+-  Day03-08 激活函数介绍
+-  Day03-09 Sigmoid激活函数介绍
+-  Day03-10 Tanh激活函数介绍
 
 预计时长：3小时
 
 ### 理论学习
 
-- 模型选择
-- 偏差与方差
-- 过拟合
-- 欠拟合
-- 泛化能力
+- 神经元
+- 全连接层
+- 网络结构
+- 激活函数作用
+
+掌握：
+
+```
+Input
+ ↓
+Linear
+ ↓
+Activation
+ ↓
+Output
+```
 
 ### 代码实验
 
 创建：
 
 ```
-mlp_train.py
+mlp_network.py
 ```
 
 实现：
 
-- 构建MLP模型
-- 模型训练
-- 模型评估
-- 调整超参数
+- 使用nn.Module创建网络
+- 编写forward函数
+- 完成简单MLP模型
 
 ### GitHub提交
 
 ```
 git add .
-git commit -m "Day23：完成MLP模型训练学习"
+git commit -m "Day23：完成神经网络结构与MLP搭建学习"
 git push
 ```
+
+------
 
 # Day24（2026.07.21）
 
 ## 今日目标
 
-掌握模型正则化方法，提高模型泛化能力。
+掌握常用激活函数及分类任务中的输出方式，理解不同激活函数在神经网络中的作用。
 
 ## 今日任务
 
 ### 视频学习
 
-#### 李沐《动手学深度学习》
+#### 黑马AI大模型《神经网络与深度学习》
 
-- - [ ] 第41讲 权重衰退
-- - [ ] 第42讲 权重衰退代码实现
-- - [ ] 第44讲 Dropout
+-  Day03-11 ReLU激活函数介绍
+-  Day03-12 Softmax激活函数介绍
+-  Day04-01 参数初始化_介绍
+-  Day04-02 参数初始化_代码演示
 
-预计时长：2.5小时
+预计时长：3小时
 
 ### 理论学习
 
-- 权重衰退（Weight Decay）
-- L2正则化
-- Dropout
-- 泛化能力
+- 激活函数作用
+- Sigmoid函数
+- Tanh函数
+- ReLU函数
+- Softmax分类概率
+- 参数初始化方法
+
+重点理解：
+
+为什么神经网络需要非线性：
+
+```text
+Linear
+ ↓
+Activation
+ ↓
+Non-linear feature
+```
 
 ### 代码实验
 
 创建：
 
-```
-regularization_demo.py
+```id="2h7x8m"
+activation_function.py
 ```
 
 实现：
 
-- 添加L2正则化
-- 使用Dropout
-- 对比模型训练效果
+- 绘制Sigmoid、Tanh、ReLU函数曲线
+- 使用Softmax输出分类概率
+- 对比不同激活函数效果
+
+### 输出成果
+
+完成：
+
+```text
+Activation Function总结.md
+```
+
+记录：
+
+- 函数公式
+- 使用场景
+- 优缺点
 
 ### GitHub提交
 
-```
+```bash
 git add .
-git commit -m "Day24：完成模型正则化学习"
+git commit -m "Day24：完成激活函数与参数初始化学习"
 git push
 ```
 
@@ -1170,47 +1314,74 @@ git push
 
 ## 今日目标
 
-掌握Dropout、激活函数与模型初始化。
+掌握神经网络完整搭建流程，能够独立完成一个简单分类网络训练。
 
 ## 今日任务
 
 ### 视频学习
 
-#### 李沐《动手学深度学习》
+#### 黑马AI大模型《神经网络与深度学习》
 
-- - [ ] 第45讲 Dropout代码实现
-- - [ ] 第47讲 数值稳定性
-- - [ ] 第48讲 激活函数与模型初始化
+-  Day04-03 神经网络_搭建流程介绍
+-  Day04-04 神经网络_搭建代码实现
+-  Day04-05 神经网络_模型训练
+-  Day04-06 神经网络_总结
 
-预计时长：2.5小时
+预计时长：3小时
 
 ### 理论学习
 
-- 数值稳定性
-- ReLU
-- Sigmoid
-- Tanh
-- Xavier初始化
+- nn.Module结构
+- forward函数
+- 网络参数管理
+- 模型训练流程
+
+掌握：
+
+```python
+model()
+ ↓
+loss()
+ ↓
+backward()
+ ↓
+optimizer.step()
+```
 
 ### 代码实验
 
 创建：
 
-```
-activation_demo.py
+```id="0j7fpa"
+mlp_classifier.py
 ```
 
 实现：
 
-- 不同激活函数对比
-- 模型初始化实验
-- Loss变化观察
+- 构建MLP分类网络
+- 加载数据
+- 模型训练
+- 测试准确率
+
+### 输出成果
+
+完成：
+
+```text
+MLP Classification Project
+```
+
+包括：
+
+- 模型代码
+- 训练结果
+- Loss曲线
 
 ### GitHub提交
 
-```
+```bash
 git add .
-git commit -m "Day25：完成激活函数学习"
+git commit -m "Day25：完成MLP分类网络训练"
 git push
 ```
 
@@ -1220,46 +1391,73 @@ git push
 
 ## 今日目标
 
-完成第一个真实机器学习项目，体验完整训练流程。
+理解不同任务对应的损失函数，掌握分类和回归任务中的Loss使用方法。
 
 ## 今日任务
 
 ### 视频学习
 
-#### 李沐《动手学深度学习》
+#### 黑马AI大模型《神经网络与深度学习》
 
-- - [ ] 第50讲 房价预测
-- - [ ] 第51讲 Kaggle房价预测
+-  Day04-07 损失函数_多分类交叉熵损失介绍
+-  Day04-08 损失函数_二分类交叉熵损失介绍
+-  Day04-09 损失函数_MAE损失函数介绍
+-  Day04-10 损失函数_MSE损失函数介绍
+-  Day04-11 损失函数_Smooth L1损失函数介绍
 
-预计时长：2.5小时
+预计时长：3小时
 
 ### 理论学习
 
-- Kaggle竞赛
-- 特征工程
-- 数据预处理
-- 模型评估
+- Loss函数作用
+- 分类任务Loss
+- 回归任务Loss
+- CrossEntropyLoss
+- MSELoss
+- MAELoss
+- SmoothL1Loss
+
+结合遥感任务理解：
+
+| 任务         | Loss                   |
+| ------------ | ---------------------- |
+| 土地覆盖分类 | CrossEntropyLoss       |
+| 语义分割     | CrossEntropy/Dice Loss |
+| 连续变量预测 | MSELoss                |
 
 ### 代码实验
 
 创建：
 
-```
-house_price.py
+```id="f8b0px"
+loss_function.py
 ```
 
 实现：
 
-- 数据读取
-- 特征处理
-- 模型训练
-- 预测结果输出
+- 不同Loss函数计算
+- 对比Loss变化
+- 理解输入输出格式
+
+### 输出成果
+
+完成：
+
+```text
+Loss函数总结.md
+```
+
+内容：
+
+- 公式
+- 使用场景
+- PyTorch API
 
 ### GitHub提交
 
-```
+```bash
 git add .
-git commit -m "Day26：完成Kaggle房价预测学习"
+git commit -m "Day26：完成深度学习损失函数学习"
 git push
 ```
 
@@ -1269,48 +1467,76 @@ git push
 
 ## 今日目标
 
-理解PyTorch模型组织方式，提高代码规范性。
+掌握常用优化算法和学习率调整策略，理解模型训练过程中的参数优化方法。
 
 ## 今日任务
 
 ### 视频学习
 
-#### 李沐《动手学深度学习》
+#### 黑马AI大模型《神经网络与深度学习》
 
-- - [ ] 第53讲 模型构造
-- - [ ] 第54讲 参数管理
-- - [ ] 第55讲 自定义层
-- - [ ] 第56讲 模型读写
+-  Day04-12 梯度下降算法回顾
+-  Day04-13 反向传播(了解)
+-  Day05-01 梯度相关知识点回顾
+-  Day05-02 指数移动加权平均介绍
+-  Day05-03 梯度下降优化方法_动量法
+-  Day05-04 梯度下降优化方法_AdaGrad
+-  Day05-05 梯度下降优化方法_RMSProp
+-  Day05-08 梯度下降优化方法_Adam
 
-预计时长：3小时
+预计时长：4小时
 
 ### 理论学习
 
-- nn.Module
-- 参数管理
-- 自定义Layer
-- 模型保存与加载
+- 梯度下降
+- SGD
+- Momentum
+- AdaGrad
+- RMSProp
+- Adam
+
+重点掌握：
+
+Adam为什么成为深度学习常用优化器。
 
 ### 代码实验
 
 创建：
 
-```
-module_demo.py
+```id="2x7w0v"
+optimizer_compare.py
 ```
 
 实现：
 
-- 自定义网络
-- 自定义Layer
-- 保存模型
-- 加载模型
+比较：
+
+- SGD
+- Adam
+
+观察：
+
+- Loss下降速度
+- 收敛效果
+
+### 输出成果
+
+完成：
+
+```text
+Optimizer总结.md
+```
+
+记录：
+
+- 优化器特点
+- 使用场景
 
 ### GitHub提交
 
-```
+```bash
 git add .
-git commit -m "Day27：完成PyTorch模型构建学习"
+git commit -m "Day27：完成优化器与梯度下降学习"
 git push
 ```
 
@@ -1320,45 +1546,68 @@ git push
 
 ## 今日目标
 
-掌握GPU训练环境，为后续CNN训练做好准备。
+掌握模型训练中的常见优化技巧，理解过拟合问题及解决方法。
 
 ## 今日任务
 
 ### 视频学习
 
-#### 李沐《动手学深度学习》
+#### 黑马AI大模型《神经网络与深度学习》
 
-- - [ ] 第58讲 使用GPU
-- - [ ] 第61讲 第二部分竞赛总结
+-  Day05-10 学习率优化_背景介绍
+-  Day05-11 学习率衰减策略_等间隔学习率衰减
+-  Day05-12 学习率衰减策略_指定间隔学习率衰减
+-  Day05-13 学习率衰减策略_指数间隔学习率衰减
+-  Day05-15 正则化_dropout(随机失活)介绍
+-  Day05-16 正则化_dropout(随机失活)代码演示
+-  Day05-17 正则化_批量归一化(BN)介绍
+-  Day05-18 正则化_批量归一化(BN)代码实现
 
-预计时长：2小时
+预计时长：4小时
 
 ### 理论学习
 
-- GPU训练
-- CUDA
-- CPU与GPU区别
-- 深度学习训练流程
+- 过拟合
+- 欠拟合
+- 学习率调整
+- Dropout
+- BatchNorm
+
+重点理解：
+
+为什么遥感深度学习容易过拟合：
+
+- 样本数量有限
+- 地物类型复杂
+- 影像差异明显
 
 ### 代码实验
 
 创建：
 
-```
-gpu_train.py
+```id="o4e3li"
+regularization.py
 ```
 
 实现：
 
-- GPU环境检测
-- Tensor迁移GPU
-- GPU训练模型
+- Dropout网络
+- BatchNorm网络
+- 对比训练效果
+
+### 输出成果
+
+完成：
+
+```text
+模型优化方法总结.md
+```
 
 ### GitHub提交
 
-```
+```bash
 git add .
-git commit -m "Day28：完成GPU训练学习"
+git commit -m "Day28：完成Dropout与BatchNorm学习"
 git push
 ```
 
@@ -1368,40 +1617,68 @@ git push
 
 ## 今日目标
 
-完成第二阶段Mini Project，综合运用PyTorch基础知识。
+完成第一个完整神经网络项目，掌握从数据处理到模型测试的完整流程。
 
 ## 今日任务
 
+### 视频学习
+
+#### 黑马AI大模型《神经网络与深度学习》
+
+-  Day05-19 ANN案例_手机价格分类-需求介绍
+-  Day05-20 ANN案例_手机价格分类-准备数据集
+-  Day06-01 ANN案例_手机价格分类-准备数据集(回顾)
+-  Day06-02 ANN案例_手机价格分类-搭建神经网络
+-  Day06-03 ANN案例_手机价格分类-模型训练
+-  Day06-04 ANN案例_手机价格分类-模型测试
+-  Day06-05 ANN案例_手机价格分类-调优思路
+
+预计时长：5小时
+
 ### 理论学习
 
-- Tensor操作回顾
-- 自动求导
-- 神经网络训练流程
-- 模型组织方式
-
-预计时长：3小时
+- 完整深度学习项目流程
+- 数据加载
+- 模型设计
+- 训练验证
+- 模型评价
 
 ### 代码实验
 
-创建：
+创建项目：
 
+```text
+ANN_phone_price_classification
 ```
-mnist_mlp_project.py
+
+完成：
+
+- 数据读取
+- 数据预处理
+- ANN模型搭建
+- 模型训练
+- 测试评价
+
+### 输出成果
+
+GitHub项目：
+
+```text
+ANN Phone Price Classification
 ```
 
-实现：
+包含：
 
-- 加载MNIST/Fashion-MNIST数据集
-- 构建MLP模型
-- 完成模型训练
-- 模型测试
-- 保存训练结果
+- README.md
+- train.py
+- model.py
+- dataset.py
 
 ### GitHub提交
 
-```
+```bash
 git add .
-git commit -m "Day29：完成PyTorch综合项目实践"
+git commit -m "Day29：完成ANN分类项目"
 git push
 ```
 
@@ -1411,58 +1688,129 @@ git push
 
 ## 今日目标
 
-完成第二阶段总结，为CNN学习做好准备。
+总结PyTorch与神经网络基础知识，整理深度学习训练代码模板，为CNN学习阶段做准备。
 
 ## 今日任务
 
-### 学习总结
+### 视频学习
 
-- 第二阶段知识总结
-- NumPy知识梳理
-- PyTorch知识梳理
-- 神经网络训练流程总结
-- 更新README学习进度
-- 撰写Week02总结
-- 整理学习笔记
+#### 黑马AI大模型《神经网络与深度学习》
 
-预计时长：2小时
+-  Day06-06 图像相关知识介绍
+-  Day06-07 上午内容回顾
+-  复习Day01-Day06重点内容
+
+预计时长：3小时
+
+### 理论学习
+
+整理：
+
+- Tensor操作
+- 自动求导
+- 网络结构
+- Loss函数
+- Optimizer
+- 模型训练流程
+
+形成：
+
+```text
+PyTorch深度学习训练流程
+```
 
 ### 代码实验
 
-整理第二阶段全部代码：
+创建：
 
-- 优化代码结构
-- 添加注释
-- 删除冗余代码
-- 完善项目目录
+```text
+pytorch_template
+```
+
+整理通用模板：
+
+```
+project
+│
+├── dataset.py
+├── model.py
+├── train.py
+├── test.py
+└── config.py
+```
+
+实现：
+
+- 数据加载模板
+- 模型定义模板
+- 训练循环模板
+
+### 输出成果
+
+完成：
+
+```text
+PyTorch基础学习总结.md
+```
+
+内容包括：
+
+- Tensor
+- Autograd
+- Neural Network
+- Loss
+- Optimizer
+- Training Pipeline
 
 ### GitHub提交
 
-```
+```bash
 git add .
-git commit -m "Day30：完成第二阶段总结"
+git commit -m "Day30：完成PyTorch深度学习基础总结"
 git push
 ```
 
+------
+
 # Day16-Day30阶段验收（2026.07.27 晚）
 
-你应该达到：
+完成第二阶段后，你应该达到：
 
-- ✅ 熟练掌握NumPy数组与矩阵运算
-- ✅ 理解Tensor本质及其与NumPy数组之间的关系
-- ✅ 理解自动求导（Autograd）与反向传播机制
-- ✅ 能独立使用Dataset与DataLoader加载数据
-- ✅ 掌握线性回归模型的构建与训练
-- ✅ 掌握Softmax分类模型及其训练流程
-- ✅ 理解多层感知机（MLP）的网络结构
-- ✅ 掌握PyTorch `nn.Module` 的基本开发方式
-- ✅ 能完成一个基于Fashion-MNIST（或MNIST）的完整分类项目
-- ✅ 熟悉GPU训练环境的基本使用
+- ✅ 熟练掌握NumPy数组创建、索引、切片及矩阵基础运算
+- ✅ 理解Tensor本质以及Tensor与NumPy数组之间的转换关系
+- ✅ 掌握PyTorch Tensor常用操作（创建、运算、reshape、permute等）
+- ✅ 理解自动求导（Autograd）机制以及梯度更新流程
+- ✅ 理解深度学习模型训练基本流程
+
+```
+数据
+ ↓
+模型
+ ↓
+Loss
+ ↓
+Backward
+ ↓
+Optimizer
+ ↓
+参数更新
+```
+
+- ✅ 能够使用PyTorch完成简单数据加载与训练流程
+- ✅ 掌握Dataset与DataLoader的基本使用方法
+- ✅ 掌握线性回归模型的构建、训练与结果可视化
+- ✅ 理解神经网络基本结构（输入层、隐藏层、输出层）
+- ✅ 掌握PyTorch `nn.Module` 网络搭建方式
+- ✅ 理解常用激活函数（Sigmoid、Tanh、ReLU、Softmax）
+- ✅ 掌握常用损失函数（MSELoss、CrossEntropyLoss等）
+- ✅ 掌握常用优化方法（SGD、Adam、学习率调整）
+- ✅ 理解模型过拟合问题以及Dropout、BatchNorm等优化方法
+- ✅ 能完成一个基于PyTorch的ANN分类项目
 - ✅ GitHub累计提交 ≥ 30 次
 
 ------
 
-## 第二阶段成果
+# 第二阶段成果
 
 完成Day30后，你的GitHub仓库应至少包含：
 
@@ -1487,22 +1835,22 @@ pytorch/
 
 并完成：
 
-- Tensor基础实验
-- NumPy矩阵运算实验
+- NumPy数组与矩阵运算实验
+- Tensor基础操作实验
+- Tensor维度变换实验
 - 自动求导实验
-- 线性回归实验
-- Softmax分类实验
-- MLP训练实验
-- 模型正则化实验
+- PyTorch线性回归实验
+- MLP神经网络搭建实验
 - 激活函数实验
-- Kaggle房价预测案例
-- PyTorch模型组织实验
-- GPU训练实验
-- Fashion-MNIST（或MNIST）综合项目
+- Loss函数实验
+- Optimizer优化实验
+- Dropout与BatchNorm实验
+- ANN分类综合项目
+- PyTorch训练代码模板整理
 
 ------
 
-## 当前能力等级（预计）
+# 当前能力等级（预计）
 
 完成Day30后，你的水平大致相当于：
 
@@ -1518,63 +1866,96 @@ Transformer       ☆☆☆☆☆
 GeoAI             ☆☆☆☆☆
 ```
 
+------
+
 ## 第三阶段：GeoAI核心基础（Day31-Day45）
 
 ### 时间：2026.07.28—2026.08.11
 
 ## 阶段目标
 
-> 本阶段是整个暑假最重要的阶段之一。
+> 本阶段是进入GeoAI方向的重要阶段。
 >
-> 本阶段开始从“深度学习学习者”向“GeoAI研究者”转变。
+> 将从“深度学习基础”进一步进入“计算机视觉与遥感智能解译基础”。
 >
 > 完成后应达到：
 >
 > - 理解CNN核心原理
-> - 掌握卷积层与池化层
-> - 理解LeNet、AlexNet、VGG、ResNet演化过程
-> - 掌握数据增强思想
-> - 掌握OpenCV图像处理基础
-> - 理解语义分割基本任务
-> - 理解FCN网络结构
-> - 理解U-Net网络结构
-> - 为建筑物提取项目做好准备
+> - 掌握卷积层、池化层、BatchNorm等基础模块
+> - 理解LeNet、AlexNet、VGG、GoogLeNet、ResNet演化过程
+> - 掌握PyTorch CNN模型搭建流程
+> - 掌握图像增强方法
+> - 掌握OpenCV基础图像处理操作
+> - 理解CNN Backbone概念
+> - 理解图像分类任务完整流程
+> - 理解语义分割基本概念
+> - 理解FCN网络思想
+> - 为U-Net和遥感建筑物提取项目做好准备
 
 # Day31（2026.07.28）
 
 ## 今日目标
 
-理解CNN产生背景与卷积思想。
+进入计算机视觉方向学习，理解图像数据特点以及CNN解决图像任务的基本思想。
 
-### 视频学习（李沐）
+## 今日任务
+
+### 视频学习
+
+#### 黑马AI大模型《神经网络与深度学习》
+
+-  Day06-06 图像相关知识介绍
+-  Day06-08 CNN概述介绍
+-  Day06-09 卷积层_计算规则介绍
+
+#### 李沐《动手学深度学习》
 
 -  第63讲 从全连接到卷积
 -  第64讲 卷积层
--  第65讲 代码实现
 
-预计时长：60分钟
+预计时长：4小时
 
-### 代码任务
+### 理论学习
 
--  手写二维卷积函数
--  实现3×3卷积核滑动
--  输出特征图
+- 图像数据结构
+- 图像通道
+- 卷积神经网络发展背景
+- CNN相比MLP的优势
+
+重点理解：
+
+为什么图像任务不用全连接：
+
+```
+图片
+ ↓
+局部感受野
+ ↓
+卷积
+ ↓
+特征提取
+```
+
+### 代码实验
 
 创建：
 
-```python
-cnn_intro.py
+```
+Day31_conv_basic.py
 ```
 
-### 输出成果
+实现：
 
--  理解卷积核作用
--  绘制卷积过程示意图
+- 使用PyTorch Conv2d
+- 输入图片Tensor
+- 查看卷积输出尺寸
 
 ### GitHub提交
 
-```bash
-git commit -m "Day31 CNN introduction"
+```
+git add .
+git commit -m "Day31：开始CNN学习与卷积基础"
+git push
 ```
 
 ------
@@ -1583,38 +1964,66 @@ git commit -m "Day31 CNN introduction"
 
 ## 今日目标
 
-掌握Padding与Stride。
+掌握卷积层核心参数，理解卷积计算过程。
 
-### 视频学习（李沐）
+## 今日任务
+
+### 视频学习
+
+#### 黑马
+
+-  Day06-10 卷积层_填充Padding介绍
+-  Day06-11 卷积层_步长Stride介绍
+-  Day06-12 卷积层_多通道卷积计算
+-  Day06-13 卷积层_多卷积核卷积计算
+
+#### 李沐
 
 -  第67讲 填充和步幅
--  第68讲 代码实现
+-  第70讲 多输入输出通道
 
-预计时长：40分钟
+预计时长：4小时
 
-### 代码任务
+### 理论学习
+
+掌握：
+
+- kernel
+- padding
+- stride
+- channel
+- feature map
+
+理解遥感：
+
+```
+10m Sentinel-2影像
+        ↓
+CNN特征提取
+        ↓
+地物分类
+```
+
+### 代码实验
 
 创建：
 
-```python
-padding_stride_demo.py
+```
+Day32_conv_parameter.py
 ```
 
 实现：
 
--  padding=0实验
--  padding=1实验
--  stride=1实验
--  stride=2实验
-
-### 输出成果
-
--  总结输出尺寸计算公式
+- 不同kernel测试
+- stride影响
+- padding影响
 
 ### GitHub提交
 
-```bash
-git commit -m "Day32 padding stride"
+```
+git add .
+git commit -m "Day32：掌握CNN卷积参数"
+git push
 ```
 
 ------
@@ -1623,36 +2032,67 @@ git commit -m "Day32 padding stride"
 
 ## 今日目标
 
-理解卷积通道机制。
+掌握池化层和CNN基本结构，能够搭建简单CNN网络。
 
-### 视频学习（李沐）
+## 今日任务
 
--  第70讲 多输入输出通道
--  第71讲 代码实现
+### 视频学习
 
-预计时长：35分钟
+#### 黑马
 
-### 代码任务
+-  Day06-14 特征图计算规则
+-  Day06-15 卷积层API介绍
+-  Day06-16 池化层介绍
+-  Day06-17 池化层API介绍
+
+#### 李沐
+
+-  第73讲 池化层
+-  第76讲 LeNet
+
+预计时长：4小时
+
+### 理论学习
+
+- 最大池化
+- 平均池化
+- CNN基本结构
+
+```
+Conv
+ ↓
+Activation
+ ↓
+Pooling
+ ↓
+FC
+```
+
+### 代码实验
 
 创建：
 
-```python
-multi_channel_conv.py
+```
+Day33_simple_cnn.py
 ```
 
 实现：
 
--  RGB三通道卷积
--  多卷积核输出
+简单CNN：
 
-### 输出成果
-
--  绘制Feature Map生成流程
+```
+Conv2d
+ReLU
+MaxPool
+Linear
+```
 
 ### GitHub提交
 
-```bash
-git commit -m "Day33 convolution channels"
+```
+git add .
+git commit -m "Day33：完成CNN基础网络搭建"
+git push
 ```
 
 ------
@@ -1661,108 +2101,162 @@ git commit -m "Day33 convolution channels"
 
 ## 今日目标
 
-掌握池化层。
+完成第一个CNN图像分类项目，掌握完整视觉任务流程。
 
-### 视频学习（李沐）
+## 今日任务
 
--  第73讲 池化层
--  第74讲 实现
+### 视频学习
 
-预计时长：25分钟
+#### 黑马
 
-### 代码任务
+-  Day07-02 CNN图像分类案例_准备数据集
+-  Day07-03 CNN图像分类案例_搭建神经网络思路分析
+-  Day07-04 CNN图像分类案例_代码实现
 
-创建：
+预计时长：4小时
 
-```python
-pooling_demo.py
+### 理论学习
+
+- 图像分类任务流程
+- Dataset
+- DataLoader
+- CNN训练流程
+
+### 代码实验
+
+项目：
+
+```
+Day34_CNN_Image_Classification
 ```
 
 实现：
 
--  MaxPooling
--  AveragePooling
-
-### 输出成果
-
--  比较两种池化效果
+- 数据加载
+- CNN模型
+- 训练
+- 测试
 
 ### GitHub提交
 
-```bash
-git commit -m "Day34 pooling"
+```
+git add .
+git commit -m "Day34：完成CNN图像分类项目"
+git push
 ```
 
 ------
 
 # Day35（2026.08.01）
 
-## 今日目标
+## Buffer Day：阶段总结
 
-学习LeNet。
+## 今日任务
 
-### 视频学习（李沐）
+### 理论复习
 
--  第76讲 LeNet
--  第77讲 LeNet代码
+整理：
 
-预计时长：35分钟
+- CNN结构
+- 卷积计算
+- Feature Map
+- Pooling
 
-### 代码任务
+### 代码整理
 
-创建：
+优化：
 
-```python
-lenet_mnist.py
 ```
-
-实现：
-
--  LeNet训练MNIST
+CNN_Project
+├── dataset.py
+├── model.py
+├── train.py
+└── test.py
+```
 
 ### 输出成果
 
--  绘制LeNet结构图
+完成：
+
+```
+CNN基础学习总结.md
+```
 
 ### GitHub提交
 
-```bash
-git commit -m "Day35 lenet"
 ```
-
-------
+git add .
+git commit -m "Day35：CNN基础阶段总结"
+git push
+```
 
 # Day36（2026.08.02）
 
 ## 今日目标
 
-学习AlexNet。
+理解经典CNN模型的发展背景，掌握AlexNet网络结构及其对深度学习发展的影响。
 
-### 视频学习（李沐）
+## 今日任务
+
+### 视频学习
+
+#### 李沐《动手学深度学习》
 
 -  第79讲 AlexNet
--  第80讲 AlexNet代码
+-  第80讲 AlexNet代码实现
 
-预计时长：50分钟
+预计时长：3小时
 
-### 理论任务
+### 理论学习
 
--  ImageNet竞赛背景
--  ReLU激活函数
--  Dropout思想
+学习：
 
-### 输出成果
+- LeNet局限
+- AlexNet创新点
+
+重点理解：
+
+AlexNet相比LeNet：
+
+| LeNet    | AlexNet   |
+| -------- | --------- |
+| 浅层网络 | 深层网络  |
+| CPU训练  | GPU训练   |
+| 小数据   | ImageNet  |
+| 简单卷积 | 大规模CNN |
+
+核心技术：
+
+- ReLU激活函数
+- Dropout
+- GPU训练
+
+### 代码实验
 
 创建：
 
-```text
-AlexNet_Notes.md
+```
+Day36_AlexNet.py
+```
+
+实现：
+
+- 使用PyTorch搭建AlexNet
+- 查看网络结构
+- 输入随机图片测试forward
+
+输出：
+
+```
+model(torch.randn(1,3,224,224))
 ```
 
 ### GitHub提交
 
-```bash
-git commit -m "Day36 alexnet"
+```
+git add .
+git commit -m "Day36：完成AlexNet网络学习"
+git push
 ```
 
 ------
@@ -1771,28 +2265,73 @@ git commit -m "Day36 alexnet"
 
 ## 今日目标
 
-学习VGG。
+理解VGG网络设计思想，掌握小卷积核堆叠构建深层网络的方法。
 
-### 视频学习（李沐）
+## 今日任务
+
+### 视频学习
+
+#### 李沐《动手学深度学习》
 
 -  第82讲 VGG
--  第83讲 VGG代码
+-  第83讲 VGG代码实现
 
-预计时长：25分钟
+预计时长：3小时
 
-### 理论任务
+### 理论学习
 
--  为什么全部使用3×3卷积核
--  深层网络优势
+理解：
+
+VGG核心思想：
+
+```
+多个3×3卷积
+       ↓
+替代大卷积核
+       ↓
+增加网络深度
+```
+
+掌握：
+
+- VGG16结构
+- VGG19结构
+- Block设计思想
+
+### 代码实验
+
+创建：
+
+```
+Day37_VGG.py
+```
+
+实现：
+
+- VGG Block
+- VGG网络搭建
+- 参数量统计
 
 ### 输出成果
 
--  VGG结构图
+完成：
+
+```
+CNN经典网络结构.md
+```
+
+记录：
+
+- LeNet
+- AlexNet
+- VGG
 
 ### GitHub提交
 
-```bash
-git commit -m "Day37 vgg"
+```
+git add .
+git commit -m "Day37：完成VGG网络学习"
+git push
 ```
 
 ------
@@ -1801,24 +2340,77 @@ git commit -m "Day37 vgg"
 
 ## 今日目标
 
-学习GoogLeNet。
+理解网络加深后的问题，掌握ResNet残差连接思想。
 
-### 视频学习（李沐）
+## 今日任务
 
--  第88讲 GoogLeNet
--  第89讲 代码实现
+### 视频学习
 
-预计时长：35分钟
+#### 李沐《动手学深度学习》
 
-### 理论任务
+-  第94讲 ResNet
+-  第95讲 ResNet代码实现
+-  第97讲 ResNet梯度计算
 
--  Inception模块
--  多尺度特征提取
+预计时长：4小时
+
+### 理论学习
+
+重点：
+
+为什么需要ResNet？
+
+问题：
+
+```
+网络越来越深
+        ↓
+梯度消失
+        ↓
+训练困难
+```
+
+解决：
+
+残差结构：
+
+```
+x
+↓
+Conv
+↓
+Conv
+↓
++
+↓
+output
+```
+
+理解：
+
+- Shortcut
+- Residual Block
+- Identity Mapping
+
+### 代码实验
+
+创建：
+
+```
+Day38_ResNet_Block.py
+```
+
+实现：
+
+- Residual Block
+- 简化ResNet
 
 ### GitHub提交
 
-```bash
-git commit -m "Day38 googlenet"
+```
+git add .
+git commit -m "Day38：完成ResNet残差网络学习"
+git push
 ```
 
 ------
@@ -1827,33 +2419,93 @@ git commit -m "Day38 googlenet"
 
 ## 今日目标
 
-学习ResNet。
+掌握ResNet在PyTorch中的实现方式，理解CNN Backbone概念。
 
-### 视频学习（李沐）
+## 今日任务
 
--  第94讲 ResNet
--  第95讲 ResNet代码
--  第97讲 ResNet梯度计算
+### 视频学习
 
-预计时长：35分钟
+#### 李沐《动手学深度学习》
 
-### 理论任务
+-  第96讲 ResNet总结
 
--  残差连接
--  Skip Connection
+#### PyTorch官方模型阅读
 
-### 输出成果
+-  torchvision.models.resnet
+
+预计时长：4小时
+
+### 理论学习
+
+理解：
+
+Backbone：
+
+```
+Input Image
+
+↓
+
+CNN Backbone
+
+↓
+
+Feature Map
+
+↓
+
+Task Head
+```
+
+例如：
+
+分类：
+
+```
+ResNet
+ ↓
+FC
+ ↓
+Class
+```
+
+分割：
+
+```
+ResNet
+ ↓
+Decoder
+ ↓
+Mask
+```
+
+### 代码实验
 
 创建：
 
-```text
-ResNet_Notes.md
 ```
+Day39_backbone_test.py
+```
+
+实现：
+
+调用：
+
+```
+torchvision.models.resnet50()
+```
+
+完成：
+
+- 输出feature map
+- 查看网络层
 
 ### GitHub提交
 
-```bash
-git commit -m "Day39 resnet"
+```
+git add .
+git commit -m "Day39：理解CNN Backbone结构"
+git push
 ```
 
 ------
@@ -1862,37 +2514,73 @@ git commit -m "Day39 resnet"
 
 ## 今日目标
 
-掌握数据增强。
+了解更多经典CNN模型，建立完整CNN发展路线。
 
-### 视频学习（李沐）
+## 今日任务
 
--  第111讲 数据增广
--  第112讲 数据增广代码
+### 视频学习
 
-预计时长：35分钟
+#### 李沐《动手学深度学习》
 
-### 代码任务
+-  第85讲 NIN
+-  第88讲 GoogLeNet
+
+预计时长：3小时
+
+### 理论学习
+
+学习：
+
+### NIN
+
+思想：
+
+增加网络表达能力：
+
+```
+MLP卷积层
++
+CNN
+```
+
+### GoogLeNet
+
+核心：
+
+- Inception模块
+- 多尺度特征
+
+理解：
+
+为什么遥感影像需要多尺度：
+
+```
+建筑物
+道路
+河流
+
+尺寸不同
+```
+
+### 代码实验
 
 创建：
 
-```python
-augmentation_demo.py
+```
+Day40_GoogLeNet.py
 ```
 
 实现：
 
--  Flip
--  Rotation
--  RandomCrop
-
-### 输出成果
-
--  保存增强前后样本图
+- 查看Inception结构
+- 测试forward
 
 ### GitHub提交
 
-```bash
-git commit -m "Day40 augmentation"
+```
+git add .
+git commit -m "Day40：完成GoogLeNet与NIN学习"
+git push
 ```
 
 ------
@@ -1901,32 +2589,66 @@ git commit -m "Day40 augmentation"
 
 ## 今日目标
 
-OpenCV入门。
+掌握CNN训练优化方法，提升图像模型训练能力。
 
-### 学习内容
+## 今日任务
 
--  OpenCV安装
--  图像读取
--  图像保存
+### 视频学习
 
-### 代码任务
+#### 李沐《动手学深度学习》
+
+-  第91讲 批量归一化
+-  第92讲 BatchNorm代码
+
+预计时长：3小时
+
+### 理论学习
+
+理解：
+
+BatchNorm作用：
+
+- 加速训练
+- 稳定梯度
+- 提升泛化能力
+
+掌握：
+
+训练阶段：
+
+```
+mean
+variance
+```
+
+推理阶段：
+
+```
+running mean
+running variance
+```
+
+### 代码实验
 
 创建：
 
-```python
-opencv_basic.py
+```
+Day41_BatchNorm.py
 ```
 
 实现：
 
--  imread()
--  imshow()
--  imwrite()
+比较：
+
+- 有BN
+- 无BN
 
 ### GitHub提交
 
-```bash
-git commit -m "Day41 opencv basic"
+```
+git add .
+git commit -m "Day41：完成BatchNorm学习"
+git push
 ```
 
 ------
@@ -1935,30 +2657,66 @@ git commit -m "Day41 opencv basic"
 
 ## 今日目标
 
-OpenCV图像处理。
+学习CNN模型训练技巧，为后续语义分割项目打基础。
 
-### 代码任务
+## 今日任务
+
+### 视频学习
+
+#### 李沐《动手学深度学习》
+
+-  第111讲 数据增广
+-  第112讲 数据增广代码
+
+预计时长：3小时
+
+### 理论学习
+
+学习：
+
+图像增强：
+
+- 翻转
+- 裁剪
+- 旋转
+- 颜色变化
+
+遥感应用：
+
+解决：
+
+- 样本不足
+- 季节差异
+- 光照变化
+
+### 代码实验
 
 创建：
 
-```python
-opencv_processing.py
+```
+Day42_image_augmentation.py
 ```
 
 实现：
 
--  灰度化
--  二值化
--  Canny边缘检测
+使用：
 
-### GeoAI关联
+```
+torchvision.transforms
+```
 
-理解遥感建筑边界提取基础思想。
+完成：
+
+- RandomFlip
+- RandomCrop
+- Normalize
 
 ### GitHub提交
 
-```bash
-git commit -m "Day42 image processing"
+```
+git add .
+git commit -m "Day42：完成图像增强学习"
+git push
 ```
 
 ------
@@ -1967,37 +2725,55 @@ git commit -m "Day42 image processing"
 
 ## 今日目标
 
-进入语义分割领域。
+完成CNN综合复习，能够独立阅读常见CNN项目代码。
 
-### 视频学习（李沐）
+## 今日任务
 
--  第135讲 语义分割
--  第136讲 语义分割数据集
+### 理论复习
 
-预计时长：35分钟
+整理：
 
-### 理论任务
+```
+CNN知识体系.md
+```
 
-理解：
+包含：
 
--  图像分类
--  目标检测
--  语义分割
+- 卷积
+- Padding
+- Stride
+- Pooling
+- Backbone
+- ResNet
+- BatchNorm
+- 数据增强
 
-三者区别
-
-### 输出成果
+### 代码实验
 
 创建：
 
-```text
-SemanticSegmentation_Intro.md
+```
+Day43_CNN_template
+```
+
+结构：
+
+```
+CNN_Project
+│
+├── dataset.py
+├── model.py
+├── train.py
+├── test.py
+└── utils.py
 ```
 
 ### GitHub提交
 
-```bash
-git commit -m "Day43 semantic segmentation"
+```
+git add .
+git commit -m "Day43：完成CNN知识体系整理"
+git push
 ```
 
 ------
@@ -2006,190 +2782,313 @@ git commit -m "Day43 semantic segmentation"
 
 ## 今日目标
 
-学习FCN。
+结合遥感方向，了解CNN在遥感影像分类中的应用。
 
-### 视频学习（李沐）
+## 今日任务
 
--  第138讲 转置卷积
--  第142讲 FCN
--  第143讲 FCN代码
+### 文献阅读
 
-### 视频学习（霹雳吧啦）
+阅读：
 
--  转置卷积
--  FCN网络结构详解
+- 遥感影像分类CNN论文1篇
 
-预计时长：90分钟
+重点关注：
 
-### 输出成果
+- 数据集
+- 输入影像
+- CNN结构
+- 精度评价指标
 
--  FCN结构图
--  Encoder-Decoder流程图
+### 理论学习
+
+了解：
+
+遥感任务：
+
+分类：
+
+```
+Image
+ ↓
+CNN
+ ↓
+Land Cover
+```
+
+常见指标：
+
+- OA
+- Kappa
+- F1
+
+### 代码实验
+
+创建：
+
+```
+Day44_remote_sensing_CNN.py
+```
+
+尝试：
+
+使用：
+
+- Sentinel-2小样本数据
+- CNN分类
 
 ### GitHub提交
 
-```bash
-git commit -m "Day44 fcn"
+```
+git add .
+git commit -m "Day44：完成遥感CNN应用探索"
+git push
 ```
 
 ------
 
 # Day45（2026.08.11）
 
+## Buffer Day：CNN阶段验收
+
 ## 今日目标
 
-U-Net入门。
+总结CNN学习成果，为语义分割与U-Net阶段做准备。
 
-### 视频学习（霹雳吧啦）
+## 阶段验收
 
--  UNet网络结构讲解
+完成后应该达到：
 
-预计时长：20分钟
+- ✅ 理解CNN基本原理
+- ✅ 掌握卷积层、池化层
+- ✅ 能搭建CNN分类网络
+- ✅ 理解AlexNet、VGG、ResNet思想
+- ✅ 理解Backbone概念
+- ✅ 能阅读CNN项目代码
+- ✅ 掌握图像增强方法
+- ✅ 具备进入U-Net学习基础
 
-### 理论任务
+## GitHub成果
 
-掌握：
+仓库：
 
--  Encoder
--  Decoder
--  Skip Connection
-
-### 输出成果
-
-创建：
-
-```text
-UNet_Notes.md
+```
+pytorch/
+├── Day31/
+├── Day32/
+├── Day33/
+├── Day34/
+├── Day35/
+├── Day36/
+├── Day37/
+├── Day38/
+├── Day39/
+├── Day40/
+├── Day41/
+├── Day42/
+├── Day43/
+├── Day44/
+└── Day45/
 ```
 
-内容：
+提交：
 
--  U-Net结构图
--  U-Net流程图
--  FCN与U-Net区别
-
-### GitHub提交
-
-```bash
-git commit -m "Day45 unet introduction"
+```
+git add .
+git commit -m "Day45：完成CNN阶段学习总结"
+git push
 ```
 
 ------
 
 # 第三阶段验收
 
--  理解CNN原理
--  理解卷积层
--  理解池化层
--  跑通LeNet
--  理解AlexNet
--  理解VGG
--  理解GoogLeNet
--  理解ResNet
--  完成数据增强实验
--  掌握OpenCV基础
--  理解语义分割
--  理解FCN
--  理解U-Net
--  GitHub累计提交≥45次
+完成Day45后，应达到：
 
-# Day31-Day45阶段验收（8月11日晚）
-
-你应该达到：
-
--  理解卷积本质
--  理解池化原理
--  能解释CNN工作流程
--  熟悉LeNet
--  熟悉AlexNet
--  熟悉VGG
--  理解GoogLeNet
--  理解ResNet残差结构
--  掌握数据增强
--  掌握OpenCV基础
--  理解语义分割概念
--  理解FCN原理
+- ✅ 理解CNN基本原理
+- ✅ 理解卷积运算过程
+- ✅ 理解卷积核、Padding、Stride等核心参数
+- ✅ 理解池化层作用
+- ✅ 能解释CNN图像特征提取流程
+- ✅ 熟悉LeNet网络结构
+- ✅ 理解AlexNet网络设计思想
+- ✅ 理解VGG网络结构特点
+- ✅ 理解GoogLeNet Inception模块
+- ✅ 理解ResNet残差连接机制
+- ✅ 掌握PyTorch CNN模型搭建流程
+- ✅ 完成CNN图像分类实验
+- ✅ 完成数据增强实验
+- ✅ 掌握OpenCV基础操作
+- ✅ 理解CNN Backbone概念
+- ✅ 理解语义分割基本任务
+- ✅ 理解FCN基本思想
+- ✅ GitHub累计提交 ≥ 45次
 
 ------
 
-## 当前能力等级（预计）
+# 当前能力等级（预计）
 
-```text
+```
 Python开发        ★★★★☆
-Git/GitHub        ★★★☆☆
+Git/GitHub        ★★★★☆
 Pandas            ★★★☆☆
-PyTorch           ★★★☆☆
+PyTorch           ★★★★☆
 CNN               ★★★★☆
 OpenCV            ★★☆☆☆
-语义分割          ★★☆☆☆
+语义分割          ★☆☆☆☆
 Transformer       ☆☆☆☆☆
-GeoAI             ★★☆☆☆
+GeoAI             ★☆☆☆☆
 ```
 
-## 阶段成果仓库结构
+------
 
-```text
+# 阶段成果仓库结构
+
+```
 GeoAI-Learning
+
 ├── CNN_Basic
 │   ├── lenet.py
 │   ├── alexnet_demo.py
+│   ├── vgg_demo.py
 │   ├── resnet_demo.py
 │   └── augmentation_demo.py
+│
+├── Image_Classification
+│   └── CNN_classification_project
+│       ├── dataset.py
+│       ├── model.py
+│       ├── train.py
+│       └── test.py
+│
 ├── OpenCV
 │   └── opencv_basic.py
+│
 ├── Semantic_Segmentation
 │   └── FCN.md
+│
 └── Notes
     ├── CNN发展史.md
-    ├── Week5_CNN_Basic.md
-    └── Week6_CNN_Review.md
+    ├── CNN结构总结.md
+    └── CNN阶段总结.md
 ```
 
-完成Day45后，你已经达到大多数GIS硕士新生中比较靠前的深度学习基础水平。接下来的Day46-Day60将进入最贴近刘鹏程老师研究方向的内容：
+------
+
+# 阶段成果要求
+
+完成Day45后，你应该拥有：
+
+## 代码成果
+
+- LeNet模型实现
+- AlexNet结构复现
+- VGG网络结构理解
+- ResNet残差模块实现
+- CNN图像分类项目
+- 图像增强实验代码
+- OpenCV基础处理代码
+
+## 理论成果
+
+完成：
+
+```
+CNN知识体系.md
+```
+
+包含：
+
+- CNN发展历史
+- 卷积原理
+- Feature Map
+- Padding
+- Stride
+- Pooling
+- Backbone
+- AlexNet
+- VGG
+- GoogLeNet
+- ResNet
+
+------
+
+# 完成Day45后的能力定位
+
+完成本阶段后，你已经具备：
+
+> GIS专业背景学生进入GeoAI方向所需的计算机视觉基础能力。
+
+能够：
+
+- 阅读基础CNN模型代码
+- 修改PyTorch视觉模型
+- 理解遥感影像深度学习基本流程
+- 为后续语义分割、U-Net、建筑物提取研究做好准备
+
+------
+
+# 下一阶段 Day46-Day60
+
+进入最贴近遥感GeoAI研究方向的阶段：
+
+## 语义分割与遥感智能解译
+
+主要内容：
 
 - FCN实现
 - DeepLab系列
 - U-Net网络
-- Massachusetts Buildings Dataset
-- 建筑物提取实践
 - Attention机制
+- Massachusetts Buildings Dataset
+- 遥感建筑物提取实践
+- Transformer基础
 - Self-Attention
-- Transformer
-- 刘老师建筑边缘提取论文阅读
-- GeoAI汇报PPT制作
-- 开学前成果整理与导师沟通准备。
+- Vision Transformer
+- GeoAI论文阅读与复现
 
-## 第四阶段：GeoAI项目实践与Transformer入门（Day46-Day60）
+路线：
 
-### 时间：2026.08.12—2026.08.27
+```
+CNN基础
+    ↓
+语义分割
+    ↓
+FCN
+    ↓
+U-Net
+    ↓
+建筑物提取
+    ↓
+Transformer
+    ↓
+GeoAI遥感应用
+```
 
-> 这是整个60天计划最核心的阶段。
+------
+
+# 第四阶段：GeoAI项目实践与Transformer入门（Day46-Day60）
+
+### 时间：2026.08.12—2026.08.26
+
+## 阶段目标
+
+> 本阶段是整个60天计划最核心的阶段。
 >
-> 此阶段结束后，你应该能够：
+> 从“计算机视觉基础学习”进入“GeoAI遥感智能解译实践”。
 >
-> - 看懂GeoAI方向论文的大部分网络结构图
-> - 理解U-Net与DeepLab系列模型
-> - 跑通第一个建筑物提取项目
-> - 理解Attention与Transformer思想
-> - 能与刘鹏程老师正常讨论GeoAI研究问题
-> - 开学后快速进入课题组科研状态
-
-### 阶段目标
-
-本阶段为整个预研计划核心阶段。
-
-完成后应达到：
-
-- 理解DeepLab系列网络
-- 理解U-Net完整训练流程
-- 跑通Massachusetts Buildings Dataset
-- 完成建筑物提取实验
-- 理解Attention机制
-- 理解Self-Attention
-- 理解Transformer结构
-- 阅读刘鹏程老师建筑边缘提取论文
-- 完成GeoAI成果汇报PPT
-- 完成导师汇报准备
+> 通过语义分割、U-Net建筑物提取以及Transformer学习，建立深度学习模型与遥感应用之间的联系。
+>
+> 完成后应达到：
+>
+> - 理解语义分割任务流程
+> - 理解FCN、DeepLab、U-Net网络结构
+> - 掌握PyTorch语义分割项目开发流程
+> - 能完成遥感影像建筑物提取实验
+> - 掌握IoU、Dice等评价指标
+> - 理解Attention机制
+> - 理解Transformer基本结构
+> - 阅读导师相关论文
+> - 完成GeoAI成果汇报
 
 ------
 
@@ -2197,40 +3096,85 @@ GeoAI-Learning
 
 ## 今日目标
 
-理解DeepLab发展路线。
+进入语义分割领域，理解分类、检测、分割任务区别。
 
-### 视频学习（霹雳吧啦）
+## 今日任务
 
--  DeepLabV1网络简介
--  DeepLabV2网络简介
+### 视频学习
 
-预计时长：35分钟
+#### 李沐《动手学深度学习》
+
+-  第135讲 语义分割
+-  第136讲 语义分割数据集
+
+#### 霹雳吧啦语义分割
+
+-  语义分割任务介绍
+
+预计时长：2小时
+
+------
 
 ### 理论学习
 
 理解：
 
--  FCN缺陷
--  空洞卷积思想
--  感受野扩大
+- 图像分类
+- 目标检测
+- 语义分割
+
+重点：
+
+```
+Classification:
+
+Image → Category
+
+
+Segmentation:
+
+Image → Pixel Mask
+```
+
+------
+
+### 代码实验
+
+创建：
+
+```
+segmentation_basic.py
+```
+
+实现：
+
+- 读取图片
+- 显示Mask
+- 理解像素标签
+
+------
 
 ### 输出成果
 
 创建：
 
-```text
-DeepLab_Notes.md
+```
+Semantic_Segmentation_Basic.md
 ```
 
 记录：
 
-- DeepLabV1特点
-- DeepLabV2特点
+- 三类视觉任务区别
+- 语义分割应用场景
+
+------
 
 ### GitHub提交
 
-```bash
-git commit -m "Day46 deeplab v1 v2"
+```
+git add .
+git commit -m "Day46：完成语义分割基础学习"
+git push
 ```
 
 ------
@@ -2239,30 +3183,68 @@ git commit -m "Day46 deeplab v1 v2"
 
 ## 今日目标
 
-学习DeepLabV3。
+理解FCN网络结构。
 
-### 视频学习（霹雳吧啦）
+## 今日任务
 
--  DeepLabV3网络简介
--  LR-ASPP模型简介
+### 视频学习
 
-预计时长：30分钟
+#### 霹雳吧啦语义分割
+
+-  FCN网络结构讲解
+-  FCN代码实现
+
+预计时长：2小时
+
+------
 
 ### 理论学习
 
 理解：
 
--  ASPP模块
--  多尺度特征提取
+- Fully Convolutional Network
+- Feature Map
+- Upsampling
+- Pixel Prediction
+
+------
+
+### 代码实验
+
+创建：
+
+```
+fcn_demo.py
+```
+
+实现：
+
+- 卷积特征提取
+- 上采样恢复尺寸
+
+------
 
 ### 输出成果
 
--  绘制ASPP结构图
+创建：
+
+```
+FCN_Notes.md
+```
+
+记录：
+
+- FCN结构图
+- FCN优缺点
+
+------
 
 ### GitHub提交
 
-```bash
-git commit -m "Day47 deeplab v3"
+```
+git add .
+git commit -m "Day47：完成FCN学习"
+git push
 ```
 
 ------
@@ -2271,29 +3253,74 @@ git commit -m "Day47 deeplab v3"
 
 ## 今日目标
 
-学习PyTorch版语义分割实现。
+理解DeepLab系列思想。
 
-### 视频学习（霹雳吧啦）
+## 今日任务
 
--  LR-ASPP源码讲解
+### 视频学习
 
-### 代码任务
+#### 霹雳吧啦语义分割
+
+-  DeepLabV3网络介绍
+-  ASPP模块讲解
+
+预计时长：
+
+1.5小时
+
+------
+
+### 理论学习
+
+掌握：
+
+- 空洞卷积
+- 感受野
+- 多尺度特征
+
+理解：
+
+ASPP：
+
+```
+不同尺度卷积
+        ↓
+多尺度特征融合
+```
+
+------
+
+### 代码实验
 
 创建：
 
-```python
-segmentation_demo.py
+```
+deeplab_demo.py
 ```
 
 实现：
 
--  加载预训练模型
--  推理测试图片
+- 加载预训练DeepLab模型
+- 图片预测
+
+------
+
+### 输出成果
+
+创建：
+
+```
+DeepLab_Notes.md
+```
+
+------
 
 ### GitHub提交
 
-```bash
-git commit -m "Day48 segmentation inference"
+```
+git add .
+git commit -m "Day48：完成DeepLab学习"
+git push
 ```
 
 ------
@@ -2302,33 +3329,79 @@ git commit -m "Day48 segmentation inference"
 
 ## 今日目标
 
-准备建筑物提取数据集。
+学习U-Net网络结构。
 
-### 数据集
+## 今日任务
 
-下载：
+### 视频学习
 
-Massachusetts Buildings Dataset
+#### 霹雳吧啦语义分割
 
-### 任务
+-  U-Net网络结构讲解
+-  U-Net代码解析
 
--  下载数据
--  查看影像格式
--  查看标签格式
--  统计训练样本数量
+预计时长：
 
-### 输出成果
+2小时
+
+------
+
+### 理论学习
+
+理解：
+
+Encoder：
+
+- 特征提取
+
+Decoder：
+
+- 空间恢复
+
+Skip Connection：
+
+- 保留边缘信息
+
+------
+
+### 代码实验
 
 创建：
 
-```text
-Dataset_Report.md
 ```
+unet_structure_demo.py
+```
+
+实现：
+
+- Conv Block
+- Encoder
+- Decoder
+
+------
+
+### 输出成果
+
+生成：
+
+```
+U-Net_structure.png
+```
+
+创建：
+
+```
+UNet_Notes.md
+```
+
+------
 
 ### GitHub提交
 
-```bash
-git commit -m "Day49 dataset preparation"
+```
+git add .
+git commit -m "Day49：完成U-Net结构学习"
+git push
 ```
 
 ------
@@ -2337,30 +3410,80 @@ git commit -m "Day49 dataset preparation"
 
 ## 今日目标
 
-配置U-Net训练环境。
+掌握语义分割数据读取流程。
 
-### 学习内容
+## 今日任务
 
--  数据读取流程
--  标签读取流程
+### 视频学习
 
-### 代码任务
+#### 小土堆PyTorch
+
+-  Dataset与DataLoader复习
+
+#### 霹雳吧啦语义分割
+
+-  U-Net数据处理
+
+预计时长：
+
+2小时
+
+------
+
+### 理论学习
+
+掌握：
+
+```
+Image
+
+↓
+
+Tensor
+
+↓
+
+Model
+
+↓
+
+Prediction
+```
+
+------
+
+### 代码实验
 
 创建：
 
-```python
-dataset_loader.py
+```
+dataset.py
 ```
 
 实现：
 
--  Dataset类
--  DataLoader类
+- Dataset类
+- DataLoader
+- 数据增强
+
+------
+
+### 输出成果
+
+创建：
+
+```
+Dataset_Process.md
+```
+
+------
 
 ### GitHub提交
 
-```bash
-git commit -m "Day50 unet dataloader"
+```
+git add .
+git commit -m "Day50：完成语义分割数据读取"
+git push
 ```
 
 ------
@@ -2369,30 +3492,65 @@ git commit -m "Day50 unet dataloader"
 
 ## 今日目标
 
-搭建U-Net网络。
+搭建完整U-Net模型。
 
-### 视频复习
+## 今日任务
 
--  U-Net网络结构讲解
+### 视频学习
 
-### 代码任务
+#### 霹雳吧啦语义分割
+
+-  U-Net模型搭建
+
+预计时长：
+
+2小时
+
+------
+
+### 理论学习
+
+理解：
+
+- Encoder
+- Decoder
+- Skip Connection
+- Feature Fusion
+
+------
+
+### 代码实验
 
 创建：
 
-```python
-unet_model.py
+```
+unet.py
 ```
 
 实现：
 
--  Encoder
--  Decoder
--  Skip Connection
+- Double Conv
+- Down Sampling
+- Up Sampling
+
+------
+
+### 输出成果
+
+完成：
+
+```
+U-Net模型代码
+```
+
+------
 
 ### GitHub提交
 
-```bash
-git commit -m "Day51 unet model"
+```
+git add .
+git commit -m "Day51：完成U-Net模型搭建"
+git push
 ```
 
 ------
@@ -2401,59 +3559,161 @@ git commit -m "Day51 unet model"
 
 ## 今日目标
 
-开始训练U-Net。
+开始训练建筑物提取模型。
 
-### 代码任务
+## 今日任务
+
+### 视频学习
+
+#### 霹雳吧啦语义分割
+
+-  U-Net训练流程
+
+预计时长：
+
+1.5小时
+
+------
+
+### 理论学习
+
+掌握：
+
+- Loss函数
+- Optimizer
+- Training Loop
+
+------
+
+### 代码实验
 
 创建：
 
-```python
+```
 train.py
 ```
 
 实现：
 
--  Forward
--  Loss
--  Optimizer
+- Forward
+- Loss计算
+- 参数更新
+
+------
 
 ### 输出成果
 
 记录：
 
-- Epoch Loss变化
+- Epoch Loss
+- 模型训练过程
+
+------
 
 ### GitHub提交
 
-```bash
-git commit -m "Day52 unet training"
 ```
-
-------
+git add .
+git commit -m "Day52：开始U-Net训练"
+git push
+```
 
 # Day53（2026.08.19）
 
 ## 今日目标
 
-继续训练模型。
+优化U-Net模型训练效果，掌握语义分割模型评价指标。
 
-### 任务
+------
 
--  训练20-50 Epoch
--  保存最佳模型
+## 今日任务
 
-### 输出成果
+### 视频学习
+
+#### 霹雳吧啦语义分割
+
+-  U-Net模型训练优化
+-  语义分割评价指标讲解
+
+预计时长：
+
+2小时
+
+------
+
+### 理论学习
+
+掌握：
+
+## 模型优化
+
+- 学习率调整
+- Batch Size调整
+- Epoch数量影响
+- 模型保存策略
+
+## 评价指标
+
+理解：
+
+### IoU
+
+Intersection over Union
+
+### Dice
+
+Dice Coefficient
+
+理解：
+
+为什么语义分割不能只看Accuracy。
+
+------
+
+### 代码实验
+
+修改：
+
+```
+train.py
+```
+
+增加：
+
+- best model保存
+- IoU计算
+- Dice计算
 
 保存：
 
-```text
+```
 best_model.pth
 ```
 
+------
+
+### 输出成果
+
+创建：
+
+```
+Segmentation_Metrics.md
+```
+
+记录：
+
+- IoU公式
+- Dice公式
+- 模型训练结果
+
+------
+
 ### GitHub提交
 
-```bash
-git commit -m "Day53 continue training"
+```
+git add .
+git commit -m "Day53：完成U-Net模型优化与评价指标"
+git push
 ```
 
 ------
@@ -2462,33 +3722,92 @@ git commit -m "Day53 continue training"
 
 ## 今日目标
 
-结果可视化。
+完成建筑物提取结果预测与可视化。
 
-### 代码任务
+------
+
+## 今日任务
+
+### 视频学习
+
+#### 霹雳吧啦语义分割
+
+-  语义分割预测流程
+-  模型测试与结果可视化
+
+预计时长：
+
+1.5小时
+
+------
+
+### 理论学习
+
+理解：
+
+训练阶段：
+
+```
+Image
+ ↓
+Model
+ ↓
+Loss
+ ↓
+Update
+```
+
+预测阶段：
+
+```
+New Image
+ ↓
+Model
+ ↓
+Prediction Mask
+```
+
+------
+
+### 代码实验
 
 创建：
 
-```python
+```
 predict.py
 ```
 
 实现：
 
--  推理
--  保存预测图
+- 加载best_model
+- 输入测试影像
+- 输出预测Mask
+
+------
 
 ### 输出成果
 
 生成：
 
-- 原图
-- 标签图
-- 预测图
+```
+results/
+├── image.png
+├── label.png
+└── prediction.png
+```
+
+完成：
+
+建筑物提取可视化结果。
+
+------
 
 ### GitHub提交
 
-```bash
-git commit -m "Day54 prediction visualization"
+```
+git add .
+git commit -m "Day54：完成建筑物提取预测可视化"
+git push
 ```
 
 ------
@@ -2497,27 +3816,104 @@ git commit -m "Day54 prediction visualization"
 
 ## 今日目标
 
-总结建筑物提取实验。
+完成第一个GeoAI遥感语义分割项目总结。
+
+------
+
+## 今日任务
+
+### 视频学习
+
+#### 霹雳吧啦语义分割
+
+-  语义分割项目总结
+
+预计时长：
+
+1小时
+
+------
+
+### 理论学习
+
+总结：
+
+建筑物提取完整流程：
+
+```
+遥感影像
+
+↓
+
+数据预处理
+
+↓
+
+Dataset
+
+↓
+
+U-Net
+
+↓
+
+训练
+
+↓
+
+预测
+
+↓
+
+精度评价
+```
+
+------
+
+### 项目整理
+
+创建：
+
+```
+Building_Extraction_Project/
+│
+├── dataset.py
+├── unet.py
+├── train.py
+├── predict.py
+├── metrics.py
+│
+├── README.md
+└── results/
+```
+
+------
 
 ### 输出成果
 
 创建：
 
-```text
-BuildingExtraction_Report.md
+```
+Building_Extraction_Report.md
 ```
 
 内容：
 
 - 数据集介绍
-- U-Net结构
-- 训练结果
+- 模型结构
+- 实验流程
+- 评价指标
+- 实验结果
 - 存在问题
+
+------
 
 ### GitHub提交
 
-```bash
-git commit -m "Day55 building extraction report"
+```
+git add .
+git commit -m "Day55：完成建筑物提取项目总结"
+git push
 ```
 
 ------
@@ -2526,35 +3922,90 @@ git commit -m "Day55 building extraction report"
 
 ## 今日目标
 
-学习Attention机制。
+学习Attention机制，为Transformer学习做准备。
 
-### 视频学习（李沐）
+------
+
+## 今日任务
+
+### 视频学习
+
+#### 李沐《动手学深度学习》
 
 -  第181讲 注意力机制
 -  第182讲 Attention代码
 
-预计时长：25分钟
+预计时长：
+
+40分钟
+
+------
 
 ### 理论学习
 
 理解：
 
--  Query
--  Key
--  Value
+Attention核心思想：
+
+让模型自动学习不同位置的重要程度。
+
+掌握：
+
+## Query
+
+查询信息
+
+## Key
+
+匹配信息
+
+## Value
+
+实际内容
+
+理解：
+
+Attention Score计算过程。
+
+------
+
+### 代码实验
+
+创建：
+
+```
+attention_demo.py
+```
+
+实现：
+
+- QKV生成
+- Attention计算
+
+------
 
 ### 输出成果
 
 创建：
 
-```text
+```
 Attention_Notes.md
 ```
 
+记录：
+
+- Attention公式
+- QKV含义
+- 应用场景
+
+------
+
 ### GitHub提交
 
-```bash
-git commit -m "Day56 attention"
+```
+git add .
+git commit -m "Day56：完成Attention机制学习"
+git push
 ```
 
 ------
@@ -2563,26 +4014,79 @@ git commit -m "Day56 attention"
 
 ## 今日目标
 
-学习Self-Attention。
+理解Self-Attention机制。
 
-### 视频学习（李沐）
+------
+
+## 今日任务
+
+### 视频学习
+
+#### 李沐《动手学深度学习》
 
 -  第183讲 注意力分数
 -  第189讲 自注意力
 
-预计时长：40分钟
+预计时长：
+
+1小时
+
+------
 
 ### 理论学习
 
 理解：
 
--  Attention Matrix
--  长距离依赖
+Self-Attention：
+
+输入自身产生：
+
+- Query
+- Key
+- Value
+
+掌握：
+
+- Attention Matrix
+- 长距离依赖
+
+理解：
+
+为什么Transformer可以替代RNN。
+
+------
+
+### 代码实验
+
+创建：
+
+```
+Self_Attention_demo.py
+```
+
+实现：
+
+- Scaled Dot Product Attention
+- Attention Matrix可视化
+
+------
+
+### 输出成果
+
+创建：
+
+```
+Self_Attention_Notes.md
+```
+
+------
 
 ### GitHub提交
 
-```bash
-git commit -m "Day57 self attention"
+```
+git add .
+git commit -m "Day57：完成Self Attention学习"
+git push
 ```
 
 ------
@@ -2591,36 +4095,90 @@ git commit -m "Day57 self attention"
 
 ## 今日目标
 
-学习Transformer。
+理解Transformer整体结构。
 
-### 视频学习（李沐）
+------
+
+## 今日任务
+
+### 视频学习
+
+#### 李沐《动手学深度学习》
 
 -  第192讲 Transformer
 -  第193讲 多头注意力代码
 -  第194讲 Transformer代码
 
-预计时长：50分钟
+预计时长：
+
+1.5小时
+
+------
 
 ### 理论学习
 
 掌握：
 
--  Encoder
--  Decoder
--  Multi-Head Attention
+Transformer组成：
+
+## Encoder
+
+特征编码
+
+## Decoder
+
+序列生成
+
+## Multi-Head Attention
+
+多尺度关系建模
+
+## Position Encoding
+
+位置信息补充
+
+理解：
+
+Transformer为什么适用于遥感影像。
+
+------
+
+### 代码实验
+
+创建：
+
+```
+transformer_demo.py
+```
+
+实现：
+
+- Multi-head Attention调用
+- Transformer Encoder调用
+
+------
 
 ### 输出成果
 
 创建：
 
-```text
+```
 Transformer_Notes.md
 ```
 
+记录：
+
+- Transformer结构图
+- Attention流程
+
+------
+
 ### GitHub提交
 
-```bash
-git commit -m "Day58 transformer"
+```
+git add .
+git commit -m "Day58：完成Transformer基础学习"
+git push
 ```
 
 ------
@@ -2629,38 +4187,88 @@ git commit -m "Day58 transformer"
 
 ## 今日目标
 
-阅读刘鹏程老师论文。
+阅读导师相关论文，了解GeoAI研究方向。
 
-### 论文
+------
+
+## 今日任务
+
+### 视频学习
+
+#### 论文辅助学习
+
+观看：
+
+- Transformer遥感应用介绍
+- 建筑物提取相关论文解读
+
+预计时长：
+
+1小时
+
+------
+
+### 论文阅读
+
+阅读：
 
 《基于Transformer框架的建筑物边缘优化提取研究》
 
-### 阅读内容
+重点分析：
 
--  Abstract
--  Introduction
--  Method
--  Experiment
+- 研究背景
+- 数据来源
+- 模型结构
+- Transformer作用
+- 实验设计
+
+------
+
+### 理论学习
+
+重点理解：
+
+传统CNN：
+
+```
+局部感受野
+```
+
+Transformer：
+
+```
+全局依赖关系
+```
+
+思考：
+
+为什么建筑物边缘提取需要Transformer。
+
+------
 
 ### 输出成果
 
 创建：
 
-```text
+```
 LiuPengcheng_Paper_Reading.md
 ```
 
 记录：
 
 - 研究问题
+- 方法流程
 - 创新点
-- 网络结构
-- 可学习内容
+- 对自己研究启发
+
+------
 
 ### GitHub提交
 
-```bash
-git commit -m "Day59 paper reading"
+```
+git add .
+git commit -m "Day59：完成导师论文阅读"
+git push
 ```
 
 ------
@@ -2669,130 +4277,282 @@ git commit -m "Day59 paper reading"
 
 ## 今日目标
 
-完成GeoAI成果汇报。
+完成60天GeoAI预研总结，形成开学前成果。
+
+------
+
+## 今日任务
+
+### 视频学习
+
+#### 复习视频
+
+回顾：
+
+- CNN基础
+- U-Net项目
+- Transformer结构
+
+预计时长：
+
+1小时
+
+------
+
+### 理论总结
+
+总结60天学习路线：
+
+```
+Python
+
+↓
+
+PyTorch
+
+↓
+
+CNN
+
+↓
+
+语义分割
+
+↓
+
+U-Net建筑物提取
+
+↓
+
+Attention
+
+↓
+
+Transformer
+
+↓
+
+GeoAI
+```
+
+------
 
 ### PPT制作
 
 创建：
 
-```text
+```
 GeoAI_PreResearch_Report.pptx
 ```
 
 内容：
 
-### 第一部分
+------
+
+## 第一部分
 
 个人背景
 
-### 第二部分
+包括：
 
-60天学习内容
+- 长江大学GIS本科
+- 华中师范大学资源与环境硕士
+
+------
+
+## 第二部分
+
+60天学习路线
+
+包括：
 
 - Python
+- Git
 - PyTorch
 - CNN
 - U-Net
 - Transformer
 
-### 第三部分
+------
+
+## 第三部分
 
 建筑物提取项目
 
-### 第四部分
+展示：
+
+- 数据集
+- U-Net结构
+- 实验结果
+
+------
+
+## 第四部分
 
 论文阅读收获
 
-### 第五部分
+------
+
+## 第五部分
 
 研一规划
 
-- GeoAI
-- 遥感解译
-- Transformer
+包括：
 
-### 输出成果
+- GeoAI方向
+- 遥感智能解译
+- Transformer遥感应用
 
--  PPT完成
--  GitHub仓库整理完成
--  所有笔记上传完成
+------
 
-### GitHub提交
+### 仓库整理
 
-```bash
-git commit -m "Day60 final report"
+完善：
+
+```
+GeoAI-Learning
+│
+├── PyTorch
+├── CNN
+├── Semantic_Segmentation
+├── Building_Extraction
+├── Transformer
+│
+└── README.md
 ```
 
 ------
 
-# 最终验收（60天结束）
+### GitHub提交
+
+```
+git add .
+git commit -m "Day60：完成60天GeoAI预研总结"
+git push
+```
+
+------
+
+# 第四阶段验收（Day46-Day60）
+
+完成后：
+
+## 深度学习能力
+
+- ✅ 掌握PyTorch完整训练流程
+- ✅ 理解CNN到语义分割过渡
+- ✅ 掌握Dataset/DataLoader
+- ✅ 掌握模型训练与评价
+
+------
+
+## GeoAI能力
+
+- ✅ 理解FCN
+- ✅ 理解DeepLab
+- ✅ 掌握U-Net
+- ✅ 完成建筑物提取项目
+- ✅ 理解遥感影像语义分割流程
+
+------
+
+## Transformer能力
+
+- ✅ 理解Attention
+- ✅ 理解Self-Attention
+- ✅ 理解Transformer Encoder
+- ✅ 能阅读Transformer遥感论文结构
+
+------
+
+# 60天最终验收
 
 ## 技术能力
 
--  Python基础
--  NumPy
--  Pandas
--  Git/GitHub
--  PyTorch
--  CNN
--  ResNet
--  FCN
--  U-Net
--  Transformer
+- Python基础
+- NumPy
+- Pandas
+- Git/GitHub
+- PyTorch
+- CNN
+- FCN
+- U-Net
+- Attention
+- Transformer
+
+------
 
 ## 项目成果
 
--  Massachusetts Buildings Dataset实验
--  建筑物提取项目
--  GeoAI项目仓库
+完成：
+
+- Massachusetts Buildings Dataset实验
+- U-Net建筑物提取项目
+- GeoAI项目仓库
+
+------
 
 ## 学术成果
 
--  阅读刘鹏程老师论文
--  理解Transformer建筑提取思路
--  完成GeoAI汇报PPT
+完成：
+
+- 导师相关论文阅读
+- Transformer建筑提取方向理解
+- GeoAI汇报PPT
+
+------
 
 ## 导师沟通准备
 
-开学前你应该能够向刘老师汇报：
+开学前能够向刘老师介绍：
 
-- 我完成了60天预研计划；
-- 已掌握Python、PyTorch基础；
-- 已跑通U-Net建筑物提取实验；
-- 已学习Transformer基本原理；
-- 阅读过老师最新论文；
-- 希望研一参与GeoAI方向研究。
-
-此时你已经达到多数GIS专硕新生中较靠前的水平，并具备进入GeoAI课题的基础能力。
-
-你应该达到：
-
--  理解FCN原理
--  理解DeepLab系列
--  理解U-Net结构
--  跑通建筑物提取项目
--  理解Attention机制
--  理解Self-Attention
--  理解Transformer框架
--  阅读1篇导师相关论文
--  完成GeoAI成果汇报
+> 我完成了60天GeoAI预研计划，已经掌握Python、PyTorch、CNN基础，并完成U-Net建筑物提取实验，同时学习Transformer结构并阅读老师相关论文，希望研一进一步开展遥感智能解译方向研究。
 
 ------
 
 # 60天最终能力评估
 
-```text
+```
 Python开发          ★★★★☆
 Git/GitHub          ★★★★☆
 Pandas              ★★★☆☆
 PyTorch             ★★★★☆
 CNN                 ★★★★☆
 OpenCV              ★★★☆☆
-语义分割            ★★★★☆
-U-Net               ★★★★☆
-Transformer         ★★★☆☆
+语义分割            ★★★☆☆
+U-Net               ★★★☆☆
+Transformer         ★★☆☆☆
 GeoAI               ★★★☆☆
 论文阅读            ★★★☆☆
 ```
 
-按照这个进度执行完，虽然还远达不到独立做GeoAI科研的水平，但已经足以让你在华中师范大学资源与环境专硕新生中具备较强的深度学习基础，并能够较顺利地接入刘鹏程老师的建筑提取、遥感智能解译、Transformer遥感应用等研究方向。研一上学期再持续推进6个月，你就有机会开始尝试第一篇中文核心或SCI论文的工作。
+60天路线逻辑
+
+```
+Day1-Day15
+Python + Git
+
+↓
+
+Day16-Day30
+PyTorch + 深度学习基础
+
+↓
+
+Day31-Day45
+CNN + CV基础
+
+↓
+
+Day46-Day55
+遥感语义分割 + U-Net建筑物提取
+
+↓
+
+Day56-Day60
+Transformer + 导师论文
+
+↓
+
+研一进入GeoAI课题
+```
