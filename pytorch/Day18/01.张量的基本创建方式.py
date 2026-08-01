@@ -15,6 +15,11 @@
 
 细节：
     Tensor方式较之于tensor方式，可以基于形状直接来创建张量
+
+需要你掌握的方式：
+    torch.tensor(值, 类型)，例如：
+        data = np.random.randint(0,10,size = (2,3))
+        t3 = torch.tensor(data, dtype = torch.float32)
 """
 
 # 导包

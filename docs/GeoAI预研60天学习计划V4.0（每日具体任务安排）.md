@@ -911,10 +911,10 @@ git push
 
 #### 黑马AI大模型《神经网络与深度学习》
 
-- - [ ] Day01-09 PyTorch_创建全0 / 1指定值张量
-- - [ ] Day01-09 PyTorch_创建线性和随机张量
-- - [ ] Day01-10 PyTorch_元素类型转换
-- - [ ] Day01-11 PyTorch_创建张量方式总结
+- - [x] Day01-09 PyTorch_创建全0 / 1指定值张量
+- - [x] Day01-09 PyTorch_创建线性和随机张量
+- - [x] Day01-10 PyTorch_元素类型转换
+- - [x] Day01-11 PyTorch_创建张量方式总结
 - - [ ] Day02-02 张量和Numpy之间相互转换
 
 预计时长：3小时
