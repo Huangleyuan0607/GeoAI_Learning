@@ -915,7 +915,7 @@ git push
 - - [x] Day01-09 PyTorch_创建线性和随机张量
 - - [x] Day01-10 PyTorch_元素类型转换
 - - [x] Day01-11 PyTorch_创建张量方式总结
-- - [ ] Day02-02 张量和Numpy之间相互转换
+- - [x] Day02-02 张量和Numpy之间相互转换
 
 预计时长：3小时
 
@@ -976,15 +976,15 @@ git push
 
 #### 黑马AI大模型《神经网络与深度学习》
 
-- - [ ] Day02-03 张量基本运算
-- - [ ] Day02-04 张量点乘和矩阵乘法
-- - [ ] Day02-05 张量的常用运算函数
-- - [ ] Day02-06 张量的索引操作(上)
-- - [ ] Day02-07 张量的索引操作(下)
-- - [ ] Day02-09 张量的形状操作_reshape函数
-- - [ ] Day02-10 张量的形状操作_unsqueeze和squeeze函数
-- - [ ] Day02-11 张量的形状操作_transpose和permute函数
-- - [ ] Day02-12 张量的形状操作_view和contiguous函数
+- - [x] Day02-03 张量基本运算
+- - [x] Day02-04 张量点乘和矩阵乘法
+- - [x] Day02-05 张量的常用运算函数
+- - [x] Day02-06 张量的索引操作（上）
+- - [x] Day02-07 张量的索引操作（下）
+- - [x] Day02-09 张量的形状操作_reshape函数
+- - [x] Day02-10 张量的形状操作_unsqueeze和squeeze函数
+- - [x] Day02-11 张量的形状操作_transpose和permute函数
+- - [x] Day02-12 张量的形状操作_view和contiguous函数
 
 预计时长：4小时
 
