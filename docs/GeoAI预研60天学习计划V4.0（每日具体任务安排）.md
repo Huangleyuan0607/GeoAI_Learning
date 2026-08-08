@@ -1381,7 +1381,7 @@ MLP Classification Project
 
 ```bash
 git add .
-git commit -m "Day25：完成MLP分类网络训练"
+git commit -m "Day25：完成PyTorch MLP网络结构搭建"
 git push
 ```
 
