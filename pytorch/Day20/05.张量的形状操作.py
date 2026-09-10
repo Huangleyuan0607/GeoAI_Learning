@@ -77,12 +77,12 @@ def dm03():
     print("-" * 30)
 
     # 2.改变维度从(2, 3, 4) -> (4, 3, 2)
-    # t2 = t1.transpose(0, 2)     # 交换第0维和第1维
-    t2 = t1.transpose(0, -1)     # 效果同上，交换第0维和第1维
+    # t2 = t1.transpose(0, 2)     # 交换第0维和第2维
+    t2 = t1.transpose(0, -1)     # 效果同上，交换第0维和第2维
     print(f"t2:{t2}, shape:{t2.shape}")
 
     # 2.改变维度从(2, 3, 4) -> (4, 2, 3)
-    t3 = t1.permute(2, 0, 1)  #
+    t3 = t1.permute(2, 0, 1)        # 一次可以交换多个维度
     print(f"t3:{t3}, shape:{t3.shape}")
 
 # 4.定义函数，演示view()函数，contiguous()函数，is_contiguous()函数

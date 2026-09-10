@@ -29,8 +29,8 @@ def create_dataset():
         n_features = 1,         # 1个特征（1个特征点）
         noise = 10,             # 噪声，噪声越大，样本点越散；反之越集中
         coef = True,            # 是否返回系数，默认为False，返回值为None
-        bias = 14.5,             # 偏置
-        random_state = 3       # 随机种子，随机种子相同，输出数据相同
+        bias = 14.5,            # 偏置
+        random_state = 3        # 随机种子，随机种子相同，输出数据相同
     )
 
     # print(type(x))      # <class 'numpy.ndarray'>
@@ -124,7 +124,7 @@ def train(x, y, coef):
 if __name__ == '__main__':
     # 3.1 创建数据集
     x, y, coef = create_dataset()
-    print(f'x:{x}, y:{y}, coef:{coef}')     # 这个地方将x, y, coef(w初始值)带入：y = wx + bias，并不完全相等，是因为noise噪声的存在
+    # print(f'x:{x}, y:{y}, coef:{coef}')     # 这个地方将x, y, coef(w初始值)带入：y = wx + bias，并不完全相等，是因为noise噪声的存在
 
     # 3.2 模型训练
     train(x, y, coef)

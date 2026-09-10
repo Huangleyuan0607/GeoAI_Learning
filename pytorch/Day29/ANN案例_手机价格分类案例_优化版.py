@@ -209,10 +209,10 @@ if __name__ == '__main__':
     summary(model, input_size = (16, input_dim))
 
     # 3.模型训练
-    # train(train_dataset, input_dim, output_dim)
+    train(train_dataset, input_dim, output_dim)
 
     # 4.模型测试
-    # evaluate(test_dataset, input_dim, output_dim)
+    evaluate(test_dataset, input_dim, output_dim)
 
 
 

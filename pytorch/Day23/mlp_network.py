@@ -10,8 +10,8 @@ import torch
 import torch.nn as nn
 import matplotlib.pyplot as plt
 
-plt.rcParams['font.sans-serif']=['SimHei']      # 用来正常显示中文标签
-plt.rcParams['axes.unicode_minus']=False        # 用来正常显示负号
+plt.rcParams['font.sans-serif'] = ['SimHei']      # 用来正常显示中文标签
+plt.rcParams['axes.unicode_minus'] = False        # 用来正常显示负号
 
 print("================= 任务 1：搭建简单多层感知机 (MLP) （先以了解为主）=================")
 

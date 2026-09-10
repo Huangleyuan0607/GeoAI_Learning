@@ -76,7 +76,7 @@ def train():
     print("data.shape: ", data.shape)       # 形状，（5, 3）5行3列
     print("data.requires_grad: ", data.requires_grad)       # 是否设置了自动微分，默认False
 
-    # 3.调用神经网络模型 -> 进行模型训练
+    # 3.调用神经网络模型 -> 进行模型训练 
     output = my_model(data)     # 底层自动调用了forward()方法进行前向传播
     print("output: ", output)
     print("output.shape: ", output.shape)       # (5, 2)
