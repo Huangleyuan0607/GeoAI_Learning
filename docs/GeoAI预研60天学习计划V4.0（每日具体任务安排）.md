@@ -1905,7 +1905,6 @@ GeoAI             ☆☆☆☆☆
 
 #### 黑马AI大模型《神经网络与深度学习》
 
--  Day06-06 图像相关知识介绍
 -  Day06-08 CNN概述介绍
 -  Day06-09 卷积层_计算规则介绍
 
@@ -1942,7 +1941,7 @@ GeoAI             ☆☆☆☆☆
 创建：
 
 ```
-Day31_conv_basic.py
+conv_basic.py
 ```
 
 实现：
@@ -2010,7 +2009,7 @@ CNN特征提取
 创建：
 
 ```
-Day32_conv_parameter.py
+conv_parameter.py
 ```
 
 实现：
@@ -2074,7 +2073,7 @@ FC
 创建：
 
 ```
-Day33_simple_cnn.py
+simple_cnn.py
 ```
 
 实现：
@@ -2128,7 +2127,7 @@ git push
 项目：
 
 ```
-Day34_CNN_Image_Classification
+CNN_Image_Classification
 ```
 
 实现：
@@ -2237,7 +2236,7 @@ AlexNet相比LeNet：
 创建：
 
 ```
-Day36_AlexNet.py
+AlexNet.py
 ```
 
 实现：
@@ -2304,7 +2303,7 @@ VGG核心思想：
 创建：
 
 ```
-Day37_VGG.py
+VGG.py
 ```
 
 实现：
@@ -2398,7 +2397,7 @@ output
 创建：
 
 ```
-Day38_ResNet_Block.py
+ResNet_Block.py
 ```
 
 实现：
@@ -2485,7 +2484,7 @@ Mask
 创建：
 
 ```
-Day39_backbone_test.py
+backbone_test.py
 ```
 
 实现：
@@ -2568,7 +2567,7 @@ CNN
 创建：
 
 ```
-Day40_GoogLeNet.py
+GoogLeNet.py
 ```
 
 实现：
@@ -2634,7 +2633,7 @@ running variance
 创建：
 
 ```
-Day41_BatchNorm.py
+BatchNorm.py
 ```
 
 实现：
@@ -2695,7 +2694,7 @@ git push
 创建：
 
 ```
-Day42_image_augmentation.py
+image_augmentation.py
 ```
 
 实现：
@@ -2754,7 +2753,7 @@ CNN知识体系.md
 创建：
 
 ```
-Day43_CNN_template
+CNN_template
 ```
 
 结构：
@@ -2827,7 +2826,7 @@ Land Cover
 创建：
 
 ```
-Day44_remote_sensing_CNN.py
+remote_sensing_CNN.py
 ```
 
 尝试：
