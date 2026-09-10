@@ -29,18 +29,19 @@ import numpy as np
 # 1.定义函数，演示：torch.tensor 根据指定数据创建张量
 def dm01():
     # 场景1：标量 -> 张量
-    t1 =torch.tensor(10)
+    t1 = torch.tensor(10)
     print(f"t1:{t1},type:{type(t1)}")
     print("-" * 30)
 
     # 场景2：二维列表 -> 张量
     data = [[1, 2, 3], [4, 5, 6]]
     t2 = torch.tensor(data)
+    # t2 = torch.tensor([[1, 2, 3], [4, 5, 6]])
     print(f"t2:{t2},type:{type(t2)}")
     print("-" * 30)
 
     # 场景3：numpy nd数组 -> 张量
-    data = np.random.randint(0,10,size = (2,3))
+    data = np.random.randint(0,10,size = (2, 3))
     t3 = torch.tensor(data, dtype = torch.float32)
     print(f"t3:{t3},type:{type(t3)}")
     print("-" * 30)
@@ -98,9 +99,9 @@ def dm03():
 
 # 4.定义测试函数
 if __name__ == '__main__':
-    # dm01()    # 掌握
+    dm01()    # 掌握
     # dm02()
-    dm03()
+    # dm03()
 
 
 

@@ -30,8 +30,8 @@ Tanh激活函数介绍：
 import torch
 import matplotlib.pyplot as plt
 
-plt.rcParams['font.sans-serif']=['SimHei']      # 用来正常显示中文标签
-plt.rcParams['axes.unicode_minus']=False        # 用来正常显示负号
+plt.rcParams['font.sans-serif'] = ['SimHei']      # 用来正常显示中文标签
+plt.rcParams['axes.unicode_minus'] = False        # 用来正常显示负号
 
 # 1.创建画布和坐标轴，1行2列
 fig, axes = plt.subplots(1, 2)      # 1行2列

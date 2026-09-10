@@ -55,7 +55,7 @@ def dm02():
     print("t2:", t2)
 
     # 3.演示矩阵乘法操作
-    t3 = t1 @ t2  # 对应位置元素相乘
+    t3 = t1 @ t2  # 矩阵乘法
     # t3 = t1.matmul(t2)      # 效果同上，matrix multiply（矩阵乘法）
     # t3 = t1.dot(t2)     # 报错：dot()只针对一维张量有效
 

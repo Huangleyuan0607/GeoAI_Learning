@@ -50,7 +50,7 @@ def create_dataset():
     # print(f"y:{y.head()}, {y.shape}")       # (2000, 1)
 
     # 3.把特征列转成浮点型
-    x = x.astype(np.float32)
+    x = x.astype(np.float32)        # 未来做自动微分、求导等操作时需要浮点型才可进行
     # print(f"x:{x.head()}, {x.shape}")       # (2000, 20)
 
     # 4.切分训练集和测试集
@@ -97,18 +97,18 @@ class PhonePriceModel(nn.Module):
 
 # todo 3.模型训练
 def train(train_dataset, input_dim, output_dim):
-    # 1.创建数据加载器，流程：数据 -> 张量 -> 数据集 -> 数据加载器
+    # 1.创建数据加载器（从而能够分批次获取数据），流程：数据 -> 张量 -> 数据集 -> 数据加载器
     # 参1：数据集对象（1600条）；参2：每批次数据条数（这里为16，即每批16条数据）；参3：是否打乱数据（训练集：打乱；测试集：不打乱）
     train_loader = DataLoader(train_dataset, batch_size = 16, shuffle = True)
 
-    # 2.创建神经网络模型
+    # 2.创建神经网络模型 -> 预测
     model = PhonePriceModel(input_dim, output_dim)
 
-    # 3.定义损失函数，因为是多分类，这里用的是：多分类交叉熵损失函数
+    # 3.定义损失函数，因为是多分类，这里用的是：多分类交叉熵损失函数 -> 计算梯度
     criterion = nn.CrossEntropyLoss()
 
-    # 4.创建优化器对象
-    optimizer = optim.SGD(model.parameters(), lr = 0.001)
+    # 4.创建优化器对象 -> 更新权重矩阵、偏置矩阵bias
+    optimizer = optim.SGD(model.parameters(), lr = 0.001)           # 使用的是SGD（随机梯度下降）
 
     # 5.模型训练
     # 5.1 定义变量，记录训练总轮数
@@ -166,8 +166,8 @@ def evaluate(test_dataset, input_dim, output_dim):
         # print(f"y_pred:{y_pred}")           # [[0分类概率, 1分类概率, 2分类概率, 3分类概率], [...], ...]
         # 5.3 根据加权求和，得到类别，用argmax()函数获取最大值对应的下标，就是类别（做了类似于softmax的活）
         y_pred = torch.argmax(y_pred, dim = 1)      # dim = 1表示逐行处理
-        print(f"y_pred:{y_pred}")           # [第1条数据的预测分类, 第2条数据的预测分类, ...]
-        print(f"y:{y}")
+        # print(f"y_pred:{y_pred}")           # [第1条数据的预测分类, 第2条数据的预测分类, ...]
+        # print(f"y:{y}")
         # 5.4 统计预测正确的样本个数
         print(y_pred == y)              # tensor([False, False,  True, False, False,  True,  True,  True])
         print((y_pred == y).sum())      # True:1, False:0

@@ -42,13 +42,13 @@ print("通过均值插值填充后的数据：", raw_val)
 print("\n================= 任务 2：PyTorch Tensor 创建与 NumPy 数组相互转换 =================")
 
 # 1. 使用 torch.arange 与 torch.zeros 创建基础 Tensor
-x_tensor = torch.arange(12, dtype=torch.float32).reshape((3, 4))
+x_tensor = torch.arange(12, dtype = torch.float32).reshape((3, 4))
 print("创建的Pytorch Tensor(3x4)：", x_tensor)
 print("Tensor元素总数：", x_tensor.numel())
 print("Tensor形状：", x_tensor.shape)
 
 # 2. NumPy ndarray 转换为 PyTorch Tensor ---> torch.from_numpy()
-np_array = np.ones((2,3), dtype = np.float32)
+np_array = np.ones((2, 3), dtype = np.float32)
 converted_tensor = torch.from_numpy(np_array)   # 从NumPy的ndarray转换为PyTorch的tensor
 print("从NumPy ndarray数组转换为PyTorch Tensor张量：",converted_tensor)
 

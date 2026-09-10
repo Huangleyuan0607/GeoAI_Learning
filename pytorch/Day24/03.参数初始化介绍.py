@@ -108,7 +108,7 @@ def test07():
     # 3.打印生成结果
     print(linear.weight.data)
 
-    # xavier均匀分布初始
+    # xavier均匀分布初始化
     # 1.创建一个线性层，输入维度5，输出维度3
     linear = nn.Linear(5, 3)
     # 2.对权重(w)进行kaiming正态分布初始化

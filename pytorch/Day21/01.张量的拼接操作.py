@@ -25,14 +25,14 @@ print("t2:", t2,"shape:", t2.shape)
 
 # 2.演示张量的拼接
 # 思路1：cat()函数拼接张量
-# t3 = torch.cat([t1, t2], dim = 0)   # (2, 3) + (2, 3) = (4, 3)解释：除了拼接的那个维度外，其他维度数必须保持一致。此处指除了拼接的第0维外的（第1维）都为3。
-# print("t3:", t3,"shape:", t3.shape)
+t3 = torch.cat([t1, t2], dim = 0)   # (2, 3) + (2, 3) = (4, 3)解释：除了拼接的那个维度外，其他维度数必须保持一致。此处指除了拼接的第0维外的（第1维）都为3。
+print("t3:", t3,"shape:", t3.shape)
 
-# t4 = torch.cat([t1, t2], dim = 1)   # (2, 3) + (2, 6) = (2, 9)
-# print("t4:", t4,"shape:", t4.shape)
+t4 = torch.cat([t1, t2], dim = 1)   # (2, 3) + (2, 3) = (2, 6)
+print("t4:", t4,"shape:", t4.shape)
 
-# t5 = torch.cat([t1, t2], dim = -1)    # 效果同：torch.cat([t1, t2], dim = 1)
-# print("t5:", t5,"shape:", t5.shape)
+t5 = torch.cat([t1, t2], dim = -1)    # 效果同：torch.cat([t1, t2], dim = 1)
+print("t5:", t5,"shape:", t5.shape)
 
 # t6 = torch.cat([t1, t2], dim = 2)       # 报错：越界 out of range
 # print("t6:", t6,"shape:", t6.shape)

@@ -36,7 +36,7 @@ train_size = int(0.8 * len(x))      # 定义训练集大小，这里为：0.8 * 
 x_train, x_test = x[:train_size], x[train_size:]        # 取x的前720个为训练集，后180个为测试集
 y_train, y_test = y[:train_size], y[train_size:]        # 同步划分标签，取y的前720个为训练标签，后180个为测试标签
 
-# 构造 Dataset -> DataLoader
+# 构造 TensorDataset -> DataLoader
 train_dataset = TensorDataset(x_train, y_train)
 # 参1：数据集对象；参2：批次大小（每批样本数量）；参3：是否打乱数据（如果不打乱，多轮训练时每轮拿到的值是一样的）（训练集打乱，测试集不打乱）
 train_loader = DataLoader(train_dataset, batch_size = 32, shuffle = True)
@@ -57,11 +57,17 @@ print("\n================= 任务 2：搭建 MLP 分类网络 ================="
 class MLPClassifier(nn.Module):
     def __init__(self, input_dim, hidden_dim, num_classes):
         super(MLPClassifier, self).__init__()
+
+        # 定义层结构
         self.fc1 = nn.Linear(input_dim, hidden_dim)
+        # self.fc1 = torch.relu()(nn.Linear(input_dim, hidden_dim))          # 加权求和 + ReLU激活函数
         self.fc2 = nn.Linear(hidden_dim, hidden_dim)
+        # self.fc2 = torch.relu()(nn.Linear(hidden_dim, hidden_dim))         # 加权求和 + ReLU激活函数
         self.output = nn.Linear(hidden_dim, num_classes)
+        # self.output = torch.softmax(nn.Linear(hidden_dim, num_classes))       # 加权求和 + Softmax激活函数
 
         # 参数初始化
+        # 参1：权重参数；参2：非线性激活函数类型，表明了这个权重层后面接的是哪种非线性激活函数
         nn.init.kaiming_normal_(self.fc1.weight, nonlinearity='relu')
         nn.init.kaiming_normal_(self.fc2.weight, nonlinearity='relu')
 
