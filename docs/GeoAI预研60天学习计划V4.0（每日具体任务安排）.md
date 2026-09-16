@@ -2161,10 +2161,10 @@ git push
 
 整理：
 
-- CNN结构
-- 卷积计算
-- Feature Map
-- Pooling
+- - [ ] CNN结构
+- - [ ] 卷积计算
+- - [ ] Feature Map
+- - [ ] Pooling
 
 ### 代码整理
 

@@ -30,12 +30,5 @@ __pycache__/
 *.csv
 *.xlsx
 
-# 忽略 CIFAR-10 数据集
+# CIFAR-10
 pytorch/Day34/data/
-
-# 忽略模型权重文件
-*.pth
-
-# 忽略 Python 缓存
-__pycache__/
-*.pyc
