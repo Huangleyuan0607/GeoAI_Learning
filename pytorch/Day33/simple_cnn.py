@@ -10,7 +10,7 @@ class SimpleLeNet(nn.Module):
 
         # 卷积层1
         self.conv1 = nn.Conv2d(1, 6, 5, padding = 2)
-        self.relu = nn.ReLU()
+        self.relu = nn.ReLU()       # ReLU没有可学习参数，也没有需要保存的状态，所以同一个nn.ReLU()实例可以在多个地方重复使用
         # 池化层1
         self.pool1 = nn.MaxPool2d(2, 2)
 
