@@ -2161,10 +2161,10 @@ git push
 
 整理：
 
-- - [ ] CNN结构
-- - [ ] 卷积计算
-- - [ ] Feature Map
-- - [ ] Pooling
+- - [x] CNN结构
+- - [x] 卷积计算
+- - [x] Feature Map
+- - [x] Pooling
 
 ### 代码整理
 
@@ -2206,8 +2206,8 @@ git push
 
 #### 李沐《动手学深度学习》
 
--  - [ ] 第79讲 AlexNet
--  - [ ] 第80讲 AlexNet代码实现
+-  - [x] 第79讲 AlexNet
+-  - [x] 第80讲 AlexNet代码实现
 
 预计时长：3小时
 
@@ -2368,9 +2368,9 @@ git push
 
 ```
 网络越来越深
-        ↓
+   ↓
 梯度消失
-        ↓
+   ↓
 训练困难
 ```
 

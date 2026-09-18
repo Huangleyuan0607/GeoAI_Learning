@@ -12,12 +12,12 @@ class SimpleLeNet(nn.Module):
         self.conv1 = nn.Conv2d(1, 6, 5, padding = 2)
         self.relu = nn.ReLU()       # ReLU没有可学习参数，也没有需要保存的状态，所以同一个nn.ReLU()实例可以在多个地方重复使用
         # 池化层1
-        self.pool1 = nn.MaxPool2d(2, 2)
+        self.pool1 = nn.MaxPool2d(2, 2)         # 但原始LeNet网络其实采用的是平均池化
 
         # 卷积层2
         self.conv2 = nn.Conv2d(6, 16, 5)
         # 池化层1
-        self.pool2 = nn.MaxPool2d(2, 2)
+        self.pool2 = nn.MaxPool2d(2, 2)         # 但原始LeNet网络其实采用的是平均池化
 
         # 全连接层
         self.fc1 = nn.Linear(16 * 5 * 5, 120)
