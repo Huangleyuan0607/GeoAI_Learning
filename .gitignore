@@ -1,34 +1,43 @@
-# PyCharm
+# ===== IDE =====
 .idea/
+.vscode/
 
-# Python
+# ===== Python =====
 __pycache__/
 *.pyc
+*.pyo
 
-# Virtual Environment
+# ===== 虚拟环境 =====
 venv/
 .venv/
 
-# Jupyter
+# ===== Jupyter =====
 .ipynb_checkpoints/
 
-# OS
+# ===== 操作系统 =====
 .DS_Store
 Thumbs.db
 
-# Datasets
+# ===== 数据集说明（保留 readme）=====
 datasets/*
-!datasets/README.md
+!datasets/readme.md
 
-# Jupyter
-.ipynb_checkpoints/
+# ===== 所有实验数据目录（数据集、测试图片）=====
+**/data/
 
-# Python cache
-__pycache__/
+# ===== 模型权重 =====
+*.pth
+*.pt
+*.ckpt
+*.onnx
+*.h5
+*.safetensors
 
-# Data
+# ===== 表格数据 =====
 *.csv
 *.xlsx
 
-# CIFAR-10
-pytorch/Day34/data/
+# ===== 训练输出 =====
+runs/
+outputs/
+logs/
