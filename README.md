@@ -189,41 +189,28 @@ Day 36 / Day 66
 
 ```text
 GeoAI-Learning/
-
 │
 ├── python_basic/          Python基础代码
 │
-├── pytorch/               PyTorch学习与实验
+├── pytorch/               PyTorch学习与实验（按 Day 分目录）
 │
-├── cv/                    计算机视觉实验
+├── opencv/                OpenCV图像处理实验
 │
-├── segmentation/          FCN、U-Net、DeepLab等语义分割实验
+├── segmentation/          语义分割实验（FCN / U-Net / DeepLab）
 │
 ├── transformer/           Transformer学习与实验
-│
-├── remote_sensing/        地图要素与影像处理实验
 │
 ├── projects/              GeoAI完整项目实践
 │
 ├── notebooks/             Jupyter Notebook实验
 │
-├── experiments/           实验记录
-│
-├── outputs/               实验结果与可视化
-│
-├── models/                模型代码
-│
-├── checkpoints/           模型权重（Git忽略）
-│
 ├── datasets/              数据集说明
 │
-├── papers/
-│   ├── pdf/               论文PDF
-│   └── notes/             论文阅读笔记
+├── papers/                导师论文与方向文献（PDF + readme）
 │
 ├── reports/               阶段总结报告
 │
-├── notes/                 学习笔记
+├── notes/                 学习笔记（Screenshot/ 存放截图）
 │
 ├── docs/                  学习计划与汇报材料
 │
@@ -388,19 +375,26 @@ GeoAI应用研究
 
 ------
 
+# 📚 方向文献库
+
+`papers/` 目录收录导师（刘鹏程老师）及课题组相关论文，全部围绕 **地图制图综合与多尺度表达** 方向：
+
+| 论文 | 年份 | 主题方向 |
+| -------------------------------------------------- | ---- | ------------------------ |
+| 一种面向地图综合建筑多边形化简的 Transformer 模型 | 2026 | 建筑物化简 / Transformer |
+| 一种曲线数据压缩的自编码器神经网络方法 | 2024 | 线状要素化简 / 自编码器 |
+| 地图综合图卷积神经网络点群简化方法 | 2023 | 点群综合 / GCN |
+| 基于预训练模型的矢量海岸线形态模式判别方法 | 2026 | 矢量形态识别 |
+| 利用地理流时空相关性分析揭示人群移动规律 | 2026 | 地理流分析 |
+| 基于距离-相似性隐喻的空间交互可视化 | 2026 | 空间可视化 |
+
+> 研一方向：**地图制图综合与多尺度表达的智能化方法**
+
+------
+
 # 📄 论文阅读计划
 
-论文统一整理：
-
-```text
-papers/
-
-├── pdf/
-
-└── notes/
-```
-
-每篇论文记录：
+论文 PDF 统一存放在 `papers/` 目录下，每篇论文记录：
 
 - 研究背景
 - 方法框架
