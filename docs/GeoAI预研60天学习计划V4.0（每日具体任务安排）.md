@@ -2439,13 +2439,9 @@ git push
 
 ### 视频学习
 
-#### 李沐《动手学深度学习》
-
--  - [ ] 第96讲 ResNet总结
-
 #### PyTorch官方模型阅读
 
--  - [ ] torchvision.models.resnet
+-  - [x] torchvision.models.resnet
 
 预计时长：4小时
 
@@ -2537,7 +2533,9 @@ git push
 #### 李沐《动手学深度学习》
 
 -  - [ ] 第85讲 NIN
+-  - [ ] 第86讲 NIN代码
 -  - [ ] 第88讲 GoogLeNet
+-  - [ ] 第89讲 GoogLeNet代码
 
 预计时长：3小时
 
