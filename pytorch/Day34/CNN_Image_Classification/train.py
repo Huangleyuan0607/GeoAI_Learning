@@ -42,6 +42,7 @@ def train_demo():
     # 保存模型参数
     torch.save(model.state_dict(), './pytorch/Day34/CNN_Image_Classification/model/demo_model.pth')
 
+
 # 2.测试
 if __name__ == "__main__":
     train_demo()
