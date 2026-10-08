@@ -41,3 +41,9 @@ datasets/*
 runs/
 outputs/
 logs/
+
+# ===== rl-geoirl（GeoIRL 论文复现，2026.10）=====
+# 只读参考仓库（Day09 起 clone 进来，不进版本库）
+rl-geoirl/thirdparty/
+# 结果表要交付：上面的 `*.csv` 全局忽略会挡掉它，这里单独放行
+!rl-geoirl/results/*.csv

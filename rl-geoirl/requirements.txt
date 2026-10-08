@@ -1,0 +1,32 @@
+# rl-geoirl 依赖（Day01 安装；不覆盖仓库根目录那份 V4.0 的 requirements.txt）
+#
+# 安装：
+#   conda create -n geoirl python=3.11 -y
+#   conda activate geoirl
+#   pip install -r rl-geoirl/requirements.txt
+#   python -c "import numpy,scipy,networkx,geopandas,shapely,lifelines,matplotlib,pandas;print('geoirl env ok')"
+
+# ===== 数值与图（Day01—Day11 的主力，CPU 即够）=====
+numpy
+scipy
+pandas
+matplotlib
+networkx
+
+# ===== 矢量 GIS（Day15：建筑多边形 → 质心／面积／土地利用 → 距离矩阵 → SGS）=====
+geopandas
+shapely
+pyogrio
+
+# ===== 生存分析（Day17 折扣因子的交叉验证；主实现仍手写 Kaplan–Meier）=====
+lifelines
+
+# ===== 深度学习：必须用官方 cu128 源，不要用 pip 全局的清华 PyPI 镜像 =====
+# pip install torch --index-url https://download.pytorch.org/whl/cu128
+# 已装：torch 2.11.0+cu128（RTX 3060 Laptop 6GB，空闲约 5GB）
+torch
+
+# ===== 以下两项【故意不在这里】，到对应 Day 再装 =====
+# torch_geometric     → Day12/Day13：需要与 torch 版本配套的 torch_scatter；
+#                       装不上就走任务书附录 B 的 dense 降级实现（不阻塞任何进度）
+# osmnx / overpy      → Day18：只有决定用真实 OSM 建筑数据替代 figshare 时才需要
