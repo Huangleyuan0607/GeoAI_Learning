@@ -34,8 +34,8 @@ def gravity_transition(V, D, epsilon = 1e-9):
     with np.errstate(divide = 'ignore', invalid = 'ignore'):        # 临时关闭 numpy 的除零/无效值警告。因为 inf 参与除法时，numpy 会打印警告。
         # V[:, None]：把 V 从形状 (n,) 升维成 (n, 1)，变成列向量
         # V[:, None] / D_safe：利用 numpy 的广播机制，让每一列的距离都除以对应行的V_i
-        # 结果：SGS[i, j] = V[i] / D_safe[i, j] = V[i] / D[i, j]^2
-        SGS = V[:, None] / D_safe
+        # 结果：SGS[i, j] = V[j] / D_safe[i, j] = V[j] / D[i, j]^2 （此处初步推断是因为论文笔误）
+        SGS = V[None, :] / D_safe
     SGS = np.nan_to_num(SGS, nan = 0.0, posinf = 0.0, neginf = 0.0)     # 兜底清理：保证SGS矩阵均为有限实数，且对角线全是0
 
     # 1.2 行归一化“极端情况下某行可能全0（比如只剩一栋建筑），兜底退回均匀分布
@@ -117,7 +117,7 @@ if __name__ == '__main__':
     # 3.1 现象一：被最想去的建筑，是不是大楼？
     inflow = P.sum(axis = 0)
     rank = np.argsort(inflow)[::-1]
-    area_pct = (areas[rank[:20]] < areas[:, None].mean(axis = 0))        # top20的面积分位
+    area_pct = (areas[rank[:20]] < areas[:, None]).mean(axis = 0)        # top20的面积分位
     print()
     print("=" * 60)
     print("被最想去的 top-20 建筑：面积分位（1.0 = 全场最大）")
@@ -133,7 +133,7 @@ if __name__ == '__main__':
     print("=" * 60)
     print("面积五分位 vs 平均入流")
     print("=" * 60)
-    print(f"{'档':<4}{'面积区间(m²)':<24}{'建筑数':>8}{'平均入流':>12}{'入流占比':>10}")
+    print(f"{'档':<4}{'面积区间(m²)':<18}{'建筑数':>8}{'平均入流':>8}{'入流占比':>8}")
     for k in range(5):
         m = idx == k
         share = inflow[m].sum() / inflow.sum()

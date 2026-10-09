@@ -1,8 +1,0 @@
-# results/
-# G16—G18 的全部交付物落在这里：
-#   train_curves.png     四条 loss 曲线 ＋ 四条主特征值曲线
-#   reward_maps.png      四种网络的奖励空间分布（对应论文图 6／图 9）
-#   gen_length_hist.png  生成长度长尾 vs 专家
-#   table1_like.csv      对齐论文表 1 的指标结构（Wasserstein／inverse CPC／NFM）
-#   features_transitions.md  密度—连通分量对照
-# 注意：根 .gitignore 的 `*.csv` 会挡掉结果表，已在末尾用 !rl-geoirl/results/*.csv 放行。
