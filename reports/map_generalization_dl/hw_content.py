@@ -94,7 +94,7 @@ add(answer("答：共 47 篇（英文 28 篇、中文 19 篇），其中综述�
 
 en_cell = "\n".join([
     "【一】综述性论文（4篇）",
-    "1. Touya G, Zhang X, Lokhat I. Is deep learning the new agent for map generalization?[J]. International Journal of Cartography, 2019, 5(2-3): 142-157.",
+    "1. Touya G03, Zhang X, Lokhat I. Is deep learning the new agent for map generalization?[J]. International Journal of Cartography, 2019, 5(2-3): 142-157.",
     "2. Kang Y, Gao S, Roth R E. Artificial intelligence studies in cartography: a review and synthesis of methods, applications, and ethics[J]. Cartography and Geographic Information Science, 2024, 51(4).",
     "3. Deep learning in automatic map generalization: achievements and challenges[J]. Geo-spatial Information Science, 2025.",
     "4. GeoAI for map generalization in multi-scale cartography: foundations, a research agenda, and interdisciplinary perspectives[J]. International Journal of Geographical Information Science, 2026.",
@@ -102,7 +102,7 @@ en_cell = "\n".join([
     "5. Brassel K E, Weibel R. A review and conceptual framework of automated map generalization[J]. International Journal of Geographical Information Systems, 1988, 2(3): 229-244.",
     "6. McMaster R B, Shea K S. Generalization in Digital Cartography[M]. Washington D C: Association of American Geographers, 1992.",
     "7. Mackaness W A, Ruas A, Sarjakoski L T (eds.). Generalisation of Geographic Information: Cartographic Modelling and Applications[M]. Amsterdam: Elsevier, 2007.",
-    "8. Weibel R, Dutton G. Generalizing spatial data and dealing with multiple representations[M]//Geographical Information Systems: Principles, Techniques, Management and Applications. Wiley, 1999: 125-155.",
+    "8. Weibel R, Dutton G03. Generalizing spatial data and dealing with multiple representations[M]//Geographical Information Systems: Principles, Techniques, Management and Applications. Wiley, 1999: 125-155.",
     "9. Ruas A. A method for building displacement in automated map generalisation[J]. International Journal of Geographical Information Science, 1998, 12(8): 789-803.",
     "10. Regnauld N, McMaster R B. A synoptic view of generalisation operators[M]//Generalisation of Geographic Information. Elsevier, 2007: 37-66.",
     "11. Li Z, Openshaw S. Algorithms for automated line generalization based on a natural principle of objective generalization[J]. International Journal of Geographical Information Systems, 1992, 6(5): 373-389.",
@@ -113,8 +113,8 @@ en_cell = "\n".join([
     "15. Yan X, et al. Reasoning cartographic knowledge in deep learning-based map generalization with explainable AI[J]. International Journal of Geographical Information Science, 2024, 38(10): 2061-2082.",
     "16. Yan X, Ai T, Yang M, Yin H. A graph deep learning approach for urban building grouping[J]. Geocarto International, 2022, 37(10).",
     "17. Yan X, et al. Towards general-purpose representation learning of polygonal geometries[J]. GeoInformatica, 2023.",
-    "18. Courtial A, Touya G, Zhang X. Exploring the potential of deep learning segmentation for mountain roads generalisation[J]. ISPRS International Journal of Geo-Information, 2020, 9(5): 338.",
-    "19. Courtial A, El Ayedi A, Touya G, Zhang X. Deriving map images of generalised mountain roads with generative adversarial networks[J]. International Journal of Geographical Information Science, 2023, 37(3).",
+    "18. Courtial A, Touya G03, Zhang X. Exploring the potential of deep learning segmentation for mountain roads generalisation[J]. ISPRS International Journal of Geo-Information, 2020, 9(5): 338.",
+    "19. Courtial A, El Ayedi A, Touya G03, Zhang X. Deriving map images of generalised mountain roads with generative adversarial networks[J]. International Journal of Geographical Information Science, 2023, 37(3).",
     "20. Zhang X, et al. DeepMapScaler: a workflow of deep neural networks for the generation of generalised maps[J]. Cartography and Geographic Information Science, 2024, 51(1).",
     "21. A visual transformer and multi-task learning framework for building generalisation from raster maps[J]. International Journal of Digital Earth, 2026.",
     "22. DiffSimplify: a building continuous simplification model based on conditional diffusion models[J]. International Journal of Digital Earth, 2026.",

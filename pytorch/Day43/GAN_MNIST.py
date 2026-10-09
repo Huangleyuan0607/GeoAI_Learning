@@ -42,7 +42,7 @@ train_loader = torch.utils.data.DataLoader(
     num_workers=0  # Windows 下建议设为 0
 )
 
-# 生成器 G
+# 生成器 G03
 class Generator(nn.Module):
     def __init__(self, z_dim=100):
         super(Generator, self).__init__()
@@ -115,7 +115,7 @@ for epoch in range(num_epochs):
         # 生成假样本
         z = torch.randn(b_size, z_dim, device=device)
         fake_imgs = G(z)
-        output_fake = D(fake_imgs.detach())  # detach 避免梯度传到 G
+        output_fake = D(fake_imgs.detach())  # detach 避免梯度传到 G03
         loss_D_fake = criterion(output_fake, fake_labels)
 
         # 判别器总损失
@@ -123,12 +123,12 @@ for epoch in range(num_epochs):
         loss_D.backward()
         optimizer_D.step()
 
-        # 2. 训练生成器 G
+        # 2. 训练生成器 G03
         optimizer_G.zero_grad()
 
         z = torch.randn(b_size, z_dim, device=device)
         fake_imgs = G(z)
-        output_fake = D(fake_imgs)  # 不 detach，梯度会传到 G
+        output_fake = D(fake_imgs)  # 不 detach，梯度会传到 G03
 
         # 生成器希望判别器把假样本判为真，所以标签用 real_labels
         loss_G = criterion(output_fake, real_labels)

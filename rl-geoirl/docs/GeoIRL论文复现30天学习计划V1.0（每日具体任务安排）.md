@@ -314,11 +314,22 @@ rl/Day03/soft_vs_hard_policy.py
 
 `soft_policy` 的实现要求（**这是全项目唯一的一份，后面 Day05/06/07/08/10/16 都 import 它**）：
 
-- 递推式：$V(s) = \frac{1}{\beta}\log \sum_{s'} P(s'|s)\, e^{\beta[r(s') + \gamma V(s')]}$
-- 策略：$\pi(s'|s) \propto P(s'|s)\, e^{\beta[r(s') + \gamma V(s')]}$
+- 递推式：
+  $$
+  $V(s) = \frac{1}{\beta}\log \sum_{s'} P(s'|s)\, e^{\beta[r(s') + \gamma V(s')]}$
+  $$
+
+- 策略：
+  $$
+  $\pi(s'|s) \propto P(s'|s)\, e^{\beta[r(s') + \gamma V(s')]}$
+  $$
+
 - 实现技巧：把 `log P` 直接加进指数里，一次性表达"哪些边允许＋转移概率多大"；零元素的 `log` 要先 `maximum(P, 1e-30)`
+
 - 数值稳定：算 logsumexp 必须先减每行最大值，**不准出现 `exp(1000)` 这种溢出**
+
 - 收敛判据：`|V_new − V|.max() < 1e-12`
+
 - 本文件还要产出对比：β 取 0.2／1／5／50，打印每档的**平均策略熵**与**每行最大概率**，并与硬策略对照
 
 ### 输出成果
