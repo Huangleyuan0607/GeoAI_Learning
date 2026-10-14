@@ -41,15 +41,16 @@ from torchsummary import summary
 # 每批次样本数
 BATCH_SIZE = 32
 
+# 使用GPU训练
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
 # 1.准备数据集
 def create_dataset():
     # 1.获取训练集
     # 参1：数据集路径；参2：是否是训练集；参3：数据预处理 -> 张量数据；参4：是否联网下载数据集（这里我们已经下栽到了本地）
-    train_dataset = CIFAR10(root = './pytorch/Day34/data', train = True, transform = ToTensor(), download = True)
-
+    train_dataset = CIFAR10(root = './pytorch/Day34/data', train = True, transform = ToTensor(), download = False)
     # 2.获取测试集
-    test_dataset = CIFAR10(root = './pytorch/Day34/data', train = False, transform = ToTensor(), download = True)
-
+    test_dataset = CIFAR10(root = './pytorch/Day34/data', train = False, transform = ToTensor(), download = False)
     # 3.返回数据集
     return train_dataset, test_dataset
 
@@ -64,13 +65,10 @@ class ImageModel(nn.Module):
         self.conv1 = nn.Conv2d(3, 6, 3)
         # 池化层1：池化窗口2x2，步长2，填充0（默认）
         self.pool1 = nn.MaxPool2d(2, 2)
-
-        # 新增：批量归一化层2
         # 卷积层2,：输入6通道，输出16通道，卷积核大小3x3，步长1填充0（默认）
         self.conv2 = nn.Conv2d(6, 16, 3)
         # 池化层2：池化窗口2x2，步长2，填充0（默认）
         self.pool2 = nn.MaxPool2d(2, 2)
-
         # 隐藏层（全连接层）1：输入16*6*6，输出120
         self.fc1 = nn.Linear(16 * 6 * 6, 120)
         # 隐藏层（全连接层）2：输入120，输出84
@@ -81,27 +79,16 @@ class ImageModel(nn.Module):
     # 2.定义前向传播
     def forward(self, x):
         # 第1层：卷积层1(加权求和) + 激励层(激活函数) + 池化层1
-        # 分解版
-        # x = self.conv1(x)         # 卷积层1
-        # x = torch.relu(x)         # 激活函数
-        # x = self.pool1(x)         # 池化层1
-        # 整合版：池化  +  激活   +    卷积
         x = self.pool1(torch.relu(self.conv1(x)))
-
         # 第2层：卷积层2(加权求和) + 激励层(激活函数) + 池化层2
         x = self.pool2(torch.relu(self.conv2(x)))
-
         # 细节：全连接层只能处理二维数据，所以要将数据进行展平处理 (N, 16, 6, 6) -> (N, 16 * 6 * 6)
         # 参1：样本数(行数)；参2：特征数(列数)，-1表示自动计算
         x = x.reshape(x.shape[0], -1)       # 8行576列
-        # print(f"x.shape:{x.shape}")
-
         # 第3层：全连接层(加权求和) + 激励层(激活函数)
         x = torch.relu(self.fc1(x))
-
         # 第4层：全连接层(加权求和) + 激励层(激活函数)
         x = torch.relu(self.fc2(x))
-
         # 第5层：输出层(加权求和)
         return self.output(x)       # 后续用 多分类交叉熵随时函数CrossEntropyLoss =softmax()激活函数 + 损失计算
 
@@ -110,11 +97,10 @@ def train(train_dataset):
     # 1.创建数据加载器
     dataloader = DataLoader(train_dataset, batch_size = BATCH_SIZE, shuffle = True)
     # 2.创建模型对象
-    model = ImageModel()
+    model = ImageModel().to(device)
     print(f"模型所在设备: {next(model.parameters()).device}")
-    # 3.创建损失函数对象
+    # 3.创建损失函数和优化器对象
     criterion = nn.CrossEntropyLoss()
-    # 4.创建优化器对象
     optimizer = optim.Adam(model.parameters(), lr = 1e-3)
     # 5.循环遍历epoch，开始每轮的训练动作
     # 5.1 定义变量，记录训练总轮数
@@ -125,6 +111,7 @@ def train(train_dataset):
         total_loss, total_samples, total_correct, start = 0.0, 0, 0, time.time()
         # 5.2.2 遍历数据加载器，获取每批次的数据
         for x, y in dataloader:
+            x, y = x.to(device), y.to(device)
             # 5.2.3 切换训练模式
             model.train()
             # 5.2.4 模型预测
@@ -135,23 +122,13 @@ def train(train_dataset):
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
-
              # 5.2.7 统计预测正确的样本个数
-            # print(y_pred)       # 批次中每张图每个分类的预测概率
-
-            # argmax()函数返回最大值对应的索引，充当 -> 该图片的预测分类
-            # print(torch.argmax(y_pred, dim = -1))       # -1表示最后一个维度，即行
-            # print(y)
-            # print(torch.argmax(y_pred, dim = -1) == y)
-            # print((torch.argmax(y_pred, dim = -1) == y).sum())
-            total_correct += (torch.argmax(y_pred, dim = -1) == y).sum()
-
+            total_correct += (torch.argmax(y_pred, dim = -1) == y).sum().item()
             # 5.2.8 统计当前批次的总损失            弟1批平均损失 + 弟1批样本个数
             total_loss += loss.item() * len(y)      # [第1批总损失 + 第2批总损失 + ...]
             # 5.2.9 统计当前批次的总样本个数
             total_samples += len(y)         # 累加每批样本的个数
             # break     # 每轮只训练1批，提高训练效率，减少训练时长，只有测试会这么写，实际开发绝不可这样做
-
         # 5.2.10 至此说明一轮训练完毕，打印每轮的训练信息
         print(f"Epoch: {epoch_idx + 1}, Loss: {total_loss / total_samples:.5f}, Acc: {total_correct / total_samples:.2f}, time: {time.time() - start:.2f}s")
         # break     # 这里写break意味着只训练1轮，提高训练效率，减少训练时长，只有测试会这么写，实际开发绝不可这样做
@@ -164,13 +141,14 @@ def evaluate(test_dataset):
     # 1.创建测试集数据加载器
     test_dataloader = DataLoader(test_dataset, batch_size = BATCH_SIZE, shuffle = False)
     # 2.创建模型对象
-    model = ImageModel()
+    model = ImageModel().to(device)
     # 3.加载模型参数
-    model.load_state_dict(torch.load('./pytorch/Day34/model/image_model.pth'))      # pickle文件
+    model.load_state_dict(torch.load('./pytorch/Day34/model/image_model.pth', map_location=device))
     # 4.定义变量，统计预测正确的样本个数以及总样本个数
     total_correct, total_samples = 0, 0
     # 5.遍历数据加载器，获取每批次的数据
     for x, y in test_dataloader:
+        x, y = x.to(device), y.to(device)
         # 5.1 切换模型模式
         model.eval()        # 测试模式
         # 5.2 模型预测
@@ -190,6 +168,11 @@ def evaluate(test_dataset):
 
 # 5.测试
 if __name__ == '__main__':
+
+
+    print("CUDA available:", torch.cuda.is_available())
+    print("CUDA device count:", torch.cuda.device_count())
+    print("Torch version:", torch.__version__)
     # 1.获取数据集
     train_dataset, test_dataset = create_dataset()
     # print(f"训练集：{train_dataset.data.shape}")        # (50000, 32, 32, 3)
@@ -204,16 +187,16 @@ if __name__ == '__main__':
     # plt.show()
 
     # 2.搭建神经网络
-    # model = ImageModel()
+    model = ImageModel().cuda()
     # 查看模型参数
     # 参1：模型；参2：输入维度(C通道, H高, W宽)；参3：批次大小
-    # summary(model, (3, 32, 32), batch_size = BATCH_SIZE)        # 查看模型参数（batch_size在模型训练里生效）
+    summary(model, (3, 32, 32), batch_size = BATCH_SIZE, device = str(device))        # 查看模型参数（batch_size在模型训练里生效）
 
     # 3.模型训练
-    # train(train_dataset)
+    train(train_dataset)
 
     # 4.模型测试
-    evaluate(test_dataset)
+    # evaluate(test_dataset)
 
 
 

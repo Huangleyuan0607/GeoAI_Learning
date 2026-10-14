@@ -185,7 +185,7 @@ def train(train_dataset):
     # epochs = 100         # 训练总轮数
 
     """优化9：使用学习率调度器（MultiStepLR：milestones=[25, 40], gamma=0.2）"""
-    scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=[25, 40], gamma=0.2)
+    # scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=[25, 40], gamma=0.2)
 
     # 5.2 遍历，完成每轮的所有批次的训练动作
     for epoch_idx in range(epochs):
@@ -226,7 +226,7 @@ def train(train_dataset):
         # 5.2.10 至此说明一轮训练完毕，打印每轮的训练信息
         print(f"Epoch: {epoch_idx + 1}, Loss: {total_loss / total_samples:.5f}, Acc: {total_correct / total_samples:.2f}, time: {time.time() - start:.2f}s")
         # break     # 这里写break意味着只训练1轮，提高训练效率，减少训练时长，只有测试会这么写，实际开发绝不可这样做
-        scheduler.step()        # 加衰减
+        # scheduler.step()        # 加衰减
 
     # 6.保存模型
     torch.save(model.state_dict(), './pytorch/Day35/model/image_model_new.pth')
@@ -296,8 +296,5 @@ if __name__ == '__main__':
 
     # 4.模型测试
     evaluate(test_dataset)
-
-
-
 
 

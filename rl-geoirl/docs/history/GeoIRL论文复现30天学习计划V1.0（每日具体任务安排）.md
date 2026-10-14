@@ -285,7 +285,7 @@ $$
 
 最大熵（软，目标 
 $$
-$\max_\pi \mathbb{E}\big[\sum_t r_t + \alpha H(\pi(\cdot|s_t))\big]$
+\max_\pi \mathbb{E}\big[\sum_t r_t + \alpha H(\pi(\cdot|s_t))\big]
 $$
 ）：
 

@@ -1,343 +1,206 @@
 # rl-geoirl
 
-> GeoIRL 论文复现工程（IJGIS 2026）
->
-> 有效学习日：2026.09.30 ＋ 10 月工作日，共 18 天
+> GeoIRL论文复现与学习工程；计划2026.10.14—2026.10.29。  
+> 总体计划统筹阶段任务，每日计划记录学习、源码测试和实际成果。
 
----
+# 项目简介
 
-# 📖 项目简介
+复现 Zi Hen Lin、A. Yair Grinberger、Daniel Felsenstein 的 *Generating geospatial trajectories with incomplete data using graph inverse reinforcement learning*，IJGIS，2026。
+[论文DOI](https://doi.org/10.1080/13658816.2026.2658065) · [本地论文](../papers/Generating%20geospatial%20trajectories%20with%20incomplete%20data%20using%20graph%20inverse%20reinforcement%20learning.pdf) · [官方材料来源](https://doi.org/10.6084/m9.figshare.29554394) · [官方说明](thirdparty/geoirl-official/README.md)
 
-本目录用于复现预研阶段选定的图逆强化学习论文，完整走通"从人类轨迹反推奖励，再用学习到的策略生成新轨迹"这条方法链。
+论文在建筑访问资料不完整时学习建筑奖励，再生成总体统计接近真实出行的建筑访问序列。图卷积表达奖励，IRL根据行为统计提供奖励学习依据。图节点是建筑，输出不是连续GPS补全或逐条轨迹复刻。
 
-复现对象：
+**保护目录**：thirdparty/geoirl-official/全部文件及子目录严格不移动、重命名、删除、覆盖或修改。
 
-> Zi Hen Lin, A. Yair Grinberger, Daniel Felsenstein.
-> *Generating geospatial trajectories with incomplete data using graph inverse reinforcement learning*.
-> International Journal of Geographical Information Science, 2026.
-> DOI：[10.1080/13658816.2026.2658065](https://doi.org/10.1080/13658816.2026.2658065)
-> 官方数据与代码：[10.6084/m9.figshare.29554394](https://doi.org/10.6084/m9.figshare.29554394)（2026.09.29 已下载至 `thirdparty/geoirl-official/`，只读参考，不入库）
-> 本地 PDF：`../papers/Generating geospatial trajectories with incomplete data using graph inverse reinforcement learning.pdf`
+# 学习目标
 
-配套任务书：[docs/GeoIRL论文复现30天学习计划V1.0（每日具体任务安排）.md](docs/GeoIRL论文复现30天学习计划V1.0（每日具体任务安排）.md)
+[总体学习计划V2](docs/GeoIRL论文复现学习计划_V2.md) · [当前N01每日计划](notes/N01（2026.10.14）每日计划.md) · [N01截图建议](notes/N01（2026.10.14）每日计划.md)
 
-论文四要素：
+每天先视频/教材原理及必要代码，再论文应用；一天一个源码测试。“参考代码”直接给测试程序，不放教材入口。
+P0必须；P1条件允许；P2汇报后。最低交付是可解释模型、可复查验证或阻塞、来源清楚的PPT；完整复现不因小测试通过自动成立。
 
-- 案例地：耶路撒冷，7,692 条 GPS 出行轨迹，学习子集 1,014 栋建筑
-- 状态空间：建筑节点；转移矩阵由 Simple Gravity Score（面积／距离²）行归一化并稀疏化到 10% 密度
-- 奖励模型：Linear / MLP / GCN / GraphConv 四种，参数量 11 / 1569 / 1569 / 2945
-- 评估方式：聚合指标（Wasserstein 距离、inverse CPC、NFM），不做逐条轨迹相似度
-
----
-
-# 🎯 学习目标
-
-## 第一阶段（G01-G05）
+## 第一阶段（N01—N04）
 
 ### MDP、价值函数与迭代
 
-State、Action、Reward、Transition、Policy
+10/14–10/17：从N01认识IRL框架，学习MDP、奖励/V/Q、标准Bellman与Soft策略；对照转移、奖励和价值算子。N04周六轻量。
 
-Return 与折扣因子 γ
-
-Bellman 方程（解析解与迭代解）
-
-软 Bellman 与 softmax 策略
-
-值迭代与策略迭代
-
-ESVF＝策略传播的访问频率
-
-
-↓
-
-## 第二阶段（G06-G10）
+## 第二阶段（N05—N07）
 
 ### IRL 与 MaxEnt IRL
 
-RL 与 IRL 的正反关系
+10/19–10/21：访问量、专家目标、最大熵IRL和外部梯度；完成单轮Linear验证或定位阻塞。P1再做稳定正式训练。
 
-奖励歧义性与最大熵原则
+## 第三阶段（N08—N09）
 
-特征期望匹配梯度
+### 图结构、拉普拉斯与GNN
 
-ESVF 幂迭代的发散与左 Laplacian 稳定
+10/22–10/23：图表示、必要归一化、聚合和GCN/GraphConv奖励；不扩展完整谱图课程，不将作者图算子命名视为标准定义。
 
-从零实现 6×6 MaxEnt IRL
-
-
-↓
-
-## 第三阶段（G11-G14）
-
-### 图结构、拉普拉斯与 GNN
-
-邻接矩阵与三种归一化
-
-谱半径与消息传递
-
-GCN 的 dense 实现
-
-PyTorch Geometric：Data、edge_index、GCNConv、GraphConv
-
-四种奖励网络参数量对账
-
-论文 §2 精读与伪代码骨架
-
-
-↓
-
-## 第四阶段（G15-G18）
+## 第四阶段（N10—N14）
 
 ### 数据、全链路与复现报告
 
-GeoPandas 矢量建筑 → 特征矩阵与转移矩阵
+10/24–10/29：限时采样、可靠指标、冻结成果；最后两天PPT与演练。复查已有结果，不在汇报前新开大实验。
 
-四种网络的 IRL 训练对比
+# 当前进度
 
-Kaplan-Meier 折扣因子与轨迹采样
-
-Wasserstein、inverse CPC、NFM 结果表
-
-figshare 官方实现对照与消融
-
-交付 REPRODUCE.md ＋ 组会三件套（自画流程图、PPT、讲稿）
-
-
-↓
-
-向导师提交复现报告
-
----
-
-# 📊 当前进度
-
-GeoIRL 论文复现计划（共 18 个学习日）
+当前学习日：N01（2026.10.14）；状态：未开始；更新日期2026-10-14。
+学习进度按当天验收更新。
 
 ```bash
-██□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□
-Day 02 / Day 18
+学习进度：0 / 14（0%）
+□□□□□□□□□□□□□□
+核心学习：0 / 12
+汇报准备：0 / 2
 ```
 
-最近更新时间：
+全部当日P0通过验收后计完成，P1不影响计数；休息日不计分母。状态：未开始、进行中、已完成、阻塞；证据写每日文件。
+工作日4–5小时；10/17、10/24周六2–3小时；10/18、10/25周日休息不生成计划。10/30至月底缓冲；10/31周六仍控制2–3小时。
 
-**2026-10-09**
+# 每日学习进度
 
-------
+只生成首日N01，后续在前一学习日结束、收到真实反馈后细化并添加链接。周六结束生成周一，旧勾选不迁入。以下未勾选不代表文件已经生成。
 
-# 📅 每日学习进度
+## 第一阶段：MDP、价值函数与迭代（N01—N04）
 
-## 第一阶段：MDP、价值函数与迭代（G01-G05）
+- [ ] [N01（2026.10.14）：IRL全貌、MDP与建筑转移](notes/N01（2026.10.14）每日计划.md)
+- [ ] N02（2026.10.15）：奖励、回报、策略与V/Q
+- [ ] N03（2026.10.16）：Bellman与动态规划
+- [ ] N04（2026.10.17）：熵、Soft策略与停止选项；周六2–3小时
 
-- - [x] G01（09.30）MDP 五要素与论文实体对照，SGS 转移矩阵最小版
-- - [x] G02（10.08）Bellman 方程的解析解与迭代解，谱半径判据
-- - [ ] G03（10.09）软 Bellman 与 softmax 策略，`geoirl/irl.py` 诞生
-- - [ ] G04（10.12）值迭代、策略迭代与截断策略迭代
-- - [ ] G05（10.13）GridWorld 实战，验证 ESVF 两种算法等价；装 `torch_geometric`（从 G12 提前）
+## 第二阶段：IRL与MaxEnt IRL（N05—N07）
 
-------
+- [ ] N05（2026.10.19）：IRL与访问量
+- [ ] N06（2026.10.20）：最大熵IRL与奖励更新
+- [ ] N07（2026.10.21）：单轮IRL与Linear验证
 
-## 第二阶段：IRL 与 MaxEnt IRL（G06-G10）
+## 第三阶段：图与GNN（N08—N09）
 
-- - [ ] G06（10.14）RL 与 IRL 的正反关系，奖励歧义性；**金标准**：跑 `IRL_deep.ipynb` Linear 流程 → `results/golden/`
-- - [ ] G07（10.15）最大熵原理，特征期望差梯度
-- - [ ] G08（10.16）ESVF 幂迭代发散与左 Laplacian 稳定（论文贡献②）
-- - [ ] G09（10.19）读 `qzed/irl-maxent`，标注三段实现
-- - [ ] G10（10.20）从零实现 6×6 端到端 MaxEnt IRL
+- [ ] N08（2026.10.22）：图表示、边方向与消息传递
+- [ ] N09（2026.10.23）：GCN、GraphConv与IRL连接
 
-------
+## 第四阶段：数据、管线与报告（N10—N14）
 
-## 第三阶段：图与 GNN（G11-G14）
+- [ ] N10（2026.10.24）：生成策略、轨迹与结束规则
+- [ ] N11（2026.10.26）：距离统计与指标核对
+- [ ] N12（2026.10.27）：可靠指标与成果冻结
+- [ ] N13（2026.10.28）：制作汇报PPT
+- [ ] N14（2026.10.29）：演练、复查与修订
 
-- - [ ] G11（10.21）行归一化／对称归一化／左 Laplacian 的谱半径对比
-- - [ ] G12（10.22）手写 dense GCN 并与 PyG 数值对齐
-- - [ ] G13（10.23）四种奖励网络实现与参数量对账
-- - [ ] G14（10.26）论文 §2 精读，Figure 1／3 翻成 `skeleton.py`；核实"空间错配"批评成不成立
+# 模块诞生日程
 
-------
+沿用原栏目，**本轮不安排新包模块诞生或重构geoirl/**。下表只是每日小测试位置，不是已创建文件。测试代码放在每日“参考代码”，学习时保存；额外自选练习以后另行讨论。
 
-## 第四阶段：数据、管线与报告（G15-G18）
+| 学习日 | 测试脚本位置 | 状态 |
+| --- | --- | --- |
+| N01 | `rl/N01/test_simple_gravity.py` | 待实际学习时保存 |
+| N02 | `rl/N02/test_linear_reward.py` | 待实际学习时保存 |
+| N03 | `rl/N03/test_value_update.py` | 待实际学习时保存 |
+| N04 | `rl/N04/test_soft_policy.py` | 待实际学习时保存 |
+| N05 | `rl/N05/test_expected_svf.py` | 待实际学习时保存 |
+| N06 | `rl/N06/test_irl_gradient.py` | 待实际学习时保存 |
+| N07 | `rl/N07/test_irl_step.py` | 待实际学习时保存 |
+| N08 | `rl/N08/test_graph_aggregation.py` | 待实际学习时保存 |
+| N09 | `rl/N09/test_graph_reward.py` | 待实际学习时保存 |
+| N10 | `rl/N10/test_trajectory_sampling.py` | 待实际学习时保存 |
+| N11 | `rl/N11/test_segment_statistics.py` | 待实际学习时保存 |
+| N12 | `rl/N12/test_cpc.py` | 待实际学习时保存 |
+| N13 | `rl/N13/test_report_metric.py` | 待实际学习时保存 |
+| N14 | `rl/N14/test_reward_replay.py` | 待实际学习时保存 |
 
-- - [ ] G15（10.27）矢量建筑 → 特征矩阵与 SGS／IED 转移矩阵
-- - [ ] G16（10.28）四网络 IRL 训练对比（loss 与主特征值曲线）
-- - [ ] G17（10.29）K-M 折扣、轨迹采样、Wasserstein／CPC／NFM 结果表
-- - [ ] G18（10.30）figshare 对照、消融实验、`REPRODUCE.md`；组会三件套（流程图＋PPT＋讲稿）＋四知识点自检
-
-------
-
-# 🧩 模块诞生日程
-
-`geoirl/` 是逐步长出来的包，每个文件只在指定那天创建。
-
-| 模块文件 | 创建于 | 对应论文小节 | 职责 |
-| ------------------- | ---------- | ------------------ | -------------------------------- |
-| `irl.py` | G03（10.09） | §2.1、§2.1.5 | 软 Bellman 与中间策略，全项目唯一实现 |
-| `esvf.py` | G05（10.13） | §2.1、§2.1.6 | 按策略传播访问频率，含归一化稳定版 |
-| `rewards.py` | G13（10.23） | §2.1.5 | Linear、MLP、GCN、GraphConv |
-| `geo_data.py` | G15（10.27） | §2.1.2、§2.1.3 | 矢量建筑 → 特征矩阵 F、转移矩阵 P |
-| `sample.py` | G17（10.29） | §2.2 | K-M 折扣下的轨迹采样 |
-| `metrics.py` | G17（10.29） | §3.4、式(3) | Wasserstein、inverse CPC、NFM |
-
-判断规则：这段代码明天还会被 `import` 吗？会就进 `geoirl/`，不会就留在 `rl/DayNN/`。
-
-------
-
-# 📂 仓库目录
+# 仓库目录
 
 ```text
 rl-geoirl/
-│
-├── docs/                    本任务书（每日具体任务安排）
-│
-├── notes/                   每日计划与日志：G00（日期）Note.md …G18
-│   └── Screenshot/          当日截图，按 GNN 分目录
-│
-├── rl/                      每天的具体文件夹：rl/Day01 … rl/Day18（用到再建，不预造空壳）
-│
-├── geoirl/                  复现包本体（模块诞生日程见上表）
-│
-├── data/                    建筑矢量与合成数据（被根目录 .gitignore 排除，不入库）
-│
-├── results/                 结果表与图表（.csv 已单独放行，交付用）
-│
-├── thirdparty/              只读参考仓库（已在 .gitignore 排除）：geoirl-official/ 官方代码＋数据（09.29 已下载）、irl-maxent/（G09 起）
-│
-├── requirements.txt          本项目依赖（不覆盖根目录 V4.0 那份）
-│
-├── REPRODUCE.md             复现报告（G18 产出，目前还没有）
-│
-└── README.md                本文件
+├── README.md
+├── docs/
+│   ├── GeoIRL论文复现学习计划_V2.md
+│   └── history/
+├── notes/
+│   ├── N01（2026.10.14）每日计划.md
+│   ├── history/
+│   └── Screenshot/
+│       └── history/
+├── rl/
+│   └── history/
+├── geoirl/
+├── results/
+├── thirdparty/
+│   └── geoirl-official/
+└── requirements.txt
 ```
 
-------
+仅展示学习相关目录，.idea/等原目录仍原位。history保存旧资料；目录按实际学习需要创建。
+每日计划、理解与收获记录在同一文件；测试在rl/Nxx/，截图在notes/Screenshot/Nxx/。正式results/实验名称/记录入口、数据范围、参数、种子、样本、时间、状态，不创建空指标。
+PPT在docs/GeoIRL_导师汇报_2026年10月.pptx，N13/N14同一文件。[完整文件约定](docs/GeoIRL论文复现学习计划_V2.md)
 
-# 🗺️ 技术路线
+# 技术路线
 
 ```text
-经验 GPS 轨迹（专家行为）
-        │
-        ↓
-把城市建筑抽象为状态空间（MDP）
-        │
-        ↓
-构建转移矩阵（SGS／IED → 行归一化 → 稀疏化）
-        │
-        ↓
-构建特征矩阵（多维度分组，传播稀疏观测）
-        │
-        ↓
-MaxEnt IRL：软策略 → ESVF 幂迭代 → 特征期望匹配
-        │
-        ↓
-反演奖励函数（Linear／MLP／GCN／GraphConv）
-        │
-        ↓
-K-M 生存概率作折扣因子 → 采样生成新轨迹
-        │
-        ↓
-聚合指标评估（Wasserstein／inverse CPC／NFM）
+专家行为/建筑属性 → 预计算CSV → 研究区对齐 → 图与边界
+                                            ↓
+建筑特征/图 → 奖励模型 → 奖励 → 内部策略 → 期望访问量
+                 ↑                          ↓
+                 └──────── 与专家目标比较后更新 ┘
+训练结束 → 另行构造生成策略 → 建筑访问序列 → 集合评价
 ```
 
-------
+基础RL解释奖励怎样产生行为；IRL还需行为统计匹配和奖励更新。每天把知识定位到这条路线，标准原理、论文说明和源码分别核对。
 
-# 📚 学习资源
+# 学习资源
 
-| 内容 | 来源 |
-| -------------------- | ---------------------------------- |
-| **理论输入主线（10.08 换轨）** | 官方代码精读：`thirdparty/geoirl-official/`（`causal_maxent.py`／`transitions.py`／`rewards.py`／`trajectories.py`，函数↔论文公式对照）＋ Ziebart 2008、Kipf & Welling 2017 两篇短文 |
-| 强化学习字典（卡壳才翻） | 《动手学强化学习》SJTU APEX（`hrl.boyuai.com` 第 1／3／4 章；GitHub `boyu-ai/Hands-on-RL`） |
-| 🎞 理论视频存档（暂不看） | 张伟楠《上交强化学习课》（官方 UP「张伟楠SJTU」·只看第 1／3／4／5I／12 讲；勿用搬运号合并版） |
-| 🎞 数学推导存档（卡壳回查） | 西湖大学 WindyLab（`BV1sd4y167NS`·白板纯推导无代码·不通看） |
-| 🎞 逆向强化学习存档 | 李宏毅 2021（`BV1JA411c7VT`，只看 P34） |
-| 🎞 MaxEnt IRL 存档 | CS285 2023 中英字幕（`BV1NjH4eYEyZ`，P82–P85） |
-| 🎞 图神经网络存档 | 同济子豪兄 CS224W 中文精讲（`BV16v4y1b7x7`、`BV1Hs4y157Ls`） |
-| 🎞 谱图理论与 GCN 数学存档 | 日常半躺（`BV1Vw411R7Fj`，选看） |
-| 🎞 生存分析与 K-M 存档 | 北美统计学博士生（`BV1sg4y1j7n9`） |
-| 🎞 最大熵值函数（soft Q）存档 | 刘相宇（`BV1pE41117C2`） |
-| IRL 参考实现 | `qzed/irl-maxent`、`G-Lauz/maxent_deep_irl`、`soma11soma11/MEIRL` |
-| 图与稀疏计算 | networkx、scipy.sparse、PyTorch Geometric 官方文档 |
+[总计划附录A](docs/GeoIRL论文复现学习计划_V2.md)汇总精读范围与源码导航。
 
-每日理论输入＝代码精读＋短文献，≤55 分钟；原视频清单（合计约 7.8 h）10.08 起全部转 🎞 存档——暂不看、不计进度，有空或卡壳时按任务书附录 A 回看。其余时间全部用于写代码。
+- [张伟楠视频合集](https://space.bilibili.com/3546754433681656/lists/4126508?type=season) / [教师课程与课件](https://wnzhang.net/teaching/sjtu-rl-2024/index.html)：简介选看、MDP/动态规划重点、模仿学习选IRL相关。时长按课程目录，内部段落在观看时定位。
+- [动手学强化学习](https://hrl.boyuai.com/)：第3/4章必要部分、14.2–14.3、15.1。视频讲次与教材章号分别标注；教材代码作原理对照，不重做完整课程。
+- [最大熵IRL](https://www.cs.cmu.edu/~bziebart/publications/maximum-entropy-inverse-reinforcement-learning.html)：补统计匹配和奖励更新；教材主要BC/GAIL，不能替代本论文算法。
+- [GCN入门](https://tkipf.github.io/graph-convolutional-networks/) / [PyG入门](https://pytorch-geometric.readthedocs.io/en/latest/get_started/introduction.html)：补图表示、聚合与前向。
 
-------
+# 风险与降级预案
 
-# ⚠️ 风险与降级预案
+[总计划附录B](docs/GeoIRL论文复现学习计划_V2.md)保留已核实疑点和测试方向。
+优先检查专家目标/ESVF尺度、价值算子、图归一化/density、训练与生成折扣、NFM索引/固定5005、补零距离平均、最佳奖励与最终模型来源。
+以上问题来自源码分析。研究区1014栋建筑、10维特征已由材料核查；完整上游特征与长度权重程序仍需确认。
+小测试有规模/停止限制；不能用1epoch保证所有while停止。问题未解时交付可解释步骤、阻塞与下一步，不编造结果。N12后冻结范围。
 
-| 风险 | 降级方案 |
-| ---------------------- | ---------------------------------------------- |
-| figshare 数据或代码拿不到 | **已消除**：官方代码与数据已在 `thirdparty/geoirl-official/`（2026.09.29 下载）；若格式实测不可用再退回合成建筑数据，报告改为方法级复现 |
-| `torch_geometric` 装不上 | 用 G12／G13 的 dense 降级实现（n≈1000 稠密矩阵笔记本足够），报告注明差异 |
-| 显存只有 6 GB | 最大矩阵 1,014×1,014（float32 约 8 MB）远小于显存，实测 CUDA 比 CPU 快约 19×；真溢出就把该步退回 CPU，不阻塞 |
-| IRL 不收敛 | 先查特征矩阵信息量与专家期望口径，最后才调学习率 |
-| 课程或助教任务挤占时间 | 优先保 G15／G16／G17 三天，视频压到 1.5 倍速或砍选看项 |
+# 开发环境
 
-------
+历史解释器为D:\conda_envs\geoirl\python.exe（Python3.11）；文件目前存在，NumPy/Pandas/PyTorch/PyG导入与GPU性能在正式运行前检查。历史记录的显卡为RTX3060 Laptop，GPU流程需另行验证。
+[项目依赖](requirements.txt) / [官方依赖](thirdparty/geoirl-official/requirement.txt)不同，后续按实际问题检查，不整套重装。管理员权限或系统配置操作先征求同意。
+N01参考代码只使用官方simple_gravity原样节选，避开整个模块的地图绘图导入；不表示全量模块导入成功。
 
-# 💻 开发环境
+# 复现能力建设
 
-| 软件 | 版本／说明 |
-| ------------ | --------------------------------- |
-| conda 环境 | `geoirl`（`D:\conda_envs\geoirl`，Python 3.11.16） |
-| NumPy、SciPy | 2.4.6 / 1.17.1 —— 数值计算、稀疏矩阵、特征值 |
-| pandas、matplotlib | 3.0.6 / 3.11.2 |
-| GeoPandas、Shapely | 1.2.0 / 2.1.2（GEOS 3.14.1）；pyogrio 0.13.0（GDAL 3.13.3／PROJ 9.8.1） |
-| networkx | 3.6.1 —— 图结构与连通分量分析 |
-| lifelines | 0.30.0 —— Kaplan-Meier 交叉验证（主实现手写） |
-| PyTorch | 2.11.0+cu128（CUDA 12.8，RTX 3060 Laptop 6 GB；torch_geometric 到 G12／G13 再装） |
-| Git、PyCharm | Community Edition；解释器 `D:\conda_envs\geoirl\python.exe`，`rl-geoirl/` 已标 Sources Root |
+目标是能解释、会验证、能记录。每天一个源码小测试，先手算或预测，再运行、对照与解释。“参考代码”给出测试程序，学习笔记整理原理与论文对应。
+[现有复用实现说明](geoirl/README.md)保留，历史任务约定不表示模块已完成。必要源文件和正式记录保留，不以文件数量判断学习成果。
 
-装机时记下的两条规则：
+# Commit规范
 
-- torch 必须走官方源 `pip install torch --index-url https://download.pytorch.org/whl/cu128`，清华 PyPI 镜像的 torch 会多拖约 2 GB 的 nvidia 依赖
-- 被 pip 接管过的包不要再 `conda install` 去升（torch 钉住 setuptools<82，混管会互相破坏）
+提交可沿用G前缀并附N编号，例如G-N01: 验证建筑移动权重。是否提交/推送由实际需要决定，不计P0；
+提交前核对变更范围，只加入当天需要保存的学习文件。
 
-------
+# 与 V4.0 计划的关系
 
-# 🔬 复现能力建设
+旧总计划记录了与GeoAI主线的历史衔接，本轮优先GeoIRL。其他课程、GAN/U-Net或后续安排不自动沿用、不擅自改动；11月工作根据导师反馈和本轮问题再确定。
 
-本目录不仅记录代码，同时训练科研工作的完整闭环：
+# 说明
 
-- 论文公式到代码的翻译
-- 合成数据先行验证方法正确性
-- 与官方实现的对照与差异说明
-- 消融实验设计（转移矩阵类型、图密度、网络结构）
-- 结果可视化与聚合指标评估
-- 复现报告与失败清单撰写
+总体计划在docs/，每日计划在notes/。按四阶段和N编号组织；首日先有计划，其他根据真实反馈逐日生成。
+“今日收获”自由填写；截图说明内容、时机、用途与文件名，通常2–4张以内、按需，不代替实际结果。未保存图片不插入无效链接。
+论文图、官方旧输出与本人执行区分；全部P0验收后更新进度。后续目录架构变更先提方案，官方目录保持完全不变。
+任务结束仅清理本次生成且不再需要的临时产物；正式成果、必要源码/配置/依赖和历史资料保留。
 
-------
+**历史资料入口**
 
-# 📌 Commit规范
+历史内容可查阅；旧任务规则、旧勾选和示例输出不作为当前成果。原归档位置保持不变。
 
-统一采用：
+- [旧总体计划V1](docs/history/GeoIRL论文复现30天学习计划V1.0（每日具体任务安排）.md)
+- [旧两页汇报PPT](docs/history/组会复现进展_两页.pptx)
 
-```text
-G01: 完成MDP实体对照与SGS转移矩阵
-
-G08: 复现ESVF发散与Laplacian稳定
-
-G15: 完成特征矩阵与转移矩阵数据管线
-
-G18: 交付复现报告与消融结果
-```
-
-用 `G` 前缀与 V4.0 主线的 `DayNN：` 区分，方便日后按研究线过滤提交历史。
-
-------
-
-# 🔗 与 V4.0 计划的关系
-
-本目录期间，`python_basic/`、`pytorch/`、`notebooks/` 的 V4.0 主线冻结。
-
-- 导师要求的 GAN 先修：最简 GAN（MNIST）已于 2026.09.29 在 `../pytorch/Day43/GAN_MNIST.py` 完成；余下先修按导师 09.30 更正为 **C-GAN 与流模型**（不再要 CycleGAN），排在国庆假期碎片时间，10.20 晚兜底销账
-- V4.0 从 Day44（制图综合理论）恢复，U-Net 建筑物提取顺延至 2026.11
-- 本月可迁移回主线的能力：GeoPandas 矢量属性工程、距离与密度矩阵、可微的期望匹配训练范式
-
-------
-
-# 📜 说明
-
-本目录仅用于个人科研预研与论文复现练习。
-
-> 复现的目标不是把强化学习学会，
->
-> 而是能把这篇论文每个核心模块读懂、改得动、跑得起来。
+| 旧笔记 | 旧练习 | 旧截图 |
+| --- | --- | --- |
+| [G00](notes/history/G00（2026.09.29）Note.md) | — | — |
+| [G01](notes/history/G01（2026.09.30）Note.md) | [Day01](rl/history/Day01/) | [G01](notes/Screenshot/history/G01/) |
+| [G02](notes/history/G02（2026.10.08）Note.md) | [Day02](rl/history/Day02/) | [G02](notes/Screenshot/history/G02/) |
+| [G03](notes/history/G03（2026.10.09）Note.md) | [Day03](rl/history/Day03/) | [G03](notes/Screenshot/history/G03/) |

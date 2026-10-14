@@ -1,3 +1,4 @@
+# 导包
 import os
 import torch
 import torch.nn as nn
@@ -5,7 +6,6 @@ import torch.optim as optim
 import torchvision
 import torchvision.transforms as transforms
 import torchvision.utils as vutils
-
 
 # 设置超参数
 batch_size = 128
@@ -20,7 +20,7 @@ os.environ['TORCHVISION_MNIST_URL'] = 'https://ossci-datasets.s3.amazonaws.com/m
 torch.manual_seed(42)
 
 # 创建输出目录
-os.makedirs("gan_output", exist_ok=True)
+os.makedirs("./pytorch/Day43/gan_output", exist_ok=True)
 
 # 数据加载
 transform = transforms.Compose([
@@ -32,7 +32,7 @@ train_dataset = torchvision.datasets.MNIST(
     root="./pytorch/Day43/data",
     train=True,
     transform=transform,
-    download=True
+    download=False
 )
 
 train_loader = torch.utils.data.DataLoader(
@@ -61,7 +61,7 @@ class Generator(nn.Module):
         img = self.net(z)
         return img.view(img.size(0), 1, 28, 28)
 
-# 判别器 D
+# 判别器 D：注意这里去掉了最后的 Sigmoid
 class Discriminator(nn.Module):
     def __init__(self):
         super(Discriminator, self).__init__()
@@ -75,8 +75,8 @@ class Discriminator(nn.Module):
             nn.Linear(512, 256),
             nn.LeakyReLU(0.2, inplace=True),
             nn.Dropout(0.3),
-            nn.Linear(256, 1),
-            nn.Sigmoid()  # 输出概率
+            nn.Linear(256, 1)
+            # 不再加 nn.Sigmoid()
         )
 
     def forward(self, x):
@@ -87,7 +87,8 @@ class Discriminator(nn.Module):
 G = Generator(z_dim).to(device)
 D = Discriminator().to(device)
 
-criterion = nn.BCELoss()
+# 使用 BCEWithLogitsLoss，D 输出 logits，不要 Sigmoid
+criterion = nn.BCEWithLogitsLoss()
 
 optimizer_G = optim.Adam(G.parameters(), lr=lr, betas=(beta1, 0.999))
 optimizer_D = optim.Adam(D.parameters(), lr=lr, betas=(beta1, 0.999))
@@ -96,7 +97,13 @@ optimizer_D = optim.Adam(D.parameters(), lr=lr, betas=(beta1, 0.999))
 fixed_noise = torch.randn(64, z_dim, device=device)
 
 # 训练循环
-for epoch in range(num_epochs):
+for epoch in range(1, num_epochs + 1):
+    running_D = 0.0
+    running_G = 0.0
+    running_D_real = 0.0
+    running_D_fake = 0.0
+    n_batches = 0
+
     for i, (real_imgs, _) in enumerate(train_loader):
         real_imgs = real_imgs.to(device)
         b_size = real_imgs.size(0)
@@ -108,14 +115,14 @@ for epoch in range(num_epochs):
         # 1. 训练判别器 D
         optimizer_D.zero_grad()
 
-        # 真实样本
+        # 真实样本，D 输出 logits
         output_real = D(real_imgs)
         loss_D_real = criterion(output_real, real_labels)
 
         # 生成假样本
         z = torch.randn(b_size, z_dim, device=device)
         fake_imgs = G(z)
-        output_fake = D(fake_imgs.detach())  # detach 避免梯度传到 G03
+        output_fake = D(fake_imgs.detach())  # detach 避免梯度传到 G
         loss_D_fake = criterion(output_fake, fake_labels)
 
         # 判别器总损失
@@ -123,34 +130,47 @@ for epoch in range(num_epochs):
         loss_D.backward()
         optimizer_D.step()
 
-        # 2. 训练生成器 G03
+        # 2. 训练生成器 G
         optimizer_G.zero_grad()
-
         z = torch.randn(b_size, z_dim, device=device)
         fake_imgs = G(z)
-        output_fake = D(fake_imgs)  # 不 detach，梯度会传到 G03
-
+        output_fake_for_G = D(fake_imgs)  # 不 detach，梯度会传到 G
         # 生成器希望判别器把假样本判为真，所以标签用 real_labels
-        loss_G = criterion(output_fake, real_labels)
+        loss_G = criterion(output_fake_for_G, real_labels)
         loss_G.backward()
         optimizer_G.step()
 
-        # 打印日志
-        if i % 100 == 0:
-            print(
-                f"[Epoch {epoch}/{num_epochs}] "
-                f"[Batch {i}/{len(train_loader)}] "
-                f"[D loss: {loss_D.item():.4f}] "
-                f"[G loss: {loss_G.item():.4f}]"
-            )
+        # 累加当前 batch 的 loss
+        running_D += loss_D.item()
+        running_G += loss_G.item()
+
+        # 累加 D 对真图/假图的平均概率（logits 经过 sigmoid 转成概率）
+        with torch.no_grad():
+            running_D_real += torch.sigmoid(output_real).mean().item()
+            running_D_fake += torch.sigmoid(output_fake).mean().item()
+
+        n_batches += 1
+
+    # 计算整个 epoch 的平均值
+    avg_D = running_D / n_batches
+    avg_G = running_G / n_batches
+    avg_D_real = running_D_real / n_batches
+    avg_D_fake = running_D_fake / n_batches
+
+    # 打印日志：这里改为每个 epoch 都打印平均结果，方便观察
+    print(
+        f"[Epoch {epoch}/{num_epochs}] "
+        f"[D loss: {avg_D:.4f}] [G loss: {avg_G:.4f}] "
+        f"[D(real): {avg_D_real:.3f}] [D(fake): {avg_D_fake:.3f}]"
+    )
 
     # 每个 epoch 保存生成图片
     with torch.no_grad():
         fake = G(fixed_noise)
         vutils.save_image(
             fake,
-            f"./pytorch/Day43//gan_output/epoch_{epoch+1:03d}.png",
+            f"./pytorch/Day43/gan_output1/epoch_{epoch:03d}.png",
             normalize=True
         )
 
-print("训练完成！生成图片已保存到 gan_output/ 目录。")
+print("训练完成！生成图片已保存到 gan_output1/ 目录。")
