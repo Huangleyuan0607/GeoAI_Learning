@@ -34,9 +34,9 @@ def local_causal_action_probabilities(p_transition, terminal, reward, discount, 
     参数：
         p_transition: 转移矩阵，形状为 (状态数, 状态数)
         terminal: 允许停止的状态索引，本例为整型张量 [1]
-        reward:
-        discount:
-        eps:
+        reward: 奖励函数
+        discount: 折扣因子
+        eps: 收敛阈值
 
     返回值：
         普通行动概率矩阵，形状为 (状态数, 状态数)
